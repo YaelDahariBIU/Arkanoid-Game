@@ -1,51 +1,34 @@
+// 325166510 Yael Dahari
 import biuoop.DrawSurface;
 import biuoop.GUI;
 import biuoop.Sleeper;
-
 /**
- * The type Bouncing ball animation.
+ * Drawing a ball that moves across the screen.
+ * @author Yael Dahari < yaeldahari661@gmail.com >
+ * @version 1.0
+ * @since 2023-03-22
  */
 public class BouncingBallAnimation {
-    /**
-     * The Width.
-     */
     static final int WIDTH = 700;
-    /**
-     * The Height.
-     */
     static final int HEIGHT = 700;
-    /**
-     * The First.
-     */
     static final int FIRST = 0;
-    /**
-     * The Second.
-     */
     static final int SECOND = 1;
-    /**
-     * The Third.
-     */
     static final int THIRD = 2;
-    /**
-     * The Fourth.
-     */
     static final int FOURTH = 3;
-    /**
-     * The Edge.
-     */
     static final int EDGE = 0;
     static final int STANDARD_SIZE = 30;
     static final int SLEEP = 50;
 
     /**
-     * Draw animation.
+     * The method gets a point and two numbers, creates a ball with those
+     * attributes and moves it across the screen.
      *
-     * @param start the start
-     * @param dx    the dx
-     * @param dy    the dy
+     * @param start (Point) - the starting location of the ball
+     * @param dx (double) - the dx value
+     * @param dy (double) - the dy value
      */
     static void drawAnimation(Point start, double dx, double dy) {
-        GUI gui = new GUI("animation", WIDTH, HEIGHT);
+        GUI gui = new GUI("bouncing ball animation", WIDTH, HEIGHT);
         Sleeper sleeper = new Sleeper();
         Ball ball = new Ball((int) start.getX(), (int) start.getY(),
                 STANDARD_SIZE, java.awt.Color.BLACK);
@@ -60,9 +43,10 @@ public class BouncingBallAnimation {
     }
 
     /**
-     * The entry point of application.
+     * The entry point of application. The method gets 4 integers from the
+     * command line and runs the drawAnimation method accordingly
      *
-     * @param args the input arguments
+     * @param args (String[]) - the input arguments
      */
     public static void main(String[] args) {
         Point p = new Point(Double.parseDouble(args[FIRST]),

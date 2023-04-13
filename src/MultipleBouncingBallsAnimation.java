@@ -1,57 +1,31 @@
+// 325166510 Yael Dahari
 import biuoop.DrawSurface;
 import biuoop.GUI;
 import biuoop.Sleeper;
-
 import java.awt.Color;
 import java.util.Random;
-
 /**
- * The type Multiple bouncing balls animation.
+ * Drawing multiple balls that move across the screen.
+ * @author Yael Dahari < yaeldahari661@gmail.com >
+ * @version 1.0
+ * @since 2023-03-22
  */
 public class MultipleBouncingBallsAnimation {
-    /**
-     * The Width.
-     */
     static final int WIDTH = 200;
-    /**
-     * The Height.
-     */
     static final int HEIGHT = 200;
-    /**
-     * The Including.
-     */
-    static final int INCLUDING = 1;
-    /**
-     * The Max size.
-     */
     static final int MAX_SIZE = 50;
-    /**
-     * The Min speed.
-     */
     static final int MIN_SPEED = 3;
-    /**
-     * The Max speed.
-     */
-    static final int MAX_SPEED = 30;
-    /**
-     * The Degrees.
-     */
+    static final int MAX_SPEED = 300;
     static final int DEGREES = 360;
-    /**
-     * The Ratio.
-     */
-    static final int RATIO = 10;
-    /**
-     * The Edge.
-     */
     static final int EDGE = 0;
     static final int SLEEP = 50;
 
     /**
-     * Create arr ball [ ].
+     * The method gets an array of the string values of sizes and creates an
+     * array of balls according to the sizes and random values.
      *
-     * @param arr the arr
-     * @return the ball [ ]
+     * @param arr (String[]) - an array with string values of sizes
+     * @return (Ball[]) - an array of balls
      */
     static Ball[] createArr(String[] arr) {
         Ball[] newArr = new Ball[arr.length];
@@ -61,17 +35,17 @@ public class MultipleBouncingBallsAnimation {
         Velocity v;
         java.awt.Color color;
         for (int i = 0; i < arr.length; i++) {
-            x = rand.nextDouble(WIDTH) + INCLUDING;
-            y = rand.nextDouble(HEIGHT) + INCLUDING;
+            x = rand.nextDouble() * WIDTH;
+            y = rand.nextDouble() * HEIGHT;
             size = Integer.parseInt(arr[i]);
             color = randomColor(rand);
             newArr[i] = new Ball(new Point(x, y), size, color);
-            angle = rand.nextDouble(DEGREES) + INCLUDING;
+            angle = rand.nextDouble() * DEGREES;
             if (size > MAX_SIZE) {
                 v = Velocity.fromAngleAndSpeed(angle, MIN_SPEED);
                 newArr[i].setVelocity(v);
             } else {
-                speed = (MAX_SPEED * RATIO) / (double) size;
+                speed = MAX_SPEED / (double) size;
                 v = Velocity.fromAngleAndSpeed(angle, speed);
                 newArr[i].setVelocity(v);
             }
@@ -80,10 +54,11 @@ public class MultipleBouncingBallsAnimation {
     }
 
     /**
-     * Draw animation.
+     * The method gets an array of balls and a gui. It draws them and moves
+     * them across the screen.
      *
-     * @param arr the arr
-     * @param gui the gui
+     * @param arr (Ball[]) - an array of balls
+     * @param gui (GUI) - the gui
      */
     static void drawAnimation(Ball[] arr, GUI gui) {
         Sleeper sleeper = new Sleeper();
@@ -103,10 +78,11 @@ public class MultipleBouncingBallsAnimation {
     }
 
     /**
-     * Random color java . awt . color.
+     * The method gets a variable of Random, generates 3 random floats using
+     * it and returns a color defined by those numbers.
      *
-     * @param rand the rand
-     * @return the java . awt . color
+     * @param rand (Random) - a variable of Random
+     * @return (java.awt.color) - a random color
      */
     static java.awt.Color randomColor(Random rand) {
         float r = rand.nextFloat();
@@ -116,18 +92,14 @@ public class MultipleBouncingBallsAnimation {
     }
 
     /**
-     * The entry point of application.
+     * The entry point of application. The method gets several sizes from the
+     * command line and runs the drawAnimation method accordingly.
      *
-     * @param args the input arguments
+     * @param args (String[]) - the input arguments
      */
     public static void main(String[] args) {
-        GUI gui = new GUI("title", WIDTH, HEIGHT);
-        String[] sizes = {"25", "40", "13", "5", "55"};
-        Ball[] arr = createArr(sizes);
-        Ball[] arr2 = new Ball[1];
-        arr2[0] = new Ball(-100, -50, 70, Color.BLUE);
-        arr2[0].setVelocity(3, 3);
-        Ball[] balls = MultipleFramesBouncingBallsAnimation.combineArrays(arr, arr2);
+        GUI gui = new GUI("bouncing balls", WIDTH, HEIGHT);
+        Ball[] balls = createArr(args);
         drawAnimation(balls, gui);
     }
 }

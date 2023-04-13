@@ -1,14 +1,13 @@
+// 325166510 Yael Dahari
 /**
- * The type Point.
+ * A point has an x and a y value, and can measure the distance to other
+ * points, and if it is equal to another point.
+ * @author Yael Dahari < yaeldahari661@gmail.com >
+ * @version 1.0
+ * @since 2023-03-22
  */
 public class Point {
-    /**
-     * The Double threshold.
-     */
-    static final double DOUBLE_THRESHOLD = 0.000000000000001;
-    /**
-     * The Power of two.
-     */
+    static final double DOUBLE_THRESHOLD = 0.000001;
     static final int POWER_OF_TWO = 2;
     private double x;
     private double y;
@@ -16,22 +15,21 @@ public class Point {
     /**
      * Instantiates a new Point.
      *
-     * @param x the x
-     * @param y the y
+     * @param x (double) - the x parameter
+     * @param y (double) - the y parameter
      */
-// constructor
     public Point(double x, double y) {
         this.x = x;
         this.y = y;
     }
 
     /**
-     * Distance double.
+     * The function calculates and returns the distance of this point to the
+     * other point.
      *
-     * @param other the other
-     * @return the double
+     * @param other (Point) - the other point
+     * @return (double) the distance between the points
      */
-// distance -- return the distance of this point to the other point
     public double distance(Point other) {
         double dis = Math.pow(this.getX() - other.getX(), POWER_OF_TWO)
                 + Math.pow(this.getY() - other.getY(), POWER_OF_TWO);
@@ -39,60 +37,61 @@ public class Point {
     }
 
     /**
-     * Equals boolean.
+     * The function checks if this point's x value and y value are equal to
+     * the given point's and returns true or false accordingly.
      *
-     * @param other the other
-     * @return the boolean
+     * @param other (Point) - the other point
+     * @return (boolean) - true is the points are equal, false otherwise
      */
-// equals -- return true is the points are equal, false otherwise
     public boolean equals(Point other) {
         return doubleEquals(this.getX(), other.getX())
                 && doubleEquals(this.getY(), other.getY());
     }
 
     /**
-     * Double equals boolean.
+     * The function checks if the absolute value of the subtraction between
+     * both numbers is lesser than the threshold and if so, they're
+     * considered equals.
      *
-     * @param a the a
-     * @param b the b
-     * @return the boolean
+     * @param a (double) - the first number
+     * @param b (double) - the second number
+     * @return (boolean) - true is the numbers are equal, false otherwise
      */
     public boolean doubleEquals(double a, double b) {
         return Math.abs(a - b) < DOUBLE_THRESHOLD;
     }
 
     /**
-     * Gets x.
+     * The function returns the x value of this point.
      *
-     * @return the x
+     * @return (double) the x value of this point.
      */
-// Return the x and y values of this point
     public double getX() {
         return this.x;
     }
 
     /**
-     * Gets y.
+     * The function returns the y value of this point.
      *
-     * @return the y
+     * @return (double) the y value of this point.
      */
     public double getY() {
         return this.y;
     }
 
     /**
-     * Sets x.
+     * The function sets the x value of this point to a given number.
      *
-     * @param x the x
+     * @param x (double) - a given number.
      */
     public void setX(double x) {
         this.x = x;
     }
 
     /**
-     * Sets y.
+     * The function sets the y value of this point to a given number.
      *
-     * @param y the y
+     * @param y (double) - a given number.
      */
     public void setY(double y) {
         this.y = y;

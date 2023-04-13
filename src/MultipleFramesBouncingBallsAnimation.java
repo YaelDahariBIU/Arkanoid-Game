@@ -1,95 +1,48 @@
+// 325166510 Yael Dahari
 import biuoop.DrawSurface;
 import biuoop.GUI;
 import biuoop.Sleeper;
-
 import java.awt.Color;
 import java.util.Random;
-
 /**
- * The type Multiple frames bouncing balls animation.
+ * Creating two frames - one of them is a grey rectangle from (50,50) to
+ * (500, 500), and the other is a yellow rectangle from (450,450) to
+ * (600, 600). We want the first half of the balls to bounce inside the first
+ * frame, and the second half of the balls to bounce inside the second frame.
+ * @author Yael Dahari < yaeldahari661@gmail.com >
+ * @version 1.0
+ * @since 2023-03-22
  */
 public class MultipleFramesBouncingBallsAnimation {
-    /**
-     * The First.
-     */
     static final int FIRST = 0;
-    /**
-     * The Error.
-     */
     static final int ERROR = 1;
-    /**
-     * The Including.
-     */
-    static final int INCLUDING = 1;
-    /**
-     * The Half.
-     */
     static final int HALF = 2;
-    /**
-     * The Max size.
-     */
     static final int MAX_SIZE = 50;
-    /**
-     * The Min speed.
-     */
     static final int MIN_SPEED = 3;
-    /**
-     * The Max speed.
-     */
-    static final int MAX_SPEED = 30;
-    /**
-     * The Degrees.
-     */
+    static final int MAX_SPEED = 300;
     static final int DEGREES = 360;
-    /**
-     * The Ratio.
-     */
-    static final int RATIO = 10;
-    /**
-     * The Width.
-     */
     static final int WIDTH = 800;
-    /**
-     * The Height.
-     */
     static final int HEIGHT = 600;
-    /**
-     * The Start 1.
-     */
     static final int START_1 = 50;
-    /**
-     * The End 1.
-     */
     static final int END_1 = 500;
-    /**
-     * The Start 2.
-     */
     static final int START_2 = 450;
-    /**
-     * The End 2.
-     */
     static final int END_2 = 600;
-    /**
-     * The Max size 1.
-     */
     static final int MAX_SIZE_1 = 200;
-    /**
-     * The Max size 2.
-     */
     static final int MAX_SIZE_2 = 55;
-    /**
-     * The Negative.
-     */
     static final int NEGATIVE = 0;
     static final int SLEEP = 50;
     static final int SIDE_1 = 450;
     static final int SIDE_2 = 150;
     /**
-     * Draw animation.
+     * The method gets an array of balls, an index and a gui. it creates two
+     * frames - one of them is a grey rectangle from (50,50) to (500,500), and
+     * the other is a yellow rectangle from (450,450) to (600,600). It makes
+     * the first half of the balls to bounce inside the first frame, and the
+     * second half of the balls to bounce inside the second frame.
      *
-     * @param arr   the arr
-     * @param index the index
-     * @param gui   the gui
+     * @param arr (Ball[]) - an array of balls
+     * @param index (int) - the index that separates the array to two halves
+     * @param gui (GUI) - the gui
      */
     static void drawAnimation(Ball[] arr, int index, GUI gui) {
         Sleeper sleeper = new Sleeper();
@@ -104,11 +57,13 @@ public class MultipleFramesBouncingBallsAnimation {
             d = gui.getDrawSurface();
             d.setColor(Color.GRAY);
             d.fillRectangle(START_1, START_1, SIDE_1, SIDE_1);
+            // drawing the first half of the balls array on the grey frame
             for (Ball ball : arr) {
                 ball.drawOn(d);
             }
             d.setColor(Color.YELLOW);
             d.fillRectangle(START_2, START_2, SIDE_2, SIDE_2);
+            // drawing the second half of the balls array on the yellow frame
             for (int i = index; i < arr.length; i++) {
                 arr[i].drawOn(d);
             }
@@ -118,16 +73,18 @@ public class MultipleFramesBouncingBallsAnimation {
     }
 
     /**
-     * Create arr ball [ ].
+     * The method gets an array of strings (with sizes within), start and end
+     * indexes and the coordinates of a frame. It creates an array filled with
+     * balls according to the sizes and random values.
      *
-     * @param arr   the arr
-     * @param start the start
-     * @param end   the end
-     * @param minX  the min x
-     * @param minY  the min y
-     * @param maxX  the max x
-     * @param maxY  the max y
-     * @return the ball [ ]
+     * @param arr (String[]) - an array of strings (with sizes)
+     * @param start (int) - the start index
+     * @param end (int) - the end index
+     * @param minX (int) - the x value of the left down corner
+     * @param minY (int) - the y value of the left down corner
+     * @param maxX (int) - the x value of the right up corner
+     * @param maxY (int) - the y value of the right up corner
+     * @return (Ball[]) - an array of balls
      */
     static Ball[] createArr(String[] arr, int start, int end, int minX,
                             int minY, int maxX, int maxY) {
@@ -143,12 +100,12 @@ public class MultipleFramesBouncingBallsAnimation {
             point = randomPoint(minX, minY, maxX, maxY);
             color = MultipleBouncingBallsAnimation.randomColor(rand);
             newArr[i] = new Ball(point, size, color);
-            angle = rand.nextDouble(DEGREES) + INCLUDING;
+            angle = rand.nextDouble() * DEGREES;
             if (size > MAX_SIZE) {
                 velocity = Velocity.fromAngleAndSpeed(angle, MIN_SPEED);
                 newArr[i].setVelocity(velocity);
             } else {
-                speed = (MAX_SPEED * RATIO) / (double) size;
+                speed = MAX_SPEED / (double) size;
                 newArr[i].setVelocity(Velocity.fromAngleAndSpeed(angle, speed));
             }
         }
@@ -156,27 +113,28 @@ public class MultipleFramesBouncingBallsAnimation {
     }
 
     /**
-     * Random point point.
+     * The method gets the coordinates of a frame and returns a random point
+     * within that frame.
      *
-     * @param minX the min x
-     * @param minY the min y
-     * @param maxX the max x
-     * @param maxY the max y
-     * @return the point
+     * @param minX (int) - the x value of the left down corner
+     * @param minY (int) - the y value of the left down corner
+     * @param maxX (int) - the x value of the right up corner
+     * @param maxY (int) - the y value of the right up corner
+     * @return (Point) - the random point within range
      */
     static Point randomPoint(int minX, int minY, int maxX, int maxY) {
         Random rand = new Random();
-        double x = rand.nextDouble(maxX) + minX;
-        double y = rand.nextDouble(maxY) + minY;
+        double x = minX + (rand.nextDouble() * (maxX - minX));
+        double y = minY + (rand.nextDouble() * (maxY - minY));
         return new Point(x, y);
     }
 
     /**
-     * Combine arrays ball [ ].
+     * The method gets 2 arrays of balls and returns a new combined array.
      *
-     * @param balls1 the balls 1
-     * @param balls2 the balls 2
-     * @return the ball [ ]
+     * @param balls1 (Ball[]) - the first array of balls
+     * @param balls2 (Ball[]) - the second array of balls
+     * @return (Ball[]) - the combined array of balls
      */
     static Ball[] combineArrays(Ball[] balls1, Ball[] balls2) {
         Ball[] balls = new Ball[balls1.length + balls2.length];
@@ -187,13 +145,16 @@ public class MultipleFramesBouncingBallsAnimation {
     }
 
     /**
-     * Dont fit boolean.
+     * The method gets an array of strings (with sizes within), start and end
+     * indexes and a maximum size. It goes over the array and checks if the
+     * size is bigger than the maximum or negative and returns true if it is
+     * and false otherwise.
      *
-     * @param arr     the arr
-     * @param start   the start
-     * @param end     the end
-     * @param maxSize the max size
-     * @return the boolean
+     * @param arr (String[]) - an array of strings (with sizes)
+     * @param start (int) - the start index
+     * @param end (int) - the end index
+     * @param maxSize (int) - the maximum size
+     * @return (boolean) - true if one of the sizes is invalid, else false
      */
     static boolean dontFit(String[] arr, int start, int end, int maxSize) {
         int size;
@@ -207,23 +168,23 @@ public class MultipleFramesBouncingBallsAnimation {
     }
 
     /**
-     * The entry point of application.
+     * The entry point of application. The method gets several sizes from the
+     * command line, checks the input validation, creates an array of balls
+     * and runs the drawAnimation method accordingly.
      *
-     * @param args the input arguments
+     * @param args (String[]) - the input arguments
      */
     public static void main(String[] args) {
-        String[] sizes = {"40.6", "100", "50", "5", "20", "40", "35", "25",
-                "13"};
-        GUI gui = new GUI("title", WIDTH, HEIGHT);
-        int halfway = sizes.length / HALF;
-        if (dontFit(sizes, FIRST, halfway, MAX_SIZE_1)
-                || dontFit(sizes, halfway, sizes.length, MAX_SIZE_2)) {
-            System.out.println("Error! size out of range!");
+        GUI gui = new GUI("two frames bouncing balls", WIDTH, HEIGHT);
+        int halfway = args.length / HALF;
+        if (dontFit(args, FIRST, halfway, MAX_SIZE_1)
+                || dontFit(args, halfway, args.length, MAX_SIZE_2)) {
+            System.err.println("Error! size out of range!");
             System.exit(ERROR);
         }
-        Ball[] arr1 = createArr(sizes, FIRST, halfway, END_1, END_1, START_1,
+        Ball[] arr1 = createArr(args, FIRST, halfway, END_1, END_1, START_1,
                 START_1);
-        Ball[] arr2 = createArr(sizes, halfway, sizes.length, START_2, START_2,
+        Ball[] arr2 = createArr(args, halfway, args.length, START_2, START_2,
                 END_2, END_2);
         Ball[] balls = combineArrays(arr1, arr2);
         drawAnimation(balls, halfway, gui);

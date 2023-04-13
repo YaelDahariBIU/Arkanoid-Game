@@ -1,32 +1,20 @@
+// 325166510 Yael Dahari
 import java.util.Objects;
-
 /**
- * The type Line.
+ * A line (actually a line-segment) connects two points - a start point and an
+ * end point. Lines have lengths, and may intersect with other lines. It can
+ * also tell if it is the same as another line segment.
+ * @author Yael Dahari < yaeldahari661@gmail.com >
+ * @version 1.0
+ * @since 2023-03-22
  */
 public class Line {
-    /**
-     * The Double threshold.
-     */
-    static final double DOUBLE_THRESHOLD = 0.000000000000001;
-    /**
-     * The No slope.
-     */
+    static final double DOUBLE_THRESHOLD = 0.000001;
     static final double NO_SLOPE = 0.0;
-    /**
-     * The None.
-     */
+    static final double ONE_POINT = 0.0;
     static final int NONE = 0;
-    /**
-     * The Single.
-     */
     static final int SINGLE = 1;
-    /**
-     * The Infinite.
-     */
     static final int INFINITE = 2;
-    /**
-     * The Halfway.
-     */
     static final double HALFWAY = 2;
     private final Point start;
     private final Point end;
@@ -35,10 +23,9 @@ public class Line {
     /**
      * Instantiates a new Line.
      *
-     * @param start the start
-     * @param end   the end
+     * @param start (Point) - the starting point of the line
+     * @param end (Point) - the ending point of the line
      */
-// constructors
     public Line(Point start, Point end) {
         this.start = start;
         this.end = end;
@@ -48,10 +35,10 @@ public class Line {
     /**
      * Instantiates a new Line.
      *
-     * @param x1 the x 1
-     * @param y1 the y 1
-     * @param x2 the x 2
-     * @param y2 the y 2
+     * @param x1 (double) - the x value of the first point
+     * @param y1 (double) - the y value of the first point
+     * @param x2 (double) - the x value of the second point
+     * @param y2 (double) - the y value of the second point
      */
     public Line(double x1, double y1, double x2, double y2) {
         this.start = new Point(x1, y1);
@@ -60,21 +47,20 @@ public class Line {
     }
 
     /**
-     * Length double.
+     * The function returns the length of the line.
      *
-     * @return the double
+     * @return (double) - the length of the line
      */
-// Return the length of the line
     public double length() {
         return this.length;
     }
 
     /**
-     * Middle point.
+     * The function returns the middle point of the line.
      *
-     * @return the point
+     * @return (Point) - the middle point of the line
      */
-// Returns the middle point of the line
+
     public Point middle() {
         double x = (this.start().getX() + this.end().getX()) / HALFWAY;
         double y = (this.start().getY() + this.end().getY()) / HALFWAY;
@@ -82,111 +68,140 @@ public class Line {
     }
 
     /**
-     * Start point.
+     * The function returns the start point of the line.
      *
-     * @return the point
+     * @return (Point) - the start point of the line
      */
-// Returns the start point of the line
     public Point start() {
         return this.start;
     }
 
     /**
-     * End point.
+     * The function returns the end point of the line.
      *
-     * @return the point
+     * @return (Point) - the end point of the line
      */
-// Returns the end point of the line
     public Point end() {
         return this.end;
     }
 
     /**
-     * Double equals boolean.
+     * The function checks if the absolute value of the subtraction between
+     * both numbers is lesser than the threshold and if so, they're
+     * considered equals.
      *
-     * @param a the a
-     * @param b the b
-     * @return the boolean
+     * @param a (double) - the first number
+     * @param b (double) - the second number
+     * @return (boolean) - true is the numbers are equal, false otherwise
      */
     public boolean doubleEquals(double a, double b) {
         return Math.abs(a - b) < DOUBLE_THRESHOLD;
     }
 
     /**
-     * Sum of intersections int.
+     * The method arranges this line and its start and end points according to
+     * its y value (if the 'y's are the same we'll do it with the x value),
+     * and returns the new line with start as the min and end as the max.
      *
-     * @param other the other
-     * @return the int
+     * @return (Line) - a line with start as the min and end as the max.
      */
-    public int sumOfIntersections(Line other) {
+    public Line arrangeInOrder() {
+        if (this.slope() == null || this.slope() != NO_SLOPE) {
+            if (this.start().getY() > this.end().getY()) {
+                return new Line(this.end(), this.start());
+            }
+        } else {
+            if (this.start().getX() > this.end().getX()) {
+                return new Line(this.end(), this.start());
+            }
+        }
+        return this;
+    }
+
+    /**
+     * The function checks how many intersections points exist between two
+     * lines with the same slope.
+     *
+     * @param other (Point) - another given point
+     * @return (int) - 0 if there are no intersections, 1 if there's a single
+     * one and 2 if there are infinite
+     */
+    public int numOfIntersections(Line other) {
         if (this.equals(other)) {
             return INFINITE;
         }
-        Line max = this, min = other;
-        Point min1 = this.start(), max1 = this.end();
-        if (this.start().getY() > this.end().getY()) {
-            min1 = this.end();
-            max1 = this.start();
+        boolean toChange = false;
+        Line l1 = this.arrangeInOrder(), l2 = other.arrangeInOrder(), temp;
+        if (l1.slope() == null || l1.slope() != NO_SLOPE) {
+                if (l2.end().getY() > l1.end().getY()) {
+                    toChange = true;
+                }
+        } else if (l2.end().getX() > l1.end().getX()) {
+            toChange = true;
         }
-        Point min2 = other.start(), max2 = other.end();
-        if (other.start().getY() > other.end().getY()) {
-            min2 = other.end();
-            max2 = other.start();
+        if (toChange) {
+            temp = l1;
+            l1 = l2;
+            l2 = temp;
         }
-        if (max2.getY() > max1.getY()) {
-            Point temp = max2;
-            max2 = max1;
-            max1 = temp;
-            temp = min2;
-            min2 = min1;
-            min1 = temp;
-            Line tempLine = max;
-            max = min;
-            min = tempLine;
-        }
-        if (min1.equals(max2) && !max.isOnLine(min2) && !min.isOnLine(max1)) {
+        // if the min point in line 1 is the same as the max point in line 2
+        // and the max in line 1 isn't on line 2 and vice versa it means they
+        // have a singular intersection point
+        Point min1 = l1.start(), max1 = l1.end();
+        Point min2 = l2.start(), max2 = l2.end();
+        if (min1.equals(max2) && !l1.isOnLine(min2) && !l2.isOnLine(max1)) {
             return SINGLE;
         }
-        if (max1.equals(min2) && !max.isOnLine(max2) && !min.isOnLine(min1)) {
+        if (max1.equals(min2) && !l1.isOnLine(max2) && !l2.isOnLine(min1)) {
             return SINGLE;
         }
-        if (min1.distance(min2) <= min.length()
-            && min1.distance(max2) <= min.length()) {
+        if ((l1.length() == ONE_POINT && l2.isOnLine(min1))
+                || (l2.length() == ONE_POINT && l1.isOnLine(min2))) {
+            return SINGLE;
+        }
+        // if the distance from the min in line a to the start and end points
+        // of line b isn't bigger than line b's length, the lines overlap
+        if (min1.distance(min2) <= l2.length()
+            && min1.distance(max2) <= l2.length()) {
             return INFINITE;
         }
-        if (max2.distance(min1) <= max.length()
-            && max2.distance(max1) <= max.length()) {
+        if (max2.distance(min1) <= l1.length()
+            && max2.distance(max1) <= l1.length()) {
             return INFINITE;
         }
         return NONE;
     }
 
     /**
-     * Is intersecting boolean.
+     * The function checks if this line intersects with a given line and
+     * returns true or false accordingly.
      *
-     * @param other the other
-     * @return the boolean
+     * @param other (Line) - the other line
+     * @return (boolean) - true if the lines intersect, false otherwise
      */
-// Returns true if the lines intersect, false otherwise
     public boolean isIntersecting(Line other) {
         Double slp1 = this.slope(), slp2 = other.slope();
         double b1 = findB(this.end(), slp1), b2 = findB(other.end(), slp2);
+        // if they have the same formula we check the num of intersections
         if ((slp1 != null && slp2 != null && doubleEquals(slp1, slp2))
                 || Objects.equals(slp1, slp2)) {
             if (doubleEquals(b1, b2)) {
-                return sumOfIntersections(other) != NONE;
+                return numOfIntersections(other) != NONE;
+              // if the slopes equal but the "b" isn't, they don't intersect
             } else {
                 return false;
             }
         }
+        // if the slopes are different
         Point inter = this.intersectionWith(other);
         return inter != null;
     }
 
     /**
-     * Slope double.
+     * The function calculates and returns the slope of the line (if the
+     * slope cannot be calculated - line: x = b - it returns null).
      *
-     * @return the double
+     * @return (Double) - the slope of the line
      */
     public Double slope() {
         Point max = this.start();
@@ -195,9 +210,11 @@ public class Line {
             max = this.end();
             min = this.start();
         }
+        // if the line is: x = b
         if (doubleEquals(max.getX(), min.getX())) {
             return null;
         }
+        // if the line is: y = b
         if (doubleEquals(max.getY(), min.getY())) {
             return NO_SLOPE;
         }
@@ -205,16 +222,19 @@ public class Line {
     }
 
     /**
-     * Find b double.
+     * The function gets a point and a slope and calculates the "b" factor of
+     * the line formula and returns its value.
      *
-     * @param point the point
-     * @param slope the slope
-     * @return the double
+     * @param point (Point) - a point on the line
+     * @param slope (double) - the slope f the line
+     * @return (double) - the "b" factor of the line formula
      */
     public double findB(Point point, Double slope) {
+        // if the line is: x = b
         if (slope == null) {
             return point.getX();
         }
+        // if the line is: y = b
         if (doubleEquals(slope, NO_SLOPE)) {
             return point.getY();
         }
@@ -222,10 +242,12 @@ public class Line {
     }
 
     /**
-     * Is on line boolean.
+     * The function gets a point and checks if that point is on this line by
+     * calculating its distance from both points of the line and comparing
+     * them to the line's length.
      *
-     * @param point the point
-     * @return the boolean
+     * @param point (Point) - the point to check
+     * @return (boolean) true if the point is on this line, otherwise false
      */
     public boolean isOnLine(Point point) {
         if ((doubleEquals(point.distance(this.start()), this.length()))
@@ -239,10 +261,11 @@ public class Line {
     }
 
     /**
-     * Common point point.
+     * The function gets a line, calculates the single common point between
+     * this line and the given one and returns said point.
      *
-     * @param other the other
-     * @return the point
+     * @param other (Line) - the other line
+     * @return (Point) - the common point
      */
     public Point commonPoint(Line other) {
         if (this.end().equals(other.start())
@@ -253,51 +276,44 @@ public class Line {
     }
 
     /**
-     * Intersection with point.
+     * The function gets a line, calculates the intersection point between
+     * this line and the given one and returns it (if such point doesn't exist
+     * or that there's more than one, it returns null).
      *
-     * @param other the other
-     * @return the point
+     * @param other (Line) - the other line
+     * @return (Point) - the intersection point if the lines intersect,
+     * and null otherwise.
      */
-// Returns the intersection point if the lines intersect,
-    // and null otherwise.
     public Point intersectionWith(Line other) {
         Double slp1 = this.slope(), slp2 = other.slope();
-        double b1 = findB(this.end(), slp1), b2 = findB(other.end(), slp2);
+        double b1 = findB(this.end(), slp1), b2 = findB(other.end(), slp2), x;
         Point p;
         if ((slp1 != null && slp2 != null && doubleEquals(slp1, slp2))
                 || Objects.equals(slp1, slp2)) {
             if (doubleEquals(b1, b2)) {
-                if (sumOfIntersections(other) != SINGLE) {
+                // if they overlap or parallel we return null
+                if (numOfIntersections(other) != SINGLE) {
                     return null;
+                  // if they intersect just once
                 } else {
                     return commonPoint(other);
                 }
-            } else {
-                return null;
             }
+            // if the slopes equal but the "b" isn't, they don't intersect
+            return null;
         }
-        double x, y;
+        // calculating the point the lines would intersect in
         if (slp1 == null) {
-            if (doubleEquals(slp2, NO_SLOPE)) {
-                p = new Point(b1, b2);
-            } else {
-                y = (slp2 * b1) + b2;
-                p = new Point(b1, y);
-            }
+            p = new Point(b1, (slp2 * b1) + b2);
         } else {
             if (slp2 == null) {
-                if (doubleEquals(slp1, NO_SLOPE)) {
-                    p = new Point(b2, b1);
-                } else {
-                    y = (slp1 * b2) + b1;
-                    p = new Point(b2, y);
-                }
+                p = new Point(b2, (slp1 * b2) + b1);
             } else {
                 x = (b2 - b1) / (slp1 - slp2);
-                y = (slp1 * x) + b1;
-                p = new Point(x, y);
+                p = new Point(x, (slp1 * x) + b1);
             }
         }
+        // if said point is on both lines, they intersect
         if (this.isOnLine(p) && other.isOnLine(p)) {
             return p;
         }
@@ -305,12 +321,13 @@ public class Line {
     }
 
     /**
-     * Equals boolean.
+     * The function checks if this line and a given line are equal. Lines are
+     * considered equal even if the end of one is equal to the beginning of the
+     * other and vice versa.
      *
-     * @param other the other
-     * @return the boolean
+     * @param other (Line) - the other line
+     * @return (boolean) - true is the lines are equal, false otherwise
      */
-// equals -- return true is the lines are equal, false otherwise
     public boolean equals(Line other) {
         if (this.start().equals(other.start())
                 && this.end().equals(other.end())) {

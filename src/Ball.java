@@ -1,16 +1,14 @@
+// 325166510 Yael Dahari
 import biuoop.DrawSurface;
-
 /**
- * The type Ball.
+ * Balls have size (radius), color, and location (a Point). Balls also know how
+ * to draw themselves on a DrawSurface.
+ * @author Yael Dahari < yaeldahari661@gmail.com >
+ * @version 1.0
+ * @since 2023-03-22
  */
 public class Ball {
-    /**
-     * The No velocity.
-     */
     static final double NO_VELOCITY = 0.0;
-    /**
-     * The Change dir.
-     */
     static final int CHANGE_DIR = -1;
     private final Velocity velocity;
     private Point center;
@@ -20,11 +18,10 @@ public class Ball {
     /**
      * Instantiates a new Ball.
      *
-     * @param center the center
-     * @param r      the r
-     * @param color  the color
+     * @param center (Point) - the location of the ball
+     * @param r (int) - the ball's radius
+     * @param color (java.awt.Color) - the ball's color
      */
-// constructor
     public Ball(Point center, int r, java.awt.Color color) {
         this.center = center;
         this.radius = r;
@@ -35,10 +32,10 @@ public class Ball {
     /**
      * Instantiates a new Ball.
      *
-     * @param x     the x
-     * @param y     the y
-     * @param r     the r
-     * @param color the color
+     * @param x (double) - the x value of the ball's location
+     * @param y  (double) - the y value of the ball's location
+     * @param r (int) - the ball's radius
+     * @param color (java.awt.Color) - the ball's color
      */
     public Ball(int x, int y, int r, java.awt.Color color) {
         this.center = new Point(x, y);
@@ -48,67 +45,67 @@ public class Ball {
     }
 
     /**
-     * Gets x.
+     * The method returns the x value of the ball's location.
      *
-     * @return the x
+     * @return (int) - the x value of the ball's location.
      */
-// accessors
+
     public int getX() {
         return (int) this.center.getX();
     }
 
     /**
-     * Gets y.
+     * The method returns the y value of the ball's location.
      *
-     * @return the y
+     * @return (int) - the y value of the ball's location.
      */
     public int getY() {
         return (int) this.center.getY();
     }
 
     /**
-     * Gets size.
+     * The method returns the ball's radius.
      *
-     * @return the size
+     * @return (int) - the ball's radius.
      */
     public int getSize() {
         return this.radius;
     }
 
     /**
-     * Gets color.
+     * The method returns the ball's color.
      *
-     * @return the color
+     * @return (int) - the ball's color.
      */
     public java.awt.Color getColor() {
         return this.color;
     }
 
     /**
-     * Draw on.
+     * The method gets a DrawSurface draws the ball on the given DrawSurface.
      *
-     * @param surface the surface
+     * @param surface (DrawSurface) - the surface we're drawing on
      */
-// draw the ball on the given DrawSurface
     public void drawOn(DrawSurface surface) {
         surface.setColor(this.getColor());
         surface.fillCircle(this.getX(), this.getY(), this.getSize());
     }
 
     /**
-     * Sets velocity.
+     * The method gets a velocity and sets the velocity of this ball.
      *
-     * @param v the v
+     * @param v (Velocity) - the velocity we need to set
      */
     public void setVelocity(Velocity v) {
         this.setVelocity(v.getDx(), v.getDy());
     }
 
     /**
-     * Sets velocity.
+     * The method gets both parameters of velocity and sets the velocity of
+     * this ball.
      *
-     * @param dx the dx
-     * @param dy the dy
+     * @param dx (double) - the dx value of velocity
+     * @param dy (double) - the dy value of velocity
      */
     public void setVelocity(double dx, double dy) {
         this.velocity.setDx(dx);
@@ -116,25 +113,28 @@ public class Ball {
     }
 
     /**
-     * Gets velocity.
+     * The method returns the velocity of this ball.
      *
-     * @return the velocity
+     * @return (Velocity) - the velocity of this ball
      */
     public Velocity getVelocity() {
         return this.velocity;
     }
 
     /**
-     * Move one step.
+     * The method gets the measurements of a frame and coordinates for its
+     * left-down point. It calls moveOneStep() and checks if this ball collided
+     * or went through the frame and if so, it returns it back to the wall and
+     * changes the velocity direction accordingly.
      *
-     * @param width    the width
-     * @param height   the height
-     * @param leftEdge the left edge
-     * @param downEdge the down edge
+     * @param width (double) - the frame's width
+     * @param height (double) - the frame's height
+     * @param leftEdge (double) - the frame's left edge
+     * @param downEdge (double) - the frame's down edge
      */
-    public void moveOneStep(int width, int height, int leftEdge,
-                            int downEdge) {
-        this.center = this.getVelocity().applyToPoint(this.center);
+    public void moveOneStep(double width, double height, double leftEdge,
+                            double downEdge) {
+        this.moveOneStep();
         boolean collidedVertical = false, collidedHorizontal = false;
         double x = this.center.getX(), y = this.center.getY();
         double radius = this.getSize();
@@ -160,5 +160,13 @@ public class Ball {
             this.setVelocity(this.getVelocity().getDx(),
                     CHANGE_DIR * this.getVelocity().getDy());
         }
+    }
+
+    /**
+     * The method applies the velocity to this ball's coordinates and
+     * therefore causes it to move a step.
+     */
+    public void moveOneStep() {
+        this.center = this.getVelocity().applyToPoint(this.center);
     }
 }
