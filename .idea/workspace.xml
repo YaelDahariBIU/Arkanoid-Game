@@ -4,22 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bf7bdc99-be1a-4520-9b4c-6fd571f0cfe1" name="Changes" comment="phase1">
-      <change afterPath="$PROJECT_DIR$/tests/BallsTest1.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/GeometryTester.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/TestForAss2.java" afterDir="false" />
+    <list default="true" id="bf7bdc99-be1a-4520-9b4c-6fd571f0cfe1" name="Changes" comment="final">
+      <change afterPath="$PROJECT_DIR$/ass2.zip" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/AbstractArtDrawing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AbstractArtDrawing.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Ball.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Ball.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BallsTest1.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/BouncingBallAnimation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BouncingBallAnimation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Line.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Line.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MultipleBouncingBallsAnimation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MultipleBouncingBallsAnimation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MultipleFramesBouncingBallsAnimation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MultipleFramesBouncingBallsAnimation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Point.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Point.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Velocity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Velocity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/GeometryTester.java" beforeDir="false" afterPath="$PROJECT_DIR$/tests/GeometryTester.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/TestForAss2.java" beforeDir="false" afterPath="$PROJECT_DIR$/tests/TestForAss2.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,6 +64,12 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Yael Dahari\IdeaProjects\Project1\tests" />
+      <recent name="C:\Users\Yael Dahari\IdeaProjects\Project1\src" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="Unnamed" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="TestForAss2" />
@@ -89,7 +92,10 @@
       <workItem from="1680266049492" duration="423000" />
       <workItem from="1680369908882" duration="61344000" />
       <workItem from="1681064245230" duration="19132000" />
-      <workItem from="1681373252585" duration="3915000" />
+      <workItem from="1681373252585" duration="6244000" />
+      <workItem from="1681668664467" duration="237000" />
+      <workItem from="1681681287105" duration="690000" />
+      <workItem from="1681747999964" duration="1491000" />
     </task>
     <task id="LOCAL‎-00001" summary="phase1">
       <created>1680211675458</created>
@@ -105,7 +111,14 @@
       <option name="project" value="LOCAL‎" />
       <updated>1680705550125</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL‎-00003" summary="final">
+      <created>1681377575455</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL‎-00003" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1681377575455</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -114,7 +127,8 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="phase1" />
-    <option name="LAST_COMMIT_MESSAGE" value="phase1" />
+    <MESSAGE value="final" />
+    <option name="LAST_COMMIT_MESSAGE" value="final" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -4,9 +4,6 @@ import biuoop.GUI;
 import biuoop.Sleeper;
 /**
  * Drawing a ball that moves across the screen.
- * @author Yael Dahari < yaeldahari661@gmail.com >
- * @version 1.0
- * @since 2023-03-22
  */
 public class BouncingBallAnimation {
     static final int WIDTH = 700;
@@ -34,7 +31,7 @@ public class BouncingBallAnimation {
                 STANDARD_SIZE, java.awt.Color.BLACK);
         ball.setVelocity(dx, dy);
         while (true) {
-            ball.moveOneStep(WIDTH, HEIGHT, EDGE, EDGE);
+            ball.moveInFrame(WIDTH, HEIGHT, EDGE, EDGE);
             DrawSurface d = gui.getDrawSurface();
             ball.drawOn(d);
             gui.show(d);

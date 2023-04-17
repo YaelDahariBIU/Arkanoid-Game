@@ -3,9 +3,6 @@ import biuoop.DrawSurface;
 /**
  * Balls have size (radius), color, and location (a Point). Balls also know how
  * to draw themselves on a DrawSurface.
- * @author Yael Dahari < yaeldahari661@gmail.com >
- * @version 1.0
- * @since 2023-03-22
  */
 public class Ball {
     static final double NO_VELOCITY = 0.0;
@@ -127,12 +124,12 @@ public class Ball {
      * or went through the frame and if so, it returns it back to the wall and
      * changes the velocity direction accordingly.
      *
-     * @param width (double) - the frame's width
-     * @param height (double) - the frame's height
+     * @param width (int) - the frame's width
+     * @param height (int) - the frame's height
      * @param leftEdge (double) - the frame's left edge
      * @param downEdge (double) - the frame's down edge
      */
-    public void moveOneStep(double width, double height, double leftEdge,
+    public void moveInFrame(int width, int height, double leftEdge,
                             double downEdge) {
         this.moveOneStep();
         boolean collidedVertical = false, collidedHorizontal = false;

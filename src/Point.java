@@ -2,9 +2,6 @@
 /**
  * A point has an x and a y value, and can measure the distance to other
  * points, and if it is equal to another point.
- * @author Yael Dahari < yaeldahari661@gmail.com >
- * @version 1.0
- * @since 2023-03-22
  */
 public class Point {
     static final double DOUBLE_THRESHOLD = 0.000001;

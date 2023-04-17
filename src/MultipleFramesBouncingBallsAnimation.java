@@ -9,13 +9,9 @@ import java.util.Random;
  * (500, 500), and the other is a yellow rectangle from (450,450) to
  * (600, 600). We want the first half of the balls to bounce inside the first
  * frame, and the second half of the balls to bounce inside the second frame.
- * @author Yael Dahari < yaeldahari661@gmail.com >
- * @version 1.0
- * @since 2023-03-22
  */
 public class MultipleFramesBouncingBallsAnimation {
     static final int FIRST = 0;
-    static final int ERROR = 1;
     static final int HALF = 2;
     static final int MAX_SIZE = 50;
     static final int MIN_SPEED = 3;
@@ -28,11 +24,12 @@ public class MultipleFramesBouncingBallsAnimation {
     static final int START_2 = 450;
     static final int END_2 = 600;
     static final int MAX_SIZE_1 = 200;
-    static final int MAX_SIZE_2 = 55;
+    static final int MAX_SIZE_2 = 60;
     static final int NEGATIVE = 0;
     static final int SLEEP = 50;
     static final int SIDE_1 = 450;
     static final int SIDE_2 = 150;
+    static final int DEFAULT_SIZE = 30;
     /**
      * The method gets an array of balls, an index and a gui. it creates two
      * frames - one of them is a grey rectangle from (50,50) to (500,500), and
@@ -49,10 +46,10 @@ public class MultipleFramesBouncingBallsAnimation {
         DrawSurface d;
         while (true) {
             for (int i = 0; i < index; i++) {
-                arr[i].moveOneStep(SIDE_1, SIDE_1, START_1, START_1);
+                arr[i].moveInFrame(SIDE_1, SIDE_1, START_1, START_1);
             }
             for (int i = index; i < arr.length; i++) {
-                arr[i].moveOneStep(SIDE_2, SIDE_2, START_2, START_2);
+                arr[i].moveInFrame(SIDE_2, SIDE_2, START_2, START_2);
             }
             d = gui.getDrawSurface();
             d.setColor(Color.GRAY);
@@ -86,7 +83,7 @@ public class MultipleFramesBouncingBallsAnimation {
      * @param maxY (int) - the y value of the right up corner
      * @return (Ball[]) - an array of balls
      */
-    static Ball[] createArr(String[] arr, int start, int end, int minX,
+    static Ball[] createArr(int[] arr, int start, int end, int minX,
                             int minY, int maxX, int maxY) {
         Ball[] newArr = new Ball[end - start];
         Random rand = new Random();
@@ -96,7 +93,7 @@ public class MultipleFramesBouncingBallsAnimation {
         Velocity velocity;
         java.awt.Color color;
         for (int i = 0; i < end - start; i++) {
-            size = (int) Double.parseDouble(arr[start + i]);
+            size = arr[start + i];
             point = randomPoint(minX, minY, maxX, maxY);
             color = MultipleBouncingBallsAnimation.randomColor(rand);
             newArr[i] = new Ball(point, size, color);
@@ -156,15 +153,19 @@ public class MultipleFramesBouncingBallsAnimation {
      * @param maxSize (int) - the maximum size
      * @return (boolean) - true if one of the sizes is invalid, else false
      */
-    static boolean dontFit(String[] arr, int start, int end, int maxSize) {
+    public static int[] toIntArray(String[] arr, int start, int end,
+                                 int maxSize) {
         int size;
+        int[] sizes = new int[arr.length];
         for (int i = 0; i < end - start; i++) {
             size = (int) Double.parseDouble(arr[start + i]);
             if (size > maxSize || size < NEGATIVE) {
-                return true;
+                sizes[i] = DEFAULT_SIZE;
+            } else {
+                sizes[i] = size;
             }
         }
-        return false;
+        return sizes;
     }
 
     /**
@@ -177,14 +178,11 @@ public class MultipleFramesBouncingBallsAnimation {
     public static void main(String[] args) {
         GUI gui = new GUI("two frames bouncing balls", WIDTH, HEIGHT);
         int halfway = args.length / HALF;
-        if (dontFit(args, FIRST, halfway, MAX_SIZE_1)
-                || dontFit(args, halfway, args.length, MAX_SIZE_2)) {
-            System.err.println("Error! size out of range!");
-            System.exit(ERROR);
-        }
-        Ball[] arr1 = createArr(args, FIRST, halfway, END_1, END_1, START_1,
+        int[] sizes1 = toIntArray(args, FIRST, halfway, MAX_SIZE_1);
+        int[] sizes2 = toIntArray(args, halfway, args.length, MAX_SIZE_2);
+        Ball[] arr1 = createArr(sizes1, FIRST, halfway, END_1, END_1, START_1,
                 START_1);
-        Ball[] arr2 = createArr(args, halfway, args.length, START_2, START_2,
+        Ball[] arr2 = createArr(sizes2, halfway, args.length, START_2, START_2,
                 END_2, END_2);
         Ball[] balls = combineArrays(arr1, arr2);
         drawAnimation(balls, halfway, gui);

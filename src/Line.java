@@ -4,9 +4,6 @@ import java.util.Objects;
  * A line (actually a line-segment) connects two points - a start point and an
  * end point. Lines have lengths, and may intersect with other lines. It can
  * also tell if it is the same as another line segment.
- * @author Yael Dahari < yaeldahari661@gmail.com >
- * @version 1.0
- * @since 2023-03-22
  */
 public class Line {
     static final double DOUBLE_THRESHOLD = 0.000001;
@@ -144,9 +141,9 @@ public class Line {
             l1 = l2;
             l2 = temp;
         }
-        // if the min point in line 1 is the same as the max point in line 2
-        // and the max in line 1 isn't on line 2 and vice versa it means they
-        // have a singular intersection point
+        /* if the min point in line 1 is the same as the max point in line 2
+         and the max in line 1 isn't on line 2 and vice versa it means they
+         have a singular intersection point */
         Point min1 = l1.start(), max1 = l1.end();
         Point min2 = l2.start(), max2 = l2.end();
         if (min1.equals(max2) && !l1.isOnLine(min2) && !l2.isOnLine(max1)) {
@@ -159,8 +156,8 @@ public class Line {
                 || (l2.length() == ONE_POINT && l1.isOnLine(min2))) {
             return SINGLE;
         }
-        // if the distance from the min in line a to the start and end points
-        // of line b isn't bigger than line b's length, the lines overlap
+        /* if the distance from the min in line a to the start and end points
+        of line b isn't bigger than line b's length, the lines overlap */
         if (min1.distance(min2) <= l2.length()
             && min1.distance(max2) <= l2.length()) {
             return INFINITE;

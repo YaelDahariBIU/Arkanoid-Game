@@ -6,9 +6,6 @@ import java.awt.Color;
 import java.util.Random;
 /**
  * Drawing multiple balls that move across the screen.
- * @author Yael Dahari < yaeldahari661@gmail.com >
- * @version 1.0
- * @since 2023-03-22
  */
 public class MultipleBouncingBallsAnimation {
     static final int WIDTH = 200;
@@ -19,7 +16,8 @@ public class MultipleBouncingBallsAnimation {
     static final int DEGREES = 360;
     static final int EDGE = 0;
     static final int SLEEP = 50;
-
+    static final int FIRST = 0;
+    static final int MAXIMUM_SIZE = 90;
     /**
      * The method gets an array of the string values of sizes and creates an
      * array of balls according to the sizes and random values.
@@ -27,7 +25,7 @@ public class MultipleBouncingBallsAnimation {
      * @param arr (String[]) - an array with string values of sizes
      * @return (Ball[]) - an array of balls
      */
-    static Ball[] createArr(String[] arr) {
+    static Ball[] createArr(int[] arr) {
         Ball[] newArr = new Ball[arr.length];
         Random rand = new Random();
         double x, y, angle, speed;
@@ -37,7 +35,7 @@ public class MultipleBouncingBallsAnimation {
         for (int i = 0; i < arr.length; i++) {
             x = rand.nextDouble() * WIDTH;
             y = rand.nextDouble() * HEIGHT;
-            size = Integer.parseInt(arr[i]);
+            size = arr[i];
             color = randomColor(rand);
             newArr[i] = new Ball(new Point(x, y), size, color);
             angle = rand.nextDouble() * DEGREES;
@@ -66,7 +64,7 @@ public class MultipleBouncingBallsAnimation {
         gui.show(d);
         while (true) {
             for (Ball ball : arr) {
-                ball.moveOneStep(WIDTH, HEIGHT, EDGE, EDGE);
+                ball.moveInFrame(WIDTH, HEIGHT, EDGE, EDGE);
             }
             d = gui.getDrawSurface();
             for (Ball ball : arr) {
@@ -90,7 +88,6 @@ public class MultipleBouncingBallsAnimation {
         float b = rand.nextFloat();
         return new Color(r, g, b);
     }
-
     /**
      * The entry point of application. The method gets several sizes from the
      * command line and runs the drawAnimation method accordingly.
@@ -99,7 +96,9 @@ public class MultipleBouncingBallsAnimation {
      */
     public static void main(String[] args) {
         GUI gui = new GUI("bouncing balls", WIDTH, HEIGHT);
-        Ball[] balls = createArr(args);
+        int[] sizes = MultipleFramesBouncingBallsAnimation.toIntArray(args,
+                FIRST, args.length, MAXIMUM_SIZE);
+        Ball[] balls = createArr(sizes);
         drawAnimation(balls, gui);
     }
 }

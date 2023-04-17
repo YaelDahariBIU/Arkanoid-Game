@@ -1,9 +1,6 @@
 // 325166510 Yael Dahari
 /**
  * Velocity specifies the change in position on the `x` and the `y` axes.
- * @author Yael Dahari < yaeldahari661@gmail.com >
- * @version 1.0
- * @since 2023-03-22
  */
 public class Velocity {
     static final int HALF_CIRCLE = 180;

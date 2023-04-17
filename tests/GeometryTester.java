@@ -100,7 +100,7 @@ public class GeometryTester {
         else
             System.out.println("Found failing tests.");
         Point point1 = new Point(9, 18);
-        Point point2 = new Point(19, 18);
+        Point point2 = new Point(19, 20);
         Point point3 = new Point(19, 18);
         Point point4 = new Point(19, 18);
         Line l1 = new Line(point1, point2);

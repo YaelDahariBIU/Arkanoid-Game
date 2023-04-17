@@ -337,7 +337,7 @@ public class TestForAss2 {
 
 
             b9.moveOneStep();
-            //assert (b9.getX() == 146 && b9.getY()==143);
+            //  assert (b9.getX() == 146 && b9.getY()==143);
 
 //            b10.moveOneStep();
 //            assert (b9.getX() == 100 && b9.getY()==100);// piazza says no need to try

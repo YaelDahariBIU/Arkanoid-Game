@@ -7,9 +7,6 @@ import java.awt.Color;
  * Creating 10 lines, drawn in black. The middle point in each line is
  * indicated in blue, while the intersection points between the lines are
  * indicated in red (the points are filled circles with a radius of 3).
- * @author Yael Dahari < yaeldahari661@gmail.com >
- * @version 1.0
- * @since 2023-03-22
  */
 public class AbstractArtDrawing {
     static final int WIDTH = 400;
