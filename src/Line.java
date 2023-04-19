@@ -247,6 +247,9 @@ public class Line {
      * @return (boolean) true if the point is on this line, otherwise false
      */
     public boolean isOnLine(Point point) {
+        if (point.equals(this.start()) || point.equals(this.end())) {
+            return true;
+        }
         if ((doubleEquals(point.distance(this.start()), this.length()))
             && doubleEquals(point.distance(this.end()), this.length())) {
             return true;

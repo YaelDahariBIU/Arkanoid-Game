@@ -19,10 +19,10 @@ public class MultipleBouncingBallsAnimation {
     static final int FIRST = 0;
     static final int MAXIMUM_SIZE = 90;
     /**
-     * The method gets an array of the string values of sizes and creates an
-     * array of balls according to the sizes and random values.
+     * The method gets an array of sizes and creates an array of balls
+     * according to the sizes and random values.
      *
-     * @param arr (String[]) - an array with string values of sizes
+     * @param arr (int[]) - an array with sizes
      * @return (Ball[]) - an array of balls
      */
     public static Ball[] createArr(int[] arr) {

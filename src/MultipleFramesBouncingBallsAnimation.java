@@ -70,11 +70,11 @@ public class MultipleFramesBouncingBallsAnimation {
     }
 
     /**
-     * The method gets an array of strings (with sizes within), start and end
-     * indexes and the coordinates of a frame. It creates an array filled with
-     * balls according to the sizes and random values.
+     * The method gets an array of sizes, start and end indexes and the
+     * coordinates of a frame. It creates an array filled with balls
+     * according to the sizes and random values.
      *
-     * @param arr (String[]) - an array of strings (with sizes)
+     * @param arr (int[]) - an array of sizes
      * @param start (int) - the start index
      * @param end (int) - the end index
      * @param minX (int) - the x value of the left down corner
@@ -144,14 +144,14 @@ public class MultipleFramesBouncingBallsAnimation {
     /**
      * The method gets an array of strings (with sizes within), start and end
      * indexes and a maximum size. It goes over the array and checks if the
-     * size is bigger than the maximum or negative and returns true if it is
-     * and false otherwise.
+     * size is bigger than the maximum or negative and if so, it updates it
+     * to a default size. It eventually returns the array with those sizes.
      *
      * @param arr (String[]) - an array of strings (with sizes)
      * @param start (int) - the start index
      * @param end (int) - the end index
      * @param maxSize (int) - the maximum size
-     * @return (boolean) - true if one of the sizes is invalid, else false
+     * @return (int[]) - an array of the int values of said sizes
      */
     public static int[] toIntArray(String[] arr, int start, int end,
                                  int maxSize) {
