@@ -41,7 +41,7 @@ public class MultipleFramesBouncingBallsAnimation {
      * @param index (int) - the index that separates the array to two halves
      * @param gui (GUI) - the gui
      */
-    static void drawAnimation(Ball[] arr, int index, GUI gui) {
+    public static void drawAnimation(Ball[] arr, int index, GUI gui) {
         Sleeper sleeper = new Sleeper();
         DrawSurface d;
         while (true) {
@@ -83,7 +83,7 @@ public class MultipleFramesBouncingBallsAnimation {
      * @param maxY (int) - the y value of the right up corner
      * @return (Ball[]) - an array of balls
      */
-    static Ball[] createArr(int[] arr, int start, int end, int minX,
+    public static Ball[] createArr(int[] arr, int start, int end, int minX,
                             int minY, int maxX, int maxY) {
         Ball[] newArr = new Ball[end - start];
         Random rand = new Random();
@@ -119,7 +119,7 @@ public class MultipleFramesBouncingBallsAnimation {
      * @param maxY (int) - the y value of the right up corner
      * @return (Point) - the random point within range
      */
-    static Point randomPoint(int minX, int minY, int maxX, int maxY) {
+    public static Point randomPoint(int minX, int minY, int maxX, int maxY) {
         Random rand = new Random();
         double x = minX + (rand.nextDouble() * (maxX - minX));
         double y = minY + (rand.nextDouble() * (maxY - minY));
@@ -133,7 +133,7 @@ public class MultipleFramesBouncingBallsAnimation {
      * @param balls2 (Ball[]) - the second array of balls
      * @return (Ball[]) - the combined array of balls
      */
-    static Ball[] combineArrays(Ball[] balls1, Ball[] balls2) {
+    public static Ball[] combineArrays(Ball[] balls1, Ball[] balls2) {
         Ball[] balls = new Ball[balls1.length + balls2.length];
         int start = balls1.length;
         System.arraycopy(balls1, FIRST, balls, FIRST, start);

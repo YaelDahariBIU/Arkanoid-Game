@@ -25,7 +25,7 @@ public class MultipleBouncingBallsAnimation {
      * @param arr (String[]) - an array with string values of sizes
      * @return (Ball[]) - an array of balls
      */
-    static Ball[] createArr(int[] arr) {
+    public static Ball[] createArr(int[] arr) {
         Ball[] newArr = new Ball[arr.length];
         Random rand = new Random();
         double x, y, angle, speed;
@@ -58,7 +58,7 @@ public class MultipleBouncingBallsAnimation {
      * @param arr (Ball[]) - an array of balls
      * @param gui (GUI) - the gui
      */
-    static void drawAnimation(Ball[] arr, GUI gui) {
+    public static void drawAnimation(Ball[] arr, GUI gui) {
         Sleeper sleeper = new Sleeper();
         DrawSurface d = gui.getDrawSurface();
         gui.show(d);
@@ -82,7 +82,7 @@ public class MultipleBouncingBallsAnimation {
      * @param rand (Random) - a variable of Random
      * @return (java.awt.color) - a random color
      */
-    static java.awt.Color randomColor(Random rand) {
+    public static java.awt.Color randomColor(Random rand) {
         float r = rand.nextFloat();
         float g = rand.nextFloat();
         float b = rand.nextFloat();

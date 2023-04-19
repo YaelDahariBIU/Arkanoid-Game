@@ -14,7 +14,6 @@ public class Velocity {
      * @param dx (double) - the dx value
      * @param dy (double) - the dy value
      */
-// constructor
     public Velocity(double dx, double dy) {
         this.dx = dx;
         this.dy = dy;

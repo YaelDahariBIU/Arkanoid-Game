@@ -24,7 +24,7 @@ public class BouncingBallAnimation {
      * @param dx (double) - the dx value
      * @param dy (double) - the dy value
      */
-    static void drawAnimation(Point start, double dx, double dy) {
+    public static void drawAnimation(Point start, double dx, double dy) {
         GUI gui = new GUI("bouncing ball animation", WIDTH, HEIGHT);
         Sleeper sleeper = new Sleeper();
         Ball ball = new Ball((int) start.getX(), (int) start.getY(),
