@@ -6,8 +6,8 @@ import biuoop.Sleeper;
  * Drawing a ball that moves across the screen.
  */
 public class BouncingBallAnimation {
-    static final int WIDTH = 700;
-    static final int HEIGHT = 700;
+    static final int WIDTH = 200;
+    static final int HEIGHT = 200;
     static final int FIRST = 0;
     static final int SECOND = 1;
     static final int THIRD = 2;
