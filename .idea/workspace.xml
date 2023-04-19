@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bf7bdc99-be1a-4520-9b4c-6fd571f0cfe1" name="Changes" comment="final">
-      <change beforePath="$PROJECT_DIR$/src/MultipleBouncingBallsAnimation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MultipleBouncingBallsAnimation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MultipleFramesBouncingBallsAnimation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MultipleFramesBouncingBallsAnimation.java" afterDir="false" />
-    </list>
+    <list default="true" id="bf7bdc99-be1a-4520-9b4c-6fd571f0cfe1" name="Changes" comment="final" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -88,7 +85,7 @@
       <workItem from="1681747999964" duration="1491000" />
       <workItem from="1681889815450" duration="713000" />
       <workItem from="1681909495957" duration="154000" />
-      <workItem from="1681915996895" duration="2315000" />
+      <workItem from="1681915996895" duration="1333000" />
     </task>
     <task id="LOCAL‎-00001" summary="phase1">
       <created>1680211675458</created>
@@ -125,14 +122,7 @@
       <option name="project" value="LOCAL‎" />
       <updated>1681917289879</updated>
     </task>
-    <task id="LOCAL‎-00006" summary="final">
-      <created>1681917407146</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL‎-00006" />
-      <option name="project" value="LOCAL‎" />
-      <updated>1681917407146</updated>
-    </task>
-    <option name="localTasksCounter" value="7" />
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
