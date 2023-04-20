@@ -23,8 +23,8 @@ public class MultipleFramesBouncingBallsAnimation {
     static final int END_1 = 500;
     static final int START_2 = 450;
     static final int END_2 = 600;
-    static final int MAX_SIZE_1 = 200;
-    static final int MAX_SIZE_2 = 60;
+    static final int MAX_SIZE_1 = 225;
+    static final int MAX_SIZE_2 = 75;
     static final int NEGATIVE = 0;
     static final int SLEEP = 50;
     static final int SIDE_1 = 450;

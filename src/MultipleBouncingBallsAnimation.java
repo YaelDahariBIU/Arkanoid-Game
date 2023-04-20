@@ -17,7 +17,7 @@ public class MultipleBouncingBallsAnimation {
     static final int EDGE = 0;
     static final int SLEEP = 50;
     static final int FIRST = 0;
-    static final int MAXIMUM_SIZE = 90;
+    static final int MAXIMUM_SIZE = 100;
     /**
      * The method gets an array of sizes and creates an array of balls
      * according to the sizes and random values.
