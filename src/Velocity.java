@@ -3,8 +3,6 @@
  * Velocity specifies the change in position on the `x` and the `y` axes.
  */
 public class Velocity {
-    static final int HALF_CIRCLE = 180;
-    static final int OPPOSITE_DIR = -1;
     private double dx;
     private double dy;
 
@@ -29,8 +27,7 @@ public class Velocity {
      */
     public static Velocity fromAngleAndSpeed(double angle, double speed) {
         double dx = speed * Math.sin(Math.toRadians(angle));
-        double rad = angle / (double) HALF_CIRCLE;
-        double dy = speed * Math.cos(rad * Math.PI) * OPPOSITE_DIR;
+        double dy = -speed * Math.cos(Math.toRadians(angle));
         return new Velocity(dx, dy);
     }
 
