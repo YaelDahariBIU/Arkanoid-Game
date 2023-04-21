@@ -51,8 +51,9 @@ public class BouncingBallAnimation {
      * @return (double) - a valid speed.
      */
     public static double validateSpeed(double speed, int edge) {
-        if (speed > (edge - DEFAULT_DIAMETER)) {
-            return DEFAULT_SPEED;
+        if (Math.abs(speed) >= (edge - DEFAULT_DIAMETER)) {
+            double sign = speed / Math.abs(speed);
+            return sign * DEFAULT_SPEED;
         }
         return speed;
     }
