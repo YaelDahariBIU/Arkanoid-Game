@@ -13,8 +13,10 @@ public class BouncingBallAnimation {
     static final int THIRD = 2;
     static final int FOURTH = 3;
     static final int EDGE = 0;
-    static final int STANDARD_SIZE = 30;
+    static final int DEFAULT_SIZE = 30;
+    static final int DEFAULT_DIAMETER = 60;
     static final int SLEEP = 50;
+    static final double DEFAULT_SPEED = 30;
 
     /**
      * The method gets a point and two numbers, creates a ball with those
@@ -28,7 +30,7 @@ public class BouncingBallAnimation {
         GUI gui = new GUI("bouncing ball animation", WIDTH, HEIGHT);
         Sleeper sleeper = new Sleeper();
         Ball ball = new Ball((int) start.getX(), (int) start.getY(),
-                STANDARD_SIZE, java.awt.Color.BLACK);
+                DEFAULT_SIZE, java.awt.Color.BLACK);
         ball.setVelocity(dx, dy);
         while (true) {
             ball.moveInFrame(WIDTH, HEIGHT, EDGE, EDGE);
@@ -37,6 +39,22 @@ public class BouncingBallAnimation {
             gui.show(d);
             sleeper.sleepFor(SLEEP);  // wait for 50 milliseconds.
         }
+    }
+
+    /**
+     * The method gets a speed and the edge of the frame. Ith checks if the
+     * speed is too big for said frame and if so, it changes it to a default
+     * size and returns it.
+     *
+     * @param speed (double) - the speed we've got
+     * @param edge (int) - the edge of the frame
+     * @return (double) - a valid speed.
+     */
+    public static double validateSpeed(double speed, int edge) {
+        if (speed > (edge - DEFAULT_DIAMETER)) {
+            return DEFAULT_SPEED;
+        }
+        return speed;
     }
 
     /**
@@ -50,6 +68,8 @@ public class BouncingBallAnimation {
                 Double.parseDouble(args[SECOND]));
         double dx = Double.parseDouble(args[THIRD]);
         double dy = Double.parseDouble(args[FOURTH]);
+        dx = validateSpeed(dx, WIDTH);
+        dy = validateSpeed(dy, HEIGHT);
         drawAnimation(p, dx, dy);
     }
 }
