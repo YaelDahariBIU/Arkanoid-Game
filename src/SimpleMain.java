@@ -2,15 +2,24 @@ import biuoop.DrawSurface;
 import biuoop.GUI;
 import biuoop.Sleeper;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class SimpleMain {
     public static void main(String[] args) {
+        Game game = new Game();
+        game.initialize();
+        game.run();
+    }
+    public static void createBlocks() {
         GUI gui = new GUI("two frames bouncing balls", 600, 600);
         Ball ball = new Ball(500, 200, 10, java.awt.Color.BLACK);
         GameEnvironment game = new GameEnvironment();
-        ball.setGame(game);
+        ball.setEnvironment(game);
         ball.setVelocity(10, 10);
+        List<Sprite> sprites = new ArrayList<>();
+        sprites.add(ball);
         Block[] blocks = new Block[9];
         for (int i = 0; i < 4; i++) {
             blocks[i] = new Block(new Rectangle(randomPoint(),
@@ -27,7 +36,9 @@ public class SimpleMain {
         game.addCollidable(blocks[6]);
         game.addCollidable(blocks[7]);
         game.addCollidable(blocks[8]);
-        drawAnimation(blocks, ball, gui);
+        sprites.addAll(List.of(blocks));
+        drawAnimation(sprites, gui);
+        //drawAnimation1(blocks, ball, gui);
     }
     private static Point randomPoint() {
         Random rand = new Random();
@@ -39,7 +50,7 @@ public class SimpleMain {
         Random rand = new Random();
         return rand.nextDouble() * maxSize;
     }
-    public static void drawAnimation(Block[] blocks, Ball ball, GUI gui) {
+    public static void drawAnimation1(Block[] blocks, Ball ball, GUI gui) {
         Sleeper sleeper = new Sleeper();
         DrawSurface d;
         while (true) {
@@ -48,6 +59,19 @@ public class SimpleMain {
             ball.drawOn(d);
             for (Block block : blocks) {
                 block.drawOn(d);
+            }
+            gui.show(d);
+            sleeper.sleepFor(50);  // wait for 50 milliseconds.
+        }
+    }
+    public static void drawAnimation(List<Sprite> sprites, GUI gui) {
+        Sleeper sleeper = new Sleeper();
+        DrawSurface d;
+        while (true) {
+            d = gui.getDrawSurface();
+            for (Sprite sprite : sprites) {
+                sprite.drawOn(d);
+                sprite.timePassed();
             }
             gui.show(d);
             sleeper.sleepFor(50);  // wait for 50 milliseconds.

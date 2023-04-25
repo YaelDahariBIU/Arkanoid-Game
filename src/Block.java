@@ -1,6 +1,6 @@
 import biuoop.DrawSurface;
 
-public class Block implements Collidable {
+public class Block implements Collidable, Sprite {
     private Rectangle rect;
     @Override
     public Rectangle getCollisionRectangle() {
@@ -32,9 +32,22 @@ public class Block implements Collidable {
         }
         return currentVelocity;
     }
+    @Override
     public void drawOn(DrawSurface d) {
         d.fillRectangle((int) rect.getUpperLeft().getX(),
                 (int) rect.getUpperLeft().getY(), (int) rect.getWidth(),
                 (int) rect.getHeight());
     }
+
+    @Override
+    public void timePassed() {
+        return;
+    }
+
+    @Override
+    public void addToGame(Game game) {
+        game.addCollidable(this);
+        game.addSprite(this);
+    }
+
 }

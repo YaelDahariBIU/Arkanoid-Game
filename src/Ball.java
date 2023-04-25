@@ -4,7 +4,7 @@ import biuoop.DrawSurface;
  * Balls have size (radius), color, and location (a Point). Balls also know how
  * to draw themselves on a DrawSurface.
  */
-public class Ball {
+public class Ball implements Sprite {
     static final double NO_VELOCITY = 0.0;
     static final int CHANGE_DIR = -1;
     static final double DISTANCE = 5.0;
@@ -12,7 +12,7 @@ public class Ball {
     private Point center;
     private final int radius;
     private final java.awt.Color color;
-    private GameEnvironment game;
+    private GameEnvironment environment;
 
     /**
      * Instantiates a new Ball.
@@ -85,9 +85,15 @@ public class Ball {
      *
      * @param surface (DrawSurface) - the surface we're drawing on
      */
+    @Override
     public void drawOn(DrawSurface surface) {
         surface.setColor(this.getColor());
         surface.fillCircle(this.getX(), this.getY(), this.getSize());
+    }
+
+    @Override
+    public void timePassed() {
+        this.moveOneStep();
     }
 
     /**
@@ -171,7 +177,7 @@ public class Ball {
     public void moveOneStep() {
         Point end = this.getVelocity().applyToPoint(this.center);
         Line trajectory = new Line(this.center, end);
-        CollisionInfo c = this.game.getClosestCollision(trajectory);
+        CollisionInfo c = this.environment.getClosestCollision(trajectory);
         if (c == null) {
             this.center = end;
             return;
@@ -189,7 +195,11 @@ public class Ball {
         }
         return collision - DISTANCE;
     }
-    public void setGame(GameEnvironment game) {
-        this.game = game;
+    public void setEnvironment(GameEnvironment environment) {
+        this.environment = environment;
+    }
+    @Override
+    public void addToGame(Game game) {
+        game.addSprite(this);
     }
 }
