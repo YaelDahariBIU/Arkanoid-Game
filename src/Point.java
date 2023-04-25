@@ -28,6 +28,9 @@ public class Point {
      * @return (double) the distance between the points
      */
     public double distance(Point other) {
+        if (other == null) {
+            return -1;
+        }
         double dis = Math.pow(this.getX() - other.getX(), POWER_OF_TWO)
                 + Math.pow(this.getY() - other.getY(), POWER_OF_TWO);
         return Math.sqrt(dis);
@@ -54,7 +57,7 @@ public class Point {
      * @param b (double) - the second number
      * @return (boolean) - true is the numbers are equal, false otherwise
      */
-    public boolean doubleEquals(double a, double b) {
+    public static boolean doubleEquals(double a, double b) {
         return Math.abs(a - b) < DOUBLE_THRESHOLD;
     }
 

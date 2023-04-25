@@ -119,7 +119,7 @@ public class MultipleFramesBouncingBallsAnimation {
      * @param maxY (int) - the y value of the right up corner
      * @return (Point) - the random point within range
      */
-    public static Point randomPoint(int minX, int minY, int maxX, int maxY) {
+    private static Point randomPoint(int minX, int minY, int maxX, int maxY) {
         Random rand = new Random();
         double x = minX + (rand.nextDouble() * (maxX - minX));
         double y = minY + (rand.nextDouble() * (maxY - minY));

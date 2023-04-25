@@ -7,10 +7,12 @@ import biuoop.DrawSurface;
 public class Ball {
     static final double NO_VELOCITY = 0.0;
     static final int CHANGE_DIR = -1;
+    static final double DISTANCE = 5.0;
     private final Velocity velocity;
     private Point center;
     private final int radius;
     private final java.awt.Color color;
+    private GameEnvironment game;
 
     /**
      * Instantiates a new Ball.
@@ -163,7 +165,31 @@ public class Ball {
      * The method applies the velocity to this ball's coordinates and
      * therefore causes it to move a step.
      */
+//    public void moveOneStep() {
+//        this.center = this.getVelocity().applyToPoint(this.center);
+//    }
     public void moveOneStep() {
-        this.center = this.getVelocity().applyToPoint(this.center);
+        Point end = this.getVelocity().applyToPoint(this.center);
+        Line trajectory = new Line(this.center, end);
+        CollisionInfo c = this.game.getClosestCollision(trajectory);
+        if (c == null) {
+            this.center = end;
+            return;
+        }
+        this.center.setX(moveABit(c.collisionPoint().getX(),
+                trajectory.start().getX()));
+        this.center.setY(moveABit(c.collisionPoint().getY(),
+                trajectory.start().getY()));
+        this.setVelocity(c.collisionObject().hit(c.collisionPoint(),
+                this.getVelocity()));
+    }
+    public double moveABit(double collision, double start) {
+        if (start > collision) {
+            return collision + DISTANCE;
+        }
+        return collision - DISTANCE;
+    }
+    public void setGame(GameEnvironment game) {
+        this.game = game;
     }
 }

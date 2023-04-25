@@ -1,4 +1,5 @@
 // 325166510 Yael Dahari
+import java.util.List;
 import java.util.Objects;
 /**
  * A line (actually a line-segment) connects two points - a start point and an
@@ -102,7 +103,7 @@ public class Line {
      *
      * @return (Line) - a line with start as the min and end as the max.
      */
-    public Line arrangeInOrder() {
+    private Line arrangeInOrder() {
         if (this.slope() == null || this.slope() != NO_SLOPE) {
             if (this.start().getY() > this.end().getY()) {
                 return new Line(this.end(), this.start());
@@ -123,7 +124,7 @@ public class Line {
      * @return (int) - 0 if there are no intersections, 1 if there's a single
      * one and 2 if there are infinite
      */
-    public int numOfIntersections(Line other) {
+    private int numOfIntersections(Line other) {
         if (this.equals(other)) {
             return INFINITE;
         }
@@ -226,7 +227,7 @@ public class Line {
      * @param slope (double) - the slope f the line
      * @return (double) - the "b" factor of the line formula
      */
-    public double findB(Point point, Double slope) {
+    private double findB(Point point, Double slope) {
         // if the line is: x = b
         if (slope == null) {
             return point.getX();
@@ -267,7 +268,7 @@ public class Line {
      * @param other (Line) - the other line
      * @return (Point) - the common point
      */
-    public Point commonPoint(Line other) {
+    private Point commonPoint(Line other) {
         if (this.end().equals(other.start())
                 || this.end().equals(other.end())) {
             return new Point(this.end().getX(), this.end().getY());
@@ -328,12 +329,41 @@ public class Line {
      * @param other (Line) - the other line
      * @return (boolean) - true is the lines are equal, false otherwise
      */
-    public boolean equals(Line other) {
+    private boolean equals(Line other) {
         if (this.start().equals(other.start())
                 && this.end().equals(other.end())) {
             return true;
         }
         return this.start().equals(other.end())
                 && this.end().equals(other.start());
+    }
+    // If this line does not intersect with the rectangle, return null.
+    // Otherwise, return the closest intersection point to the
+    // start of the line.
+    public Point closestIntersectionToStartOfLine(Rectangle rect) {
+        List<Point> inter = rect.intersectionPoints(this);
+        double distance;
+        if (inter.size() == 0) {
+            return null;
+        }
+        Point closest = inter.get(0);
+        double min = this.start().distance(closest);
+        for (Point point : inter) {
+            distance = this.start().distance(point);
+            if (distance != -1 && distance < min) {
+                closest = point;
+                min = distance;
+            }
+        }
+//        for (int i = 1; i < inter.toArray().length; i++) {
+//            if (this.start().distance(inter.get(i)) < min) {
+//                closest = inter.get(i);
+//                min = this.start().distance(closest);
+//            }
+//        }
+        if (min == -1) {
+            return null;
+        }
+        return closest;
     }
 }
