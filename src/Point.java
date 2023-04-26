@@ -6,6 +6,7 @@
 public class Point {
     static final double DOUBLE_THRESHOLD = 0.000001;
     static final int POWER_OF_TWO = 2;
+    static final int INVALID = -1;
     private double x;
     private double y;
 
@@ -22,14 +23,14 @@ public class Point {
 
     /**
      * The function calculates and returns the distance of this point to the
-     * other point.
+     * other point. If the other is null, it returns -1.
      *
      * @param other (Point) - the other point
      * @return (double) the distance between the points
      */
     public double distance(Point other) {
         if (other == null) {
-            return -1;
+            return INVALID;
         }
         double dis = Math.pow(this.getX() - other.getX(), POWER_OF_TWO)
                 + Math.pow(this.getY() - other.getY(), POWER_OF_TWO);

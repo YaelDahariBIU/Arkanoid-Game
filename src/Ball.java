@@ -169,11 +169,9 @@ public class Ball implements Sprite {
 
     /**
      * The method applies the velocity to this ball's coordinates and
-     * therefore causes it to move a step.
+     * therefore causes it to move a step. It also checks if it's colliding
+     * with an object and if so, moves the ball accordingly.
      */
-//    public void moveOneStep() {
-//        this.center = this.getVelocity().applyToPoint(this.center);
-//    }
     public void moveOneStep() {
         Point end = this.getVelocity().applyToPoint(this.center);
         Line trajectory = new Line(this.center, end);
@@ -189,12 +187,27 @@ public class Ball implements Sprite {
         this.setVelocity(c.collisionObject().hit(c.collisionPoint(),
                 this.getVelocity()));
     }
-    public double moveABit(double collision, double start) {
+
+    /**
+     * The method returns the ball's coordinate to "almost" the hit point, but
+     * just slightly before it.
+     *
+     * @param collision (double) - the collision coordinate
+     * @param start (double) - the original coordinate
+     * @return (double) - the coordinate just before the hit
+     */
+    private double moveABit(double collision, double start) {
         if (start > collision) {
             return collision + DISTANCE;
         }
         return collision - DISTANCE;
     }
+
+    /**
+     * The method sets the environment value of this point to a given value.
+     *
+     * @param environment (GameEnvironment) - the given value
+     */
     public void setEnvironment(GameEnvironment environment) {
         this.environment = environment;
     }

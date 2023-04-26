@@ -1,17 +1,26 @@
+// 325166510 Yael Dahari
 import biuoop.DrawSurface;
-
 import java.awt.Color;
 
+/**
+ * Blocks are rectangles that have a color. We can collide into them.
+ */
 public class Block implements Collidable, Sprite {
-    private Rectangle rect;
-    private java.awt.Color color;
-    @Override
-    public Rectangle getCollisionRectangle() {
-        return this.rect;
-    }
+    private final Rectangle rect;
+    private final java.awt.Color color;
+    /**
+     * Instantiates a new Block.
+     *
+     * @param rect (Rectangle) - the shape of the block
+     * @param color (Color) - the color of the block
+     */
     public Block(Rectangle rect, java.awt.Color color) {
         this.rect = rect;
         this.color = color;
+    }
+    @Override
+    public Rectangle getCollisionRectangle() {
+        return this.rect;
     }
     @Override
     public Velocity hit(Point collisionPoint, Velocity currentVelocity) {
@@ -50,15 +59,11 @@ public class Block implements Collidable, Sprite {
 
     @Override
     public void timePassed() {
-        return;
     }
 
     @Override
     public void addToGame(Game game) {
         game.addCollidable(this);
         game.addSprite(this);
-    }
-    public void setColor(Color color) {
-        this.color = color;
     }
 }

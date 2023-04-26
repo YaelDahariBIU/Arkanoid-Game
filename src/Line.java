@@ -14,6 +14,9 @@ public class Line {
     static final int SINGLE = 1;
     static final int INFINITE = 2;
     static final double HALFWAY = 2;
+    static final int FIRST = 0;
+    static final int INVALID = -1;
+    static final int EMPTY = 0;
     private final Point start;
     private final Point end;
     private final double length;
@@ -337,31 +340,29 @@ public class Line {
         return this.start().equals(other.end())
                 && this.end().equals(other.start());
     }
-    // If this line does not intersect with the rectangle, return null.
-    // Otherwise, return the closest intersection point to the
-    // start of the line.
+    /**
+     * The method checks if this line intersects with the rectangle. If not, it
+     * returns null. Otherwise, it returns the closest intersection point to
+     * the start of the line.
+     * @param rect (Rectangle) - a given Rectangle
+     * @return (Point) - the closest intersection point to the start of line
+     */
     public Point closestIntersectionToStartOfLine(Rectangle rect) {
         List<Point> inter = rect.intersectionPoints(this);
         double distance;
-        if (inter.size() == 0) {
+        if (inter.size() == EMPTY) {
             return null;
         }
-        Point closest = inter.get(0);
+        Point closest = inter.get(FIRST);
         double min = this.start().distance(closest);
         for (Point point : inter) {
             distance = this.start().distance(point);
-            if (distance != -1 && distance < min) {
+            if (distance != INVALID && distance < min) {
                 closest = point;
                 min = distance;
             }
         }
-//        for (int i = 1; i < inter.toArray().length; i++) {
-//            if (this.start().distance(inter.get(i)) < min) {
-//                closest = inter.get(i);
-//                min = this.start().distance(closest);
-//            }
-//        }
-        if (min == -1) {
+        if (min == INVALID) {
             return null;
         }
         return closest;
