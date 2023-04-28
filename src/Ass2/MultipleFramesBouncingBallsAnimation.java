@@ -1,4 +1,8 @@
 // 325166510 Yael Dahari
+package Ass2;
+import GameObjects.Ball;
+import GeometryPrimitives.Point;
+import Movement.Velocity;
 import biuoop.DrawSurface;
 import biuoop.GUI;
 import biuoop.Sleeper;
@@ -37,7 +41,7 @@ public class MultipleFramesBouncingBallsAnimation {
      * the first half of the balls to bounce inside the first frame, and the
      * second half of the balls to bounce inside the second frame.
      *
-     * @param arr (Ball[]) - an array of balls
+     * @param arr (GameObjects.Ball[]) - an array of balls
      * @param index (int) - the index that separates the array to two halves
      * @param gui (GUI) - the gui
      */
@@ -81,7 +85,7 @@ public class MultipleFramesBouncingBallsAnimation {
      * @param minY (int) - the y value of the left down corner
      * @param maxX (int) - the x value of the right up corner
      * @param maxY (int) - the y value of the right up corner
-     * @return (Ball[]) - an array of balls
+     * @return (GameObjects.Ball[]) - an array of balls
      */
     public static Ball[] createArr(int[] arr, int start, int end, int minX,
                             int minY, int maxX, int maxY) {
@@ -117,7 +121,7 @@ public class MultipleFramesBouncingBallsAnimation {
      * @param minY (int) - the y value of the left down corner
      * @param maxX (int) - the x value of the right up corner
      * @param maxY (int) - the y value of the right up corner
-     * @return (Point) - the random point within range
+     * @return (GeometryPrimitives.Point) - the random point within range
      */
     private static Point randomPoint(int minX, int minY, int maxX, int maxY) {
         Random rand = new Random();
@@ -129,9 +133,9 @@ public class MultipleFramesBouncingBallsAnimation {
     /**
      * The method gets 2 arrays of balls and returns a new combined array.
      *
-     * @param balls1 (Ball[]) - the first array of balls
-     * @param balls2 (Ball[]) - the second array of balls
-     * @return (Ball[]) - the combined array of balls
+     * @param balls1 (GameObjects.Ball[]) - the first array of balls
+     * @param balls2 (GameObjects.Ball[]) - the second array of balls
+     * @return (GameObjects.Ball[]) - the combined array of balls
      */
     public static Ball[] combineArrays(Ball[] balls1, Ball[] balls2) {
         Ball[] balls = new Ball[balls1.length + balls2.length];

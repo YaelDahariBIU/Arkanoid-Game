@@ -1,4 +1,8 @@
 // 325166510 Yael Dahari
+package Ass2;
+import GameObjects.Ball;
+import GeometryPrimitives.Point;
+import Movement.Velocity;
 import biuoop.DrawSurface;
 import biuoop.GUI;
 import biuoop.Sleeper;
@@ -23,7 +27,7 @@ public class MultipleBouncingBallsAnimation {
      * according to the sizes and random values.
      *
      * @param arr (int[]) - an array with sizes
-     * @return (Ball[]) - an array of balls
+     * @return (GameObjects.Ball[]) - an array of balls
      */
     public static Ball[] createArr(int[] arr) {
         Ball[] newArr = new Ball[arr.length];
@@ -55,7 +59,7 @@ public class MultipleBouncingBallsAnimation {
      * The method gets an array of balls and a gui. It draws them and moves
      * them across the screen.
      *
-     * @param arr (Ball[]) - an array of balls
+     * @param arr (GameObjects.Ball[]) - an array of balls
      * @param gui (GUI) - the gui
      */
     public static void drawAnimation(Ball[] arr, GUI gui) {

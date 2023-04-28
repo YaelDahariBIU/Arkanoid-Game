@@ -1,18 +1,27 @@
 // 325166510 Yael Dahari
+package GameControl;
+import CollisionDetection.Collidable;
+import CollisionDetection.CollisionInfo;
+import GameObjects.Paddle;
+import GeometryPrimitives.Line;
+import GeometryPrimitives.Point;
+import GeometryPrimitives.Rectangle;
+
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * A collection of many objects a Ball can collide with.
+ * A collection of many objects a GameObjects.Ball can collide with.
  */
 public class GameEnvironment {
     static final int EMPTY = 0;
     static final int INVALID = -1;
     static final int FIRST = 0;
+    static final int PADDLE_WIDTH = 150;
     private final List<Collidable> objects;
 
     /**
-     * Instantiates a new Game environment.
+     * Instantiates a new GameControl.Game environment.
      */
     public GameEnvironment() {
         this.objects = new ArrayList<>();
@@ -21,7 +30,7 @@ public class GameEnvironment {
     /**
      * The method adds the given collidable to this environment.
      *
-     * @param c (Collidable) - the collidable object
+     * @param c (CollisionDetection.Collidable) - the collidable object
      */
     public void addCollidable(Collidable c) {
         this.objects.add(c);
@@ -32,8 +41,8 @@ public class GameEnvironment {
      * this collection, return null. Else, return the information about
      * the closest collision that is going to occur.
      *
-     * @param trajectory (Line) - the trajectory line
-     * @return (CollisionInfo) - the closest collision's information
+     * @param trajectory (GeometryPrimitives.Line) - the trajectory line
+     * @return (CollisionDetection.CollisionInfo) - the closest collision's information
      */
     public CollisionInfo getClosestCollision(Line trajectory) {
         Point common;
@@ -64,5 +73,20 @@ public class GameEnvironment {
             return null;
         }
         return new CollisionInfo(closest, object);
+    }
+
+    /**
+     * The method goes over the collidable objects in the game until it finds
+     * the paddle,which is the only object with a 150 width and returns it.
+     *
+     * @return (Paddle) - the game's paddle;
+     */
+    public Paddle getPaddle() {
+        for (Collidable object : this.objects) {
+            if (object.getCollisionRectangle().getWidth() == PADDLE_WIDTH) {
+                return (Paddle) object;
+            }
+        }
+        return null;
     }
 }

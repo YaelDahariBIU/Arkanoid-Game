@@ -1,4 +1,5 @@
 // 325166510 Yael Dahari
+package GeometryPrimitives;
 /**
  * A point has an x and a y value, and can measure the distance to other
  * points, and if it is equal to another point.
@@ -11,7 +12,7 @@ public class Point {
     private double y;
 
     /**
-     * Instantiates a new Point.
+     * Instantiates a new GeometryPrimitives.Point.
      *
      * @param x (double) - the x parameter
      * @param y (double) - the y parameter
@@ -25,7 +26,7 @@ public class Point {
      * The function calculates and returns the distance of this point to the
      * other point. If the other is null, it returns -1.
      *
-     * @param other (Point) - the other point
+     * @param other (GeometryPrimitives.Point) - the other point
      * @return (double) the distance between the points
      */
     public double distance(Point other) {
@@ -41,7 +42,7 @@ public class Point {
      * The function checks if this point's x value and y value are equal to
      * the given point's and returns true or false accordingly.
      *
-     * @param other (Point) - the other point
+     * @param other (GeometryPrimitives.Point) - the other point
      * @return (boolean) - true is the points are equal, false otherwise
      */
     public boolean equals(Point other) {

@@ -1,4 +1,11 @@
 // 325166510 Yael Dahari
+package GameObjects;
+import CollisionDetection.Collidable;
+import GameControl.Game;
+import GeometryPrimitives.Point;
+import GeometryPrimitives.Rectangle;
+import Movement.Velocity;
+import SpriteControl.Sprite;
 import biuoop.DrawSurface;
 import java.awt.Color;
 
@@ -9,9 +16,9 @@ public class Block implements Collidable, Sprite {
     private final Rectangle rect;
     private final java.awt.Color color;
     /**
-     * Instantiates a new Block.
+     * Instantiates a new GameObjects.Block.
      *
-     * @param rect (Rectangle) - the shape of the block
+     * @param rect (GeometryPrimitives.Rectangle) - the shape of the block
      * @param color (Color) - the color of the block
      */
     public Block(Rectangle rect, java.awt.Color color) {

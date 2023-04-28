@@ -1,3 +1,10 @@
+import GameControl.Game;
+import GameControl.GameEnvironment;
+import GameObjects.Ball;
+import GameObjects.Block;
+import GeometryPrimitives.Point;
+import GeometryPrimitives.Rectangle;
+import SpriteControl.Sprite;
 import biuoop.DrawSurface;
 import biuoop.GUI;
 import biuoop.Sleeper;
@@ -23,15 +30,15 @@ public class SimpleMain {
         sprites.add(ball);
         Block[] blocks = new Block[9];
         for (int i = 0; i < 4; i++) {
-            blocks[i] = new Block(new Rectangle(randomPoint(),
+            blocks[i] = new Block(new GeometryPrimitives.Rectangle(randomPoint(),
                     randomSize(100), randomSize(100)), Color.BLACK);
             game.addCollidable(blocks[i]);
         }
-        blocks[4] = new Block(new Rectangle(new Point(100, 300), 300, 200), Color.BLUE);
-        blocks[5] = new Block(new Rectangle(new Point(0, 0), 600, 10), Color.BLUE);
-        blocks[6] = new Block(new Rectangle(new Point(0, 10), 10, 600), Color.BLUE);
-        blocks[7] = new Block(new Rectangle(new Point(590, 10), 10, 590), Color.BLUE);
-        blocks[8] = new Block(new Rectangle(new Point(10, 590), 580, 10), Color.BLUE);
+        blocks[4] = new Block(new Rectangle(new GeometryPrimitives.Point(100, 300), 300, 200), Color.BLUE);
+        blocks[5] = new Block(new GeometryPrimitives.Rectangle(new GeometryPrimitives.Point(0, 0), 600, 10), Color.BLUE);
+        blocks[6] = new Block(new GeometryPrimitives.Rectangle(new GeometryPrimitives.Point(0, 10), 10, 600), Color.BLUE);
+        blocks[7] = new Block(new GeometryPrimitives.Rectangle(new GeometryPrimitives.Point(590, 10), 10, 590), Color.BLUE);
+        blocks[8] = new Block(new GeometryPrimitives.Rectangle(new Point(10, 590), 580, 10), Color.BLUE);
         game.addCollidable(blocks[4]);
         game.addCollidable(blocks[5]);
         game.addCollidable(blocks[6]);
@@ -41,11 +48,11 @@ public class SimpleMain {
         drawAnimation(sprites, gui);
         //drawAnimation1(blocks, ball, gui);
     }
-    private static Point randomPoint() {
+    private static GeometryPrimitives.Point randomPoint() {
         Random rand = new Random();
         double x = rand.nextDouble() * 600;
         double y = rand.nextDouble() * 600;
-        return new Point(x, y);
+        return new GeometryPrimitives.Point(x, y);
     }
     private static double randomSize(int maxSize) {
         Random rand = new Random();

@@ -4,22 +4,31 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bf7bdc99-be1a-4520-9b4c-6fd571f0cfe1" name="Changes" comment="phase 3">
+    <list default="true" id="bf7bdc99-be1a-4520-9b4c-6fd571f0cfe1" name="Changes" comment="final">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ass2.zip" beforeDir="false" afterPath="$PROJECT_DIR$/ass2.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.xml" beforeDir="false" afterPath="$PROJECT_DIR$/build.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AbstractArtDrawing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Ass2/AbstractArtDrawing.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Ass3Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Ass3Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Ball.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Ball.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Block.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Block.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Collidable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Collidable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CollisionInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CollisionInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GameEnvironment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameEnvironment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Line.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Line.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Paddle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Paddle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Point.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Point.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Rectangle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Rectangle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Sprite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Sprite.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SpriteCollection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SpriteCollection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Ball.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameObjects/Ball.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Block.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameObjects/Block.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BouncingBallAnimation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Ass2/BouncingBallAnimation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Collidable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CollisionDetection/Collidable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CollisionInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CollisionDetection/CollisionInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameControl/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GameEnvironment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameControl/GameEnvironment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Line.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GeometryPrimitives/Line.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MultipleBouncingBallsAnimation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Ass2/MultipleBouncingBallsAnimation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MultipleFramesBouncingBallsAnimation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Ass2/MultipleFramesBouncingBallsAnimation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Paddle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameObjects/Paddle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Point.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GeometryPrimitives/Point.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Rectangle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GeometryPrimitives/Rectangle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SimpleMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SimpleMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Sprite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SpriteControl/Sprite.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SpriteCollection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SpriteControl/SpriteCollection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Velocity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Movement/Velocity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/GeometryTester.java" beforeDir="false" afterPath="$PROJECT_DIR$/tests/GeometryTester.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/TestForAss2.java" beforeDir="false" afterPath="$PROJECT_DIR$/tests/TestForAss2.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,25 +57,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/Yael Dahari/IdeaProjects/Project1/biuoop-1.4.jar",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Yael Dahari/IdeaProjects/Project1/biuoop-1.4.jar&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Yael Dahari\IdeaProjects\Project1\tests" />
@@ -103,7 +112,8 @@
       <workItem from="1681909495957" duration="154000" />
       <workItem from="1681915996895" duration="1333000" />
       <workItem from="1681984202444" duration="2125000" />
-      <workItem from="1682334868047" duration="40958000" />
+      <workItem from="1682334868047" duration="41470000" />
+      <workItem from="1682607826020" duration="5876000" />
     </task>
     <task id="LOCAL‎-00001" summary="phase1">
       <created>1680211675458</created>
@@ -189,7 +199,14 @@
       <option name="project" value="LOCAL‎" />
       <updated>1682500656240</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL‎-00013" summary="final">
+      <created>1682528108355</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL‎-00013" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1682528108355</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -209,11 +226,11 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="phase1" />
-    <MESSAGE value="final" />
     <MESSAGE value="phase 1" />
     <MESSAGE value="phase 2" />
     <MESSAGE value="phase 3" />
-    <option name="LAST_COMMIT_MESSAGE" value="phase 3" />
+    <MESSAGE value="final" />
+    <option name="LAST_COMMIT_MESSAGE" value="final" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

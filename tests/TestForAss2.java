@@ -42,7 +42,7 @@ public class TestForAss2 {
             assert(isInRangeOfEpsilon(p1.distance(p5),Math.sqrt(Math.pow(-8.9, 2) + Math.pow(-12.4, 2))));
             assert(isInRangeOfEpsilon(p1.distance(p6),Math.sqrt(Math.pow(1.9, 2) + Math.pow(-12.4, 2))));
 
-            System.out.println("passed tests for Point");
+            System.out.println("passed tests for GeometryPrimitives.Point");
         }
 
 
@@ -75,7 +75,7 @@ public class TestForAss2 {
 
             Line s = new Line(102.04805, 77.17004,119.96, 49.52);
 
-//            Line t = new Line(136.24, 57.79,180.0, 80.04);
+//            GeometryPrimitives.Line t = new GeometryPrimitives.Line(136.24, 57.79,180.0, 80.04);
 
             // a is on y axis
             Line a = new Line(0.0, 0.0,0.0, 40.0);
@@ -191,7 +191,7 @@ public class TestForAss2 {
             assert(n1.intersectionWith(i).equals(new Point(20.0,80.0)));
 
 
-            System.out.println("passed tests for Line");
+            System.out.println("passed tests for GeometryPrimitives.Line");
 
         }
 
@@ -235,16 +235,16 @@ public class TestForAss2 {
         assert (v5.applyToPoint(p3).equals(new Point(-3.5, -7.8)));
         assert (v5.applyToPoint(p4).equals(new Point(3.5, -7.8)));
 
-//         Point p4 = new Point(3.5, -7.8);
+//         GeometryPrimitives.Point p4 = new GeometryPrimitives.Point(3.5, -7.8);
         assert (v6.applyToPoint(p4).equals(new Point(8.9, -7.8)));
-//        assert (v7.applyToPoint(p4).equals(new Point(3.5, -2.4)));
-        //assert (v7.applyToPoint(p4).equals(new Point(3.5, -13.2)));
-//        assert (v8.applyToPoint(p4).equals(new Point(((6.0 * Math.sin(Math.PI/6)))
+//        assert (v7.applyToPoint(p4).equals(new GeometryPrimitives.Point(3.5, -2.4)));
+        //assert (v7.applyToPoint(p4).equals(new GeometryPrimitives.Point(3.5, -13.2)));
+//        assert (v8.applyToPoint(p4).equals(new GeometryPrimitives.Point(((6.0 * Math.sin(Math.PI/6)))
 //                + 3.5, (6.0 * Math.sin(Math.PI / 3)) -7.8)));
-//        assert (v8.applyToPoint(p4).equals(new Point(((6.0 * Math.sin(Math.PI/6)))
+//        assert (v8.applyToPoint(p4).equals(new GeometryPrimitives.Point(((6.0 * Math.sin(Math.PI/6)))
 //                + 3.5, -(6.0 * Math.sin(Math.PI / 3)) -7.8)));
 
-        System.out.println("passed tests for Velocity");
+        System.out.println("passed tests for Movement.Velocity");
     }
 
     /**
@@ -356,7 +356,7 @@ public class TestForAss2 {
 ////            b12.drawOn(t);
 //            g.show(t);
 
-            System.out.println("passed tests for Ball");
+            System.out.println("passed tests for GameObjects.Ball");
 
         }
 

@@ -1,4 +1,13 @@
 // 325166510 Yael Dahari
+package GameControl;
+import CollisionDetection.Collidable;
+import GameObjects.Ball;
+import GameObjects.Block;
+import GameObjects.Paddle;
+import GeometryPrimitives.Point;
+import GeometryPrimitives.Rectangle;
+import SpriteControl.Sprite;
+import SpriteControl.SpriteCollection;
 import biuoop.DrawSurface;
 import biuoop.GUI;
 import biuoop.KeyboardSensor;
@@ -6,8 +15,8 @@ import biuoop.Sleeper;
 import java.awt.Color;
 
 /**
- * Game holds the sprites and the collidables, and is in charge of the
- * animation.
+ * GameControl.Game holds the sprites and the collidables, and is in charge of
+ * the animation.
  */
 public class Game {
     static final int FIRST = 0;
@@ -31,7 +40,8 @@ public class Game {
     static final int FPS = 60;
     static final int MSPF = 1000;
     static final int POSITIVE = 0;
-    static final Point DEFAULT_POINT = new Point(400, 400);
+    static final Point[] DEFAULT_POINTS = {new Point(400, 400),
+            new Point(450, 450)};
     static final Color[] COLORS = {Color.blue, Color.cyan, Color.green,
             Color.YELLOW, Color.ORANGE, Color.red};
     private final SpriteCollection sprites;
@@ -40,7 +50,7 @@ public class Game {
     private final GUI gui;
 
     /**
-     * Instantiates a new Game.
+     * Instantiates a new GameControl.Game.
      */
     public Game() {
         this.sprites = new SpriteCollection();
@@ -53,7 +63,7 @@ public class Game {
      * The method adds a collidable object to this game environment's
      * collection of collidables.
      *
-     * @param c (Collidable) - the object we need to add
+     * @param c (CollisionDetection.Collidable) - the object we need to add
      */
     public void addCollidable(Collidable c) {
         this.environment.addCollidable(c);
@@ -62,7 +72,7 @@ public class Game {
     /**
      * The method adds a sprite object to this collection of sprites.
      *
-     * @param s (Sprite) - the object we need to add
+     * @param s (SpriteControl.Sprite) - the object we need to add
      */
     public void addSprite(Sprite s) {
         this.sprites.addSprite(s);
@@ -70,7 +80,7 @@ public class Game {
 
     /**
      * The method initializes a new game: create the Blocks, Balls and
-     * Paddle, and add them to this game.
+     * GameObjects.Paddle, and add them to this game.
      */
     public void initialize() {
         initializePaddle();
@@ -92,7 +102,7 @@ public class Game {
     private void initializeBalls() {
         Ball[] balls = new Ball[NUM_BALLS];
         for (int i = 0; i < balls.length; i++) {
-            balls[i] = new Ball(DEFAULT_POINT, DEFAULT_VALUE, Color.BLACK);
+            balls[i] = new Ball(DEFAULT_POINTS[i], DEFAULT_VALUE, Color.BLACK);
             balls[i].setVelocity(DEFAULT_VALUE, DEFAULT_VALUE);
             balls[i].setEnvironment(this.environment);
             balls[i].addToGame(this);

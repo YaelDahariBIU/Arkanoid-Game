@@ -1,4 +1,5 @@
 // 325166510 Yael Dahari
+package SpriteControl;
 import biuoop.DrawSurface;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +11,7 @@ public class SpriteCollection {
     private final List<Sprite> sprites;
 
     /**
-     * Instantiates a new Sprite collection.
+     * Instantiates a new SpriteControl.Sprite collection.
      */
     public SpriteCollection() {
         this.sprites = new ArrayList<>();
@@ -19,7 +20,7 @@ public class SpriteCollection {
     /**
      * The method adda a given sprite to the collection.
      *
-     * @param s (Sprite) - the specified sprite
+     * @param s (SpriteControl.Sprite) - the specified sprite
      */
     public void addSprite(Sprite s) {
         this.sprites.add(s);

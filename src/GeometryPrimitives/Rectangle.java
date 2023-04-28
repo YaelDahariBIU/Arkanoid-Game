@@ -1,4 +1,5 @@
 // 325166510 Yael Dahari
+package GeometryPrimitives;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,9 +18,9 @@ public class Rectangle {
     private final double height;
 
     /**
-     * Instantiates a new Rectangle with location and width/height.
+     * Instantiates a new GeometryPrimitives.Rectangle with location and width/height.
      *
-     * @param upperLeft (Point) - the upper left point
+     * @param upperLeft (GeometryPrimitives.Point) - the upper left point
      * @param width (double) - the width
      * @param height (double) - the height
      */
@@ -33,8 +34,8 @@ public class Rectangle {
      * The method returns a (possibly empty) List of intersection points
      * with the specified line.
      *
-     * @param line (Line) - the specified line
-     * @return (java.util.list(Point)) - the list of intersection points.
+     * @param line (GeometryPrimitives.Line) - the specified line
+     * @return (java.util.list(GeometryPrimitives.Point)) - the list of intersection points.
      */
     public java.util.List<Point> intersectionPoints(Line line) {
         Line[] recLines = new Line[SIZE];
@@ -75,7 +76,7 @@ public class Rectangle {
     /**
      * The method returns this rectangle's upper-left point.
      *
-     * @return (Point) - the upper-left point
+     * @return (GeometryPrimitives.Point) - the upper-left point
      */
     public Point getUpperLeft() {
         return this.upperLeft;
@@ -84,7 +85,7 @@ public class Rectangle {
     /**
      * The method returns this rectangle's upper horizontal line.
      *
-     * @return (Line) - the upper horizontal line
+     * @return (GeometryPrimitives.Line) - the upper horizontal line
      */
     public Line getUpperHor() {
         Point upperRight = new Point(getUpperLeft().getX() + getWidth(),
@@ -95,7 +96,7 @@ public class Rectangle {
     /**
      * The method returns this rectangle's down horizontal line.
      *
-     * @return (Line) - the down horizontal line
+     * @return (GeometryPrimitives.Line) - the down horizontal line
      */
     public Line getDownHor() {
         Point downLeft = new Point(getUpperLeft().getX(),
@@ -108,7 +109,7 @@ public class Rectangle {
     /**
      * The method returns this rectangle's left vertical line.
      *
-     * @return (Line) - the left vertical line
+     * @return (GeometryPrimitives.Line) - the left vertical line
      */
     public Line getLeftVer() {
         Point downLeft = new Point(getUpperLeft().getX(),
@@ -119,7 +120,7 @@ public class Rectangle {
     /**
      * The method returns this rectangle's right vertical line.
      *
-     * @return (Line) - the right vertical line
+     * @return (GeometryPrimitives.Line) - the right vertical line
      */
     public Line getRightVer() {
         Point downRight = new Point(getUpperLeft().getX() + getWidth(),

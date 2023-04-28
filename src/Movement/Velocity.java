@@ -1,13 +1,16 @@
 // 325166510 Yael Dahari
+package Movement;
+import GeometryPrimitives.Point;
+
 /**
- * Velocity specifies the change in position on the `x` and the `y` axes.
+ * Movement.Velocity specifies the change in position on the `x` and the `y` axes.
  */
 public class Velocity {
     private double dx;
     private double dy;
 
     /**
-     * Instantiates a new Velocity.
+     * Instantiates a new Movement.Velocity.
      *
      * @param dx (double) - the dx value
      * @param dy (double) - the dy value
@@ -23,7 +26,7 @@ public class Velocity {
      *
      * @param angle (double) - the angle
      * @param speed (double) - the speed
-     * @return (Velocity) - the velocity that matches said angle and speed
+     * @return (Movement.Velocity) - the velocity that matches said angle and speed
      */
     public static Velocity fromAngleAndSpeed(double angle, double speed) {
         double dx = speed * Math.sin(Math.toRadians(angle));
@@ -71,8 +74,8 @@ public class Velocity {
      * The method gets a point with position (x,y) and return a new point
      * with position (x+dx, y+dy).
      *
-     * @param p (Point) - the point with position (x, y)
-     * @return (Point) - the point with position (x+dx, y+dy)
+     * @param p (GeometryPrimitives.Point) - the point with position (x, y)
+     * @return (GeometryPrimitives.Point) - the point with position (x+dx, y+dy)
      */
     public Point applyToPoint(Point p) {
         return new Point(p.getX() + this.dx, p.getY() + this.dy);

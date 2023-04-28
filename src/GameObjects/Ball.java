@@ -1,7 +1,15 @@
 // 325166510 Yael Dahari
+package GameObjects;
+import CollisionDetection.CollisionInfo;
+import GameControl.Game;
+import GameControl.GameEnvironment;
+import GeometryPrimitives.Line;
+import GeometryPrimitives.Point;
+import SpriteControl.Sprite;
 import biuoop.DrawSurface;
+import Movement.Velocity;
 /**
- * Balls have size (radius), color, and location (a Point). Balls also know how
+ * Balls have size (radius), color, and location (a GeometryPrimitives.Point). Balls also know how
  * to draw themselves on a DrawSurface.
  */
 public class Ball implements Sprite {
@@ -15,9 +23,9 @@ public class Ball implements Sprite {
     private GameEnvironment environment;
 
     /**
-     * Instantiates a new Ball.
+     * Instantiates a new GameObjects.Ball.
      *
-     * @param center (Point) - the location of the ball
+     * @param center (GeometryPrimitives.Point) - the location of the ball
      * @param r (int) - the ball's radius
      * @param color (java.awt.Color) - the ball's color
      */
@@ -29,7 +37,7 @@ public class Ball implements Sprite {
     }
 
     /**
-     * Instantiates a new Ball.
+     * Instantiates a new GameObjects.Ball.
      *
      * @param x (double) - the x value of the ball's location
      * @param y  (double) - the y value of the ball's location
@@ -94,12 +102,13 @@ public class Ball implements Sprite {
     @Override
     public void timePassed() {
         this.moveOneStep();
+        this.withinPaddle();
     }
 
     /**
      * The method gets a velocity and sets the velocity of this ball.
      *
-     * @param v (Velocity) - the velocity we need to set
+     * @param v (Movement.Velocity) - the velocity we need to set
      */
     public void setVelocity(Velocity v) {
         this.setVelocity(v.getDx(), v.getDy());
@@ -120,7 +129,7 @@ public class Ball implements Sprite {
     /**
      * The method returns the velocity of this ball.
      *
-     * @return (Velocity) - the velocity of this ball
+     * @return (Movement.Velocity) - the velocity of this ball
      */
     public Velocity getVelocity() {
         return this.velocity;
@@ -206,7 +215,7 @@ public class Ball implements Sprite {
     /**
      * The method sets the environment value of this point to a given value.
      *
-     * @param environment (GameEnvironment) - the given value
+     * @param environment (GameControl.GameEnvironment) - the given value
      */
     public void setEnvironment(GameEnvironment environment) {
         this.environment = environment;
@@ -215,4 +224,31 @@ public class Ball implements Sprite {
     public void addToGame(Game game) {
         game.addSprite(this);
     }
+
+    /**
+     * The method checks if said ball is within the game's paddle and if so,
+     * it moves the ball to the border of the paddle.
+     */
+    public void withinPaddle() {
+        Paddle paddle = this.environment.getPaddle();
+        double left = paddle.getCollisionRectangle().getUpperLeft().getX();
+        double right = left + paddle.getCollisionRectangle().getWidth(),
+        upper = paddle.getCollisionRectangle().getUpperLeft().getY();
+        double down = upper + paddle.getCollisionRectangle().getHeight();
+        if (this.getX() >= left && this.getX() <= right) {
+            if (this.getY() >= upper && this.getY() <= down) {
+                this.setCenter(new Point(this.getX(), upper));
+            }
+        }
+    }
+
+    /**
+     * The method sets the center value of this ball to a given point.
+     *
+     * @param center (Point) - the specified point
+     */
+    public void setCenter(Point center) {
+        this.center = center;
+    }
+
 }

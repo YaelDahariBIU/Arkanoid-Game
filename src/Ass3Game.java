@@ -1,4 +1,6 @@
 // 325166510 Yael Dahari
+import GameControl.Game;
+
 /**
  * Create a game object with a paddle (which is controlled by the left and
  * right arrows), two balls, and blocks.

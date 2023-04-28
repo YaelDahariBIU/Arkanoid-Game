@@ -1,11 +1,17 @@
 // 325166510 Yael Dahari
+package GameObjects;
+import CollisionDetection.Collidable;
+import GeometryPrimitives.Point;
+import GeometryPrimitives.Rectangle;
 import biuoop.DrawSurface;
 import java.awt.Color;
-
+import GameControl.Game;
+import SpriteControl.Sprite;
+import Movement.Velocity;
 /**
- * The Paddle is the player in the game. It is a rectangle that is controlled
+ * The GameObjects.Paddle is the player in the game. It is a rectangle that is controlled
  * by the arrow keys, and moves according to the player key presses. It
- * should implement the Sprite and the Collidable interfaces. It should also
+ * should implement the SpriteControl.Sprite and the CollisionDetection.Collidable interfaces. It should also
  * know how to move to the left and to the right.
  */
 public class Paddle implements Sprite, Collidable {
@@ -29,7 +35,7 @@ public class Paddle implements Sprite, Collidable {
     private final Rectangle shape;
 
     /**
-     * Instantiates a new Paddle.
+     * Instantiates a new GameObjects.Paddle.
      *
      * @param keyboard (KeyboardSensor) - the keyboard sensor
      */

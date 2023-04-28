@@ -1,4 +1,6 @@
 // 325166510 Yael Dahari
+package SpriteControl;
+import GameControl.Game;
 import biuoop.DrawSurface;
 
 /**
@@ -21,7 +23,7 @@ public interface Sprite {
     /**
      * The method adds the sprite to the given game.
      *
-     * @param game (Game) - the specified game
+     * @param game (GameControl.Game) - the specified game
      */
     void addToGame(Game game);
 }

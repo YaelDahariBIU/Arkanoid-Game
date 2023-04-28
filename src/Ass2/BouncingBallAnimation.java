@@ -1,4 +1,7 @@
 // 325166510 Yael Dahari
+package Ass2;
+import GameObjects.Ball;
+import GeometryPrimitives.Point;
 import biuoop.DrawSurface;
 import biuoop.GUI;
 import biuoop.Sleeper;
@@ -22,7 +25,7 @@ public class BouncingBallAnimation {
      * The method gets a point and two numbers, creates a ball with those
      * attributes and moves it across the screen.
      *
-     * @param start (Point) - the starting location of the ball
+     * @param start (GeometryPrimitives.Point) - the starting location of the ball
      * @param dx (double) - the dx value
      * @param dy (double) - the dy value
      */

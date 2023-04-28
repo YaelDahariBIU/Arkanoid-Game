@@ -1,4 +1,7 @@
 // 325166510 Yael Dahari
+package Ass2;
+import GeometryPrimitives.Line;
+import GeometryPrimitives.Point;
 import biuoop.GUI;
 import biuoop.DrawSurface;
 import java.util.Random;
@@ -33,7 +36,7 @@ public class AbstractArtDrawing {
      * The function gets a line and a drawSurface. It calculates the middle
      * point of said line and draws it in blue on said drawSurface.
      *
-     * @param l (Line) - the line
+     * @param l (GeometryPrimitives.Line) - the line
      * @param d (DrawSurface) - the surface we're drawing on
      */
     public void drawMiddle(Line l, DrawSurface d) {
@@ -47,8 +50,8 @@ public class AbstractArtDrawing {
      * intersection point of the lines, and if it exists, the function draws
      * it in red on said drawSurface.
      *
-     * @param line (Line) - the first line
-     * @param other (Line) - the other line
+     * @param line (GeometryPrimitives.Line) - the first line
+     * @param other (GeometryPrimitives.Line) - the other line
      * @param d (DrawSurface) - the surface we're drawing on
      */
     public void drawIntersection(Line line, Line other, DrawSurface d) {
@@ -80,7 +83,7 @@ public class AbstractArtDrawing {
      * The function generates random values for x and y values within the
      * frame, creates a line from said values and returns it.
      *
-     * @return (Line) - the generated random line
+     * @return (GeometryPrimitives.Line) - the generated random line
      */
     public Line generateRandomLine() {
         Random rand = new Random();
@@ -95,7 +98,7 @@ public class AbstractArtDrawing {
      * The function gets a line and a drawSurface, and draws said line in
      * black on said drawSurface.
      *
-     * @param l (Line) - the line
+     * @param l (GeometryPrimitives.Line) - the line
      * @param d (DrawSurface) - the surface we're drawing on
      */
     public void drawLine(Line l, DrawSurface d) {

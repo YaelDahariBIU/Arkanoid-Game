@@ -1,4 +1,5 @@
 // 325166510 Yael Dahari
+package GeometryPrimitives;
 import java.util.List;
 import java.util.Objects;
 /**
@@ -22,10 +23,10 @@ public class Line {
     private final double length;
 
     /**
-     * Instantiates a new Line.
+     * Instantiates a new GeometryPrimitives.Line.
      *
-     * @param start (Point) - the starting point of the line
-     * @param end (Point) - the ending point of the line
+     * @param start (GeometryPrimitives.Point) - the starting point of the line
+     * @param end (GeometryPrimitives.Point) - the ending point of the line
      */
     public Line(Point start, Point end) {
         this.start = start;
@@ -34,7 +35,7 @@ public class Line {
     }
 
     /**
-     * Instantiates a new Line.
+     * Instantiates a new GeometryPrimitives.Line.
      *
      * @param x1 (double) - the x value of the first point
      * @param y1 (double) - the y value of the first point
@@ -59,7 +60,7 @@ public class Line {
     /**
      * The function returns the middle point of the line.
      *
-     * @return (Point) - the middle point of the line
+     * @return (GeometryPrimitives.Point) - the middle point of the line
      */
 
     public Point middle() {
@@ -71,7 +72,7 @@ public class Line {
     /**
      * The function returns the start point of the line.
      *
-     * @return (Point) - the start point of the line
+     * @return (GeometryPrimitives.Point) - the start point of the line
      */
     public Point start() {
         return this.start;
@@ -80,7 +81,7 @@ public class Line {
     /**
      * The function returns the end point of the line.
      *
-     * @return (Point) - the end point of the line
+     * @return (GeometryPrimitives.Point) - the end point of the line
      */
     public Point end() {
         return this.end;
@@ -104,7 +105,7 @@ public class Line {
      * its y value (if the 'y's are the same we'll do it with the x value),
      * and returns the new line with start as the min and end as the max.
      *
-     * @return (Line) - a line with start as the min and end as the max.
+     * @return (GeometryPrimitives.Line) - a line with start as the min and end as the max.
      */
     private Line arrangeInOrder() {
         if (this.slope() == null || this.slope() != NO_SLOPE) {
@@ -123,7 +124,7 @@ public class Line {
      * The function checks how many intersections points exist between two
      * lines with the same slope.
      *
-     * @param other (Point) - another given point
+     * @param other (GeometryPrimitives.Point) - another given point
      * @return (int) - 0 if there are no intersections, 1 if there's a single
      * one and 2 if there are infinite
      */
@@ -177,7 +178,7 @@ public class Line {
      * The function checks if this line intersects with a given line and
      * returns true or false accordingly.
      *
-     * @param other (Line) - the other line
+     * @param other (GeometryPrimitives.Line) - the other line
      * @return (boolean) - true if the lines intersect, false otherwise
      */
     public boolean isIntersecting(Line other) {
@@ -226,7 +227,7 @@ public class Line {
      * The function gets a point and a slope and calculates the "b" factor of
      * the line formula and returns its value.
      *
-     * @param point (Point) - a point on the line
+     * @param point (GeometryPrimitives.Point) - a point on the line
      * @param slope (double) - the slope f the line
      * @return (double) - the "b" factor of the line formula
      */
@@ -247,7 +248,7 @@ public class Line {
      * calculating its distance from both points of the line and comparing
      * them to the line's length.
      *
-     * @param point (Point) - the point to check
+     * @param point (GeometryPrimitives.Point) - the point to check
      * @return (boolean) true if the point is on this line, otherwise false
      */
     public boolean isOnLine(Point point) {
@@ -268,8 +269,8 @@ public class Line {
      * The function gets a line, calculates the single common point between
      * this line and the given one and returns said point.
      *
-     * @param other (Line) - the other line
-     * @return (Point) - the common point
+     * @param other (GeometryPrimitives.Line) - the other line
+     * @return (GeometryPrimitives.Point) - the common point
      */
     private Point commonPoint(Line other) {
         if (this.end().equals(other.start())
@@ -284,8 +285,8 @@ public class Line {
      * this line and the given one and returns it (if such point doesn't exist
      * or that there's more than one, it returns null).
      *
-     * @param other (Line) - the other line
-     * @return (Point) - the intersection point if the lines intersect,
+     * @param other (GeometryPrimitives.Line) - the other line
+     * @return (GeometryPrimitives.Point) - the intersection point if the lines intersect,
      * and null otherwise.
      */
     public Point intersectionWith(Line other) {
@@ -329,7 +330,7 @@ public class Line {
      * considered equal even if the end of one is equal to the beginning of the
      * other and vice versa.
      *
-     * @param other (Line) - the other line
+     * @param other (GeometryPrimitives.Line) - the other line
      * @return (boolean) - true is the lines are equal, false otherwise
      */
     private boolean equals(Line other) {
@@ -344,8 +345,8 @@ public class Line {
      * The method checks if this line intersects with the rectangle. If not, it
      * returns null. Otherwise, it returns the closest intersection point to
      * the start of the line.
-     * @param rect (Rectangle) - a given Rectangle
-     * @return (Point) - the closest intersection point to the start of line
+     * @param rect (GeometryPrimitives.Rectangle) - a given GeometryPrimitives.Rectangle
+     * @return (GeometryPrimitives.Point) - the closest intersection point to the start of line
      */
     public Point closestIntersectionToStartOfLine(Rectangle rect) {
         List<Point> inter = rect.intersectionPoints(this);
