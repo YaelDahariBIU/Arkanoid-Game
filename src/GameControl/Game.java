@@ -42,8 +42,8 @@ public class Game {
     static final int POSITIVE = 0;
     static final Point[] DEFAULT_POINTS = {new Point(400, 400),
             new Point(450, 450)};
-    static final Color[] COLORS = {Color.blue, Color.cyan, Color.green,
-            Color.YELLOW, Color.ORANGE, Color.red};
+    static final Color[] COLORS = {Color.red, Color.ORANGE, Color.YELLOW,
+            Color.green, Color.cyan, Color.BLUE};
     private final SpriteCollection sprites;
     private final GameEnvironment environment;
     private final KeyboardSensor keyboardSensor;
