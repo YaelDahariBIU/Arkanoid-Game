@@ -5,7 +5,8 @@ import GeometryPrimitives.Rectangle;
 import Movement.Velocity;
 
 /**
- * The CollisionDetection.Collidable interface will be used by things that can be collided with.
+ * The CollisionDetection.Collidable interface will be used by things that can
+ * be collided with.
  */
 public interface Collidable {
     /**

@@ -18,7 +18,8 @@ public class Rectangle {
     private final double height;
 
     /**
-     * Instantiates a new GeometryPrimitives.Rectangle with location and width/height.
+     * Instantiates a new GeometryPrimitives.Rectangle with location and
+     * width/height.
      *
      * @param upperLeft (GeometryPrimitives.Point) - the upper left point
      * @param width (double) - the width
@@ -35,7 +36,8 @@ public class Rectangle {
      * with the specified line.
      *
      * @param line (GeometryPrimitives.Line) - the specified line
-     * @return (java.util.list(GeometryPrimitives.Point)) - the list of intersection points.
+     * @return (java.util.list(GeometryPrimitives.Point)) - the list of
+     * intersection points.
      */
     public java.util.List<Point> intersectionPoints(Line line) {
         Line[] recLines = new Line[SIZE];

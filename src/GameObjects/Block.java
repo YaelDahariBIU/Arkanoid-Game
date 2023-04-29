@@ -5,7 +5,7 @@ import GameControl.Game;
 import GeometryPrimitives.Point;
 import GeometryPrimitives.Rectangle;
 import Movement.Velocity;
-import SpriteControl.Sprite;
+import GameControl.SpriteControl.Sprite;
 import biuoop.DrawSurface;
 import java.awt.Color;
 

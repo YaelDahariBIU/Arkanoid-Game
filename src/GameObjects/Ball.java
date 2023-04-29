@@ -5,16 +5,16 @@ import GameControl.Game;
 import GameControl.GameEnvironment;
 import GeometryPrimitives.Line;
 import GeometryPrimitives.Point;
-import SpriteControl.Sprite;
+import GameControl.SpriteControl.Sprite;
 import biuoop.DrawSurface;
 import Movement.Velocity;
 /**
- * Balls have size (radius), color, and location (a GeometryPrimitives.Point). Balls also know how
- * to draw themselves on a DrawSurface.
+ * Balls have size (radius), color, and location (a GeometryPrimitives.Point).
+ * Balls also know how to draw themselves on a DrawSurface.
  */
 public class Ball implements Sprite {
     static final double NO_VELOCITY = 0.0;
-    static final int CHANGE_DIR = -1;
+//    static final int CHANGE_DIR = -1;
     static final double DISTANCE = 5.0;
     private final Velocity velocity;
     private Point center;
@@ -36,20 +36,20 @@ public class Ball implements Sprite {
         this.velocity = new Velocity(NO_VELOCITY, NO_VELOCITY);
     }
 
-    /**
-     * Instantiates a new GameObjects.Ball.
-     *
-     * @param x (double) - the x value of the ball's location
-     * @param y  (double) - the y value of the ball's location
-     * @param r (int) - the ball's radius
-     * @param color (java.awt.Color) - the ball's color
-     */
-    public Ball(int x, int y, int r, java.awt.Color color) {
-        this.center = new Point(x, y);
-        this.radius = r;
-        this.color = color;
-        this.velocity = new Velocity(NO_VELOCITY, NO_VELOCITY);
-    }
+//    /**
+//     * Instantiates a new GameObjects.Ball.
+//     *
+//     * @param x (double) - the x value of the ball's location
+//     * @param y  (double) - the y value of the ball's location
+//     * @param r (int) - the ball's radius
+//     * @param color (java.awt.Color) - the ball's color
+//     */
+//    public Ball(int x, int y, int r, java.awt.Color color) {
+//        this.center = new Point(x, y);
+//        this.radius = r;
+//        this.color = color;
+//        this.velocity = new Velocity(NO_VELOCITY, NO_VELOCITY);
+//    }
 
     /**
      * The method returns the x value of the ball's location.
@@ -135,46 +135,46 @@ public class Ball implements Sprite {
         return this.velocity;
     }
 
-    /**
-     * The method gets the measurements of a frame and coordinates for its
-     * left-down point. It calls moveOneStep() and checks if this ball collided
-     * or went through the frame and if so, it returns it back to the wall and
-     * changes the velocity direction accordingly.
-     *
-     * @param width (int) - the frame's width
-     * @param height (int) - the frame's height
-     * @param leftEdge (double) - the frame's left edge
-     * @param downEdge (double) - the frame's down edge
-     */
-    public void moveInFrame(int width, int height, double leftEdge,
-                            double downEdge) {
-        this.moveOneStep();
-        boolean collidedVertical = false, collidedHorizontal = false;
-        double x = this.center.getX(), y = this.center.getY();
-        double radius = this.getSize();
-        if ((x - radius) <= leftEdge) {
-            this.center.setX(leftEdge + radius);
-            collidedVertical = true;
-        } else if ((x + radius) >= (width + leftEdge)) {
-            this.center.setX(width + leftEdge - radius);
-            collidedVertical = true;
-        }
-        if (y - radius <= downEdge) {
-            this.center.setY(downEdge + radius);
-            collidedHorizontal = true;
-        } else if ((y + radius) >= (height + downEdge)) {
-            this.center.setY(height + downEdge - radius);
-            collidedHorizontal = true;
-        }
-        if (collidedVertical) {
-            this.setVelocity(CHANGE_DIR * this.getVelocity().getDx(),
-                    this.getVelocity().getDy());
-        }
-        if (collidedHorizontal) {
-            this.setVelocity(this.getVelocity().getDx(),
-                    CHANGE_DIR * this.getVelocity().getDy());
-        }
-    }
+//    /**
+//     * The method gets the measurements of a frame and coordinates for its
+//     * left-down point. It calls moveOneStep() and checks if this ball
+//     collided or went through the frame and if so, it returns it back to
+//     * the wall and changes the velocity direction accordingly.
+//     *
+//     * @param width (int) - the frame's width
+//     * @param height (int) - the frame's height
+//     * @param leftEdge (double) - the frame's left edge
+//     * @param downEdge (double) - the frame's down edge
+//     */
+//    public void moveInFrame(int width, int height, double leftEdge,
+//                            double downEdge) {
+//        this.moveOneStep();
+//        boolean collidedVertical = false, collidedHorizontal = false;
+//        double x = this.center.getX(), y = this.center.getY();
+//        double radius = this.getSize();
+//        if ((x - radius) <= leftEdge) {
+//            this.center.setX(leftEdge + radius);
+//            collidedVertical = true;
+//        } else if ((x + radius) >= (width + leftEdge)) {
+//            this.center.setX(width + leftEdge - radius);
+//            collidedVertical = true;
+//        }
+//        if (y - radius <= downEdge) {
+//            this.center.setY(downEdge + radius);
+//            collidedHorizontal = true;
+//        } else if ((y + radius) >= (height + downEdge)) {
+//            this.center.setY(height + downEdge - radius);
+//            collidedHorizontal = true;
+//        }
+//        if (collidedVertical) {
+//            this.setVelocity(CHANGE_DIR * this.getVelocity().getDx(),
+//                    this.getVelocity().getDy());
+//        }
+//        if (collidedHorizontal) {
+//            this.setVelocity(this.getVelocity().getDx(),
+//                    CHANGE_DIR * this.getVelocity().getDy());
+//        }
+//    }
 
     /**
      * The method applies the velocity to this ball's coordinates and

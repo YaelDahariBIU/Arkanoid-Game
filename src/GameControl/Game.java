@@ -6,8 +6,8 @@ import GameObjects.Block;
 import GameObjects.Paddle;
 import GeometryPrimitives.Point;
 import GeometryPrimitives.Rectangle;
-import SpriteControl.Sprite;
-import SpriteControl.SpriteCollection;
+import GameControl.SpriteControl.Sprite;
+import GameControl.SpriteControl.SpriteCollection;
 import biuoop.DrawSurface;
 import biuoop.GUI;
 import biuoop.KeyboardSensor;
@@ -72,7 +72,7 @@ public class Game {
     /**
      * The method adds a sprite object to this collection of sprites.
      *
-     * @param s (SpriteControl.Sprite) - the object we need to add
+     * @param s (GameControl.SpriteControl.Sprite) - the object we need to add
      */
     public void addSprite(Sprite s) {
         this.sprites.addSprite(s);

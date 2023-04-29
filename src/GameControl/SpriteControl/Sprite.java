@@ -1,5 +1,5 @@
 // 325166510 Yael Dahari
-package SpriteControl;
+package GameControl.SpriteControl;
 import GameControl.Game;
 import biuoop.DrawSurface;
 

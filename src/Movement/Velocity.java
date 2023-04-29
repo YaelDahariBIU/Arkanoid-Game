@@ -3,7 +3,7 @@ package Movement;
 import GeometryPrimitives.Point;
 
 /**
- * Movement.Velocity specifies the change in position on the `x` and the `y` axes.
+ * Movement.Velocity specifies the change in position on the `x`, `y` axes.
  */
 public class Velocity {
     private double dx;
@@ -26,7 +26,7 @@ public class Velocity {
      *
      * @param angle (double) - the angle
      * @param speed (double) - the speed
-     * @return (Movement.Velocity) - the velocity that matches said angle and speed
+     * @return (Movement.Velocity) - the velocity that matches the given values
      */
     public static Velocity fromAngleAndSpeed(double angle, double speed) {
         double dx = speed * Math.sin(Math.toRadians(angle));

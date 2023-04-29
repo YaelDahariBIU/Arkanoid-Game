@@ -14,7 +14,7 @@ public class Line {
     static final int NONE = 0;
     static final int SINGLE = 1;
     static final int INFINITE = 2;
-    static final double HALFWAY = 2;
+//    static final double HALFWAY = 2;
     static final int FIRST = 0;
     static final int INVALID = -1;
     static final int EMPTY = 0;
@@ -34,19 +34,19 @@ public class Line {
         this.length = start.distance(end);
     }
 
-    /**
-     * Instantiates a new GeometryPrimitives.Line.
-     *
-     * @param x1 (double) - the x value of the first point
-     * @param y1 (double) - the y value of the first point
-     * @param x2 (double) - the x value of the second point
-     * @param y2 (double) - the y value of the second point
-     */
-    public Line(double x1, double y1, double x2, double y2) {
-        this.start = new Point(x1, y1);
-        this.end = new Point(x2, y2);
-        this.length = this.start().distance(this.end());
-    }
+//    /**
+//     * Instantiates a new GeometryPrimitives.Line.
+//     *
+//     * @param x1 (double) - the x value of the first point
+//     * @param y1 (double) - the y value of the first point
+//     * @param x2 (double) - the x value of the second point
+//     * @param y2 (double) - the y value of the second point
+//     */
+//    public Line(double x1, double y1, double x2, double y2) {
+//        this.start = new Point(x1, y1);
+//        this.end = new Point(x2, y2);
+//        this.length = this.start().distance(this.end());
+//    }
 
     /**
      * The function returns the length of the line.
@@ -57,17 +57,17 @@ public class Line {
         return this.length;
     }
 
-    /**
-     * The function returns the middle point of the line.
-     *
-     * @return (GeometryPrimitives.Point) - the middle point of the line
-     */
-
-    public Point middle() {
-        double x = (this.start().getX() + this.end().getX()) / HALFWAY;
-        double y = (this.start().getY() + this.end().getY()) / HALFWAY;
-        return new Point(x, y);
-    }
+//    /**
+//     * The function returns the middle point of the line.
+//     *
+//     * @return (GeometryPrimitives.Point) - the middle point of the line
+//     */
+//
+//    public Point middle() {
+//        double x = (this.start().getX() + this.end().getX()) / HALFWAY;
+//        double y = (this.start().getY() + this.end().getY()) / HALFWAY;
+//        return new Point(x, y);
+//    }
 
     /**
      * The function returns the start point of the line.
@@ -105,7 +105,8 @@ public class Line {
      * its y value (if the 'y's are the same we'll do it with the x value),
      * and returns the new line with start as the min and end as the max.
      *
-     * @return (GeometryPrimitives.Line) - a line with start as the min and end as the max.
+     * @return (GeometryPrimitives.Line) - a line with start as the min and
+     * end as the max.
      */
     private Line arrangeInOrder() {
         if (this.slope() == null || this.slope() != NO_SLOPE) {
@@ -286,8 +287,8 @@ public class Line {
      * or that there's more than one, it returns null).
      *
      * @param other (GeometryPrimitives.Line) - the other line
-     * @return (GeometryPrimitives.Point) - the intersection point if the lines intersect,
-     * and null otherwise.
+     * @return (GeometryPrimitives.Point) - the intersection point if the lines
+     * intersect, and null otherwise.
      */
     public Point intersectionWith(Line other) {
         Double slp1 = this.slope(), slp2 = other.slope();
@@ -345,8 +346,10 @@ public class Line {
      * The method checks if this line intersects with the rectangle. If not, it
      * returns null. Otherwise, it returns the closest intersection point to
      * the start of the line.
-     * @param rect (GeometryPrimitives.Rectangle) - a given GeometryPrimitives.Rectangle
-     * @return (GeometryPrimitives.Point) - the closest intersection point to the start of line
+     * @param rect (GeometryPrimitives.Rectangle) - a given
+     * GeometryPrimitives.Rectangle
+     * @return (GeometryPrimitives.Point) - the closest intersection point to
+     * the start of line
      */
     public Point closestIntersectionToStartOfLine(Rectangle rect) {
         List<Point> inter = rect.intersectionPoints(this);

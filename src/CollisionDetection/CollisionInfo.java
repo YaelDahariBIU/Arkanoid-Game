@@ -13,7 +13,8 @@ public class CollisionInfo {
      * Instantiates a new Collision info.
      *
      * @param collisionPoint (GeometryPrimitives.Point) - the collision point
-     * @param collisionObject (CollisionDetection.Collidable) - the collision object
+     * @param collisionObject (CollisionDetection.Collidable) - the collision
+     * object
      */
     public CollisionInfo(Point collisionPoint, Collidable collisionObject) {
         this.collisionPoint = collisionPoint;

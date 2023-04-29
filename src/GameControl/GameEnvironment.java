@@ -42,7 +42,8 @@ public class GameEnvironment {
      * the closest collision that is going to occur.
      *
      * @param trajectory (GeometryPrimitives.Line) - the trajectory line
-     * @return (CollisionDetection.CollisionInfo) - the closest collision's information
+     * @return (CollisionDetection.CollisionInfo) - the closest collision's
+     * information
      */
     public CollisionInfo getClosestCollision(Line trajectory) {
         Point common;
