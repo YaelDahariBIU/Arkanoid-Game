@@ -79,8 +79,8 @@ public class Game {
     }
 
     /**
-     * The method initializes a new game: create the Blocks, Balls and
-     * GameObjects.Paddle, and add them to this game.
+     * The method initializes a new game: creates a GameObjects.Paddle, the
+     * Blocks, two Balls and adds them to this game.
      */
     public void initialize() {
         initializePaddle();

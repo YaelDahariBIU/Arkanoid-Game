@@ -15,12 +15,8 @@
       <change beforePath="$PROJECT_DIR$/src/Ass2/MultipleBouncingBallsAnimation.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Ass2/MultipleFramesBouncingBallsAnimation.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GameControl/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameControl/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GameObjects/Ball.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameObjects/Ball.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GameObjects/Block.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameObjects/Block.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GameObjects/Paddle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameObjects/Paddle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GameControl/GameEnvironment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameControl/GameEnvironment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/SimpleMain.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SpriteControl/Sprite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameControl/SpriteControl/Sprite.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SpriteControl/SpriteCollection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameControl/SpriteControl/SpriteCollection.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,7 +103,8 @@
       <workItem from="1682334868047" duration="41470000" />
       <workItem from="1682607826020" duration="6121000" />
       <workItem from="1682693861588" duration="471000" />
-      <workItem from="1682794765338" duration="479000" />
+      <workItem from="1682794765338" duration="1408000" />
+      <workItem from="1682955144332" duration="1073000" />
     </task>
     <task id="LOCAL‎-00001" summary="phase1">
       <created>1680211675458</created>
@@ -221,7 +218,14 @@
       <option name="project" value="LOCAL‎" />
       <updated>1682694329573</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL‎-00017" summary="final edit">
+      <created>1682795847186</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL‎-00017" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1682795847186</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

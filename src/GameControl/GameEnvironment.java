@@ -6,7 +6,6 @@ import GameObjects.Paddle;
 import GeometryPrimitives.Line;
 import GeometryPrimitives.Point;
 import GeometryPrimitives.Rectangle;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,7 +16,6 @@ public class GameEnvironment {
     static final int EMPTY = 0;
     static final int INVALID = -1;
     static final int FIRST = 0;
-    static final int PADDLE_WIDTH = 150;
     private final List<Collidable> objects;
 
     /**
@@ -77,17 +75,13 @@ public class GameEnvironment {
     }
 
     /**
-     * The method goes over the collidable objects in the game until it finds
-     * the paddle,which is the only object with a 150 width and returns it.
+     * The method returns the first collidable from the game's list of objects.
+     * According to my implementation of the "initialize()" method in Game, the
+     * first object in said list is always the paddle.
      *
      * @return (Paddle) - the game's paddle;
      */
     public Paddle getPaddle() {
-        for (Collidable object : this.objects) {
-            if (object.getCollisionRectangle().getWidth() == PADDLE_WIDTH) {
-                return (Paddle) object;
-            }
-        }
-        return null;
+        return (Paddle) this.objects.get(FIRST);
     }
 }
