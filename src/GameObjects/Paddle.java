@@ -29,7 +29,6 @@ public class Paddle implements Sprite, Collidable {
     static final int REGIONS = 5;
     static final int ANGLE_1 = -60;
     static final int ANGLE_2 = -30;
-    static final int ANGLE_3 = 0;
     static final int ANGLE_4 = 30;
     static final int ANGLE_5 = 60;
     private final biuoop.KeyboardSensor keyboard;
@@ -103,7 +102,8 @@ public class Paddle implements Sprite, Collidable {
             return Velocity.fromAngleAndSpeed(ANGLE_2, SPEED);
         }
         if (x - paddleX <= THIRD * region) {
-            return Velocity.fromAngleAndSpeed(ANGLE_3, SPEED);
+            return new Velocity(currentVelocity.getDx(),
+                    -currentVelocity.getDy());
         }
         if (x - paddleX <= FOURTH * region) {
             return Velocity.fromAngleAndSpeed(ANGLE_4, SPEED);
