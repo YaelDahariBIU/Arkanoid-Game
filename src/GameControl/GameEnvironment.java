@@ -1,7 +1,7 @@
 // 325166510 Yael Dahari
 package GameControl;
-import CollisionDetection.Collidable;
-import CollisionDetection.CollisionInfo;
+import CollisionControl.Collidable;
+import CollisionControl.CollisionInfo;
 import GameObjects.Paddle;
 import GeometryPrimitives.Line;
 import GeometryPrimitives.Point;
@@ -83,5 +83,19 @@ public class GameEnvironment {
      */
     public Paddle getPaddle() {
         return (Paddle) this.objects.get(FIRST);
+    }
+    public List<Collidable> getObjects() {
+        return this.objects;
+    }
+    public boolean contains(Collidable c) {
+        for (Collidable collidable: this.objects) {
+            if (collidable.equals(c)) {
+                return true;
+            }
+        }
+        return false;
+    }
+    public void removeCollidable(Collidable c) {
+        this.objects.remove(c);
     }
 }

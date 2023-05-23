@@ -4,7 +4,7 @@ import GameObjects.Ball;
 import GameObjects.Block;
 import GeometryPrimitives.Point;
 import GeometryPrimitives.Rectangle;
-import SpriteControl.Sprite;
+import GameControl.SpriteControl.Sprite;
 import biuoop.DrawSurface;
 import biuoop.GUI;
 import biuoop.Sleeper;

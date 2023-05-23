@@ -1,5 +1,5 @@
 // 325166510 Yael Dahari
-package CollisionDetection;
+package CollisionControl;
 import GeometryPrimitives.Point;
 
 /**

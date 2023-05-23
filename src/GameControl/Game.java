@@ -1,6 +1,7 @@
 // 325166510 Yael Dahari
 package GameControl;
-import CollisionDetection.Collidable;
+import CollisionControl.Collidable;
+import CollisionControl.PrintingHitListener;
 import GameObjects.Ball;
 import GameObjects.Block;
 import GameObjects.Paddle;
@@ -13,6 +14,8 @@ import biuoop.GUI;
 import biuoop.KeyboardSensor;
 import biuoop.Sleeper;
 import java.awt.Color;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * GameControl.Game holds the sprites and the collidables, and is in charge of
@@ -27,8 +30,8 @@ public class Game {
     static final int WIDTH = 800;
     static final int HEIGHT = 600;
     static final int DEPTH = 10;
-    static final int DEFAULT_VALUE = 10;
-    static final int NUM_BALLS = 2;
+    static final int DEFAULT_VALUE = 7;
+    static final int NUM_BALLS = 3;
     static final int EDGE = 0;
     static final int MAX_BLOCKS = 12;
     static final int MIN_BLOCKS = 7;
@@ -40,14 +43,16 @@ public class Game {
     static final int FPS = 60;
     static final int MSPF = 1000;
     static final int POSITIVE = 0;
-    static final Point[] DEFAULT_POINTS = {new Point(400, 400),
-            new Point(450, 450)};
+    static final Point[] DEFAULT_POINTS = {new Point(340, 480),
+            new Point(350, 480), new Point(360, 480)};
     static final Color[] COLORS = {Color.red, Color.ORANGE, Color.YELLOW,
             Color.green, Color.cyan, Color.BLUE};
     private final SpriteCollection sprites;
     private final GameEnvironment environment;
     private final KeyboardSensor keyboardSensor;
     private final GUI gui;
+    private final Counter remainingBlocks;
+    private final Counter remainingBalls;
 
     /**
      * Instantiates a new GameControl.Game.
@@ -57,6 +62,8 @@ public class Game {
         this.environment = new GameEnvironment();
         this.gui = new GUI("game :)", WIDTH, HEIGHT);
         this.keyboardSensor = this.gui.getKeyboardSensor();
+        this.remainingBlocks = new Counter();
+        this.remainingBalls = new Counter();
     }
 
     /**
@@ -84,7 +91,7 @@ public class Game {
      */
     public void initialize() {
         initializePaddle();
-        initializeBalls();
+        this.remainingBalls.increase(initializeBalls());
         initializeBorders();
         initializeRows();
     }
@@ -99,29 +106,33 @@ public class Game {
     /**
      * The method creates the balls and adds them to this game.
      */
-    private void initializeBalls() {
+    private int initializeBalls() {
         Ball[] balls = new Ball[NUM_BALLS];
         for (int i = 0; i < balls.length; i++) {
             balls[i] = new Ball(DEFAULT_POINTS[i], DEFAULT_VALUE, Color.BLACK);
             balls[i].setVelocity(DEFAULT_VALUE, DEFAULT_VALUE);
             balls[i].setEnvironment(this.environment);
             balls[i].addToGame(this);
+            this.remainingBalls.increase(1);
         }
+        return balls.length;
     }
     /**
      * The method creates the borders and adds them to this game.
      */
     private void initializeBorders() {
         Block[] borders = new Block[SIZE];
-        borders[FIRST] = new Block(new Rectangle(new Point(EDGE, EDGE),
-                WIDTH, DEPTH), Color.gray);
+        // the death-region block
+        borders[FIRST] = new Block(new Rectangle(new Point(EDGE,
+                HEIGHT - DEPTH), WIDTH, DEPTH), Color.gray);
+        BallRemover ballRemover = new BallRemover(this, remainingBalls);
+        borders[FIRST].addHitListener(ballRemover);
         borders[SECOND] = new Block(new Rectangle(new Point(EDGE, DEPTH),
-                DEPTH, HEIGHT), Color.gray);
+                DEPTH, HEIGHT - DEPTH), Color.gray);
         borders[THIRD] = new Block(new Rectangle(new Point(WIDTH - DEPTH,
-                DEPTH), DEPTH, HEIGHT - DEPTH), Color.gray);
-        borders[FOURTH] = new Block(new Rectangle(new Point(DEPTH,
-                HEIGHT - DEPTH), WIDTH - DEPTH - DEPTH, DEPTH),
-                Color.gray);
+                DEPTH), DEPTH, HEIGHT - DEPTH - DEPTH), Color.gray);
+        borders[FOURTH] = new Block(new Rectangle(new Point(EDGE, EDGE),
+                WIDTH, DEPTH), Color.gray);
         for (Block border : borders) {
             border.addToGame(this);
         }
@@ -131,13 +142,18 @@ public class Game {
      * The method creates the rows of blocks and adds them to this game.
      */
     public void initializeRows() {
+        BlockRemover blockRemover = new BlockRemover(this, remainingBlocks);
+        PrintingHitListener p = new PrintingHitListener();
         Block[] blocks = new Block[MAX_BLOCKS];
         for (int j = 0; j < NUM_OF_ROWS; j++) {
             for (int i = 0; i < j + MIN_BLOCKS; i++) {
                 Rectangle rect = new Rectangle(new Point(X - i * WIDTH_BLOCK,
                         Y - j * HEIGHT_BLOCK), WIDTH_BLOCK, HEIGHT_BLOCK);
                 blocks[i] = new Block(rect, COLORS[j]);
+                blocks[i].addHitListener(blockRemover);
                 blocks[i].addToGame(this);
+                blockRemover.addBlock();
+                this.remainingBlocks.increase(1);
             }
         }
     }
@@ -162,6 +178,41 @@ public class Game {
             if (milliSecondLeftToSleep > POSITIVE) {
                 sleeper.sleepFor(milliSecondLeftToSleep);
             }
+
+            if (remainingBalls.getValue() == 0 || remainingBlocks.getValue() == 0) {
+                return;
+            }
+        }
+    }
+    public void removeCollidable(Collidable c) {
+//        List<Collidable> collidables =
+//                new ArrayList<>(this.environment.getObjects());
+//        for (Collidable collidable : collidables) {
+//            if (c.equals(collidable)) {
+//                this.environment.getObjects().remove(c);
+//            }
+//        }
+        this.environment.removeCollidable(c);
+    }
+    public void removeSprite(Sprite s) {
+//        List<Sprite> sprites = new ArrayList<>(this.sprites.getSprites());
+//        for (Sprite sprite : sprites) {
+//            if (s.equals(sprite)) {
+//                this.sprites.getSprites().remove(s);
+//                if (sprite.getClass() == Block.class) {
+//                    this.remainingBlocks.decrease(1);
+//                }
+//                if (sprite.getClass() == Ball.class) {
+//                    this.remainingBalls.decrease(1);
+//                }
+//            }
+//        }
+        this.sprites.removeSprite(s);
+        if (s.getClass() == Block.class) {
+            this.remainingBlocks.decrease(1);
+        }
+        if (s.getClass() == Ball.class) {
+            this.remainingBalls.decrease(1);
         }
     }
 }

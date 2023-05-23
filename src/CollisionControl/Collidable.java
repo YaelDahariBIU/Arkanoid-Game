@@ -1,5 +1,6 @@
 // 325166510 Yael Dahari
-package CollisionDetection;
+package CollisionControl;
+import GameObjects.Ball;
 import GeometryPrimitives.Point;
 import GeometryPrimitives.Rectangle;
 import Movement.Velocity;
@@ -17,13 +18,14 @@ public interface Collidable {
     Rectangle getCollisionRectangle();
 
     /**
-     * The method notify the object that we collided with it at collisionPoint
-     * with a given velocity and returns the new velocity expected after the
-     * hit (based on the force the object inflicted on us).
+     * The method notify the object that the ball hdd collided with it at
+     * collisionPoint with a given velocity and returns the new velocity
+     * expected after the hit (based on the force the object inflicted on us).
      *
+     * @param hitter (Ball) - the ball that's hitting the collidable
      * @param collisionPoint (GeometryPrimitives.Point) - the collision point
      * @param currentVelocity (Movement.Velocity) - the current velocity
      * @return (Movement.Velocity) - the new velocity
      */
-    Velocity hit(Point collisionPoint, Velocity currentVelocity);
+    Velocity hit(Ball hitter, Point collisionPoint, Velocity currentVelocity);
 }

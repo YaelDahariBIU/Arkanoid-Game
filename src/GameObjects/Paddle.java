@@ -1,6 +1,6 @@
 // 325166510 Yael Dahari
 package GameObjects;
-import CollisionDetection.Collidable;
+import CollisionControl.Collidable;
 import GeometryPrimitives.Point;
 import GeometryPrimitives.Rectangle;
 import biuoop.DrawSurface;
@@ -16,13 +16,13 @@ import Movement.Velocity;
  * know how to move to the left and to the right.
  */
 public class Paddle implements Sprite, Collidable {
-    static final int DISTANCE = 10;
+    static final int DISTANCE = 15;
     static final int X = 300;
     static final int Y = 550;
     static final int WIDTH = 150;
     static final int HEIGHT = 50;
     static final int BORDER_WIDTH = 790;
-    static final int SPEED = 10;
+    static final int SPEED = 7;
     static final int SECOND = 2;
     static final int THIRD = 3;
     static final int FOURTH = 4;
@@ -91,7 +91,8 @@ public class Paddle implements Sprite, Collidable {
         return this.shape;
     }
     @Override
-    public Velocity hit(Point collisionPoint, Velocity currentVelocity) {
+    public Velocity hit(Ball hitter, Point collisionPoint,
+                        Velocity currentVelocity) {
         double x = collisionPoint.getX();
         double paddleX = this.getCollisionRectangle().getUpperLeft().getX();
         double region = this.getCollisionRectangle().getWidth() / REGIONS;

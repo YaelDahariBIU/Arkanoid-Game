@@ -1,6 +1,6 @@
 // 325166510 Yael Dahari
 package GameObjects;
-import CollisionDetection.CollisionInfo;
+import CollisionControl.CollisionInfo;
 import GameControl.Game;
 import GameControl.GameEnvironment;
 import GeometryPrimitives.Line;
@@ -193,7 +193,7 @@ public class Ball implements Sprite {
                 trajectory.start().getX()));
         this.center.setY(moveABit(c.collisionPoint().getY(),
                 trajectory.start().getY()));
-        this.setVelocity(c.collisionObject().hit(c.collisionPoint(),
+        this.setVelocity(c.collisionObject().hit(this, c.collisionPoint(),
                 this.getVelocity()));
     }
 
@@ -250,5 +250,7 @@ public class Ball implements Sprite {
     public void setCenter(Point center) {
         this.center = center;
     }
-
+    public void removeFromGame(Game g) {
+        g.removeSprite(this);
+    }
 }

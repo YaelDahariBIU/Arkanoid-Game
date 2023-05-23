@@ -30,8 +30,10 @@ public class SpriteCollection {
      * The method calls timePassed() on all sprites.
      */
     public void notifyAllTimePassed() {
-        for (Sprite sprite : this.sprites) {
-            sprite.timePassed();
+        int size = this.sprites.size();
+        for (int i = 0; i < size; i++) {
+            this.sprites.get(i).timePassed();
+            size = this.sprites.size();
         }
     }
 
@@ -44,5 +46,12 @@ public class SpriteCollection {
         for (Sprite sprite : this.sprites) {
             sprite.drawOn(d);
         }
+    }
+    public void removeSprite(Sprite s) {
+        this.sprites.remove(s);
+    }
+
+    public List<Sprite> getSprites() {
+        return this.sprites;
     }
 }
