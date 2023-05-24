@@ -47,11 +47,13 @@ public class SpriteCollection {
             sprite.drawOn(d);
         }
     }
+
+    /**
+     * The method gets a sprite and removes it from this list.
+     *
+     * @param s (Sprite) - the given sprite
+     */
     public void removeSprite(Sprite s) {
         this.sprites.remove(s);
-    }
-
-    public List<Sprite> getSprites() {
-        return this.sprites;
     }
 }

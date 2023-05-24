@@ -40,8 +40,7 @@ public class GameEnvironment {
      * the closest collision that is going to occur.
      *
      * @param trajectory (GeometryPrimitives.Line) - the trajectory line
-     * @return (CollisionDetection.CollisionInfo) - the closest collision's
-     * information
+     * @return (CollisionDetection.CollisionInfo) - the closest collision's information
      */
     public CollisionInfo getClosestCollision(Line trajectory) {
         Point common;
@@ -84,17 +83,21 @@ public class GameEnvironment {
     public Paddle getPaddle() {
         return (Paddle) this.objects.get(FIRST);
     }
+
+    /**
+     * The method returns the list of objects in this game.
+     *
+     * @return (List-Collidable-) - the list of collidables.
+     */
     public List<Collidable> getObjects() {
         return this.objects;
     }
-    public boolean contains(Collidable c) {
-        for (Collidable collidable: this.objects) {
-            if (collidable.equals(c)) {
-                return true;
-            }
-        }
-        return false;
-    }
+
+    /**
+     * The method removes a given collidable from the list of objects.
+     *
+     * @param c (Collidable) - the given object
+     */
     public void removeCollidable(Collidable c) {
         this.objects.remove(c);
     }

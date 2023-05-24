@@ -17,13 +17,20 @@ import java.util.List;
  * Blocks are rectangles that have a color. We can collide into them.
  */
 public class Block implements Collidable, Sprite, HitNotifier {
+    static final int RED = 0;
+    static final int ORANGE = 1;
+    static final int YELLOW = 2;
+    static final int GREEN = 3;
+    static final int CYAN = 4;
+    static final int BLUE = 5;
     private final Rectangle rect;
     private final java.awt.Color color;
     private final List<HitListener> hitListeners;
+
     /**
      * Instantiates a new GameObjects.Block.
      *
-     * @param rect (GeometryPrimitives.Rectangle) - the shape of the block
+     * @param rect  (GeometryPrimitives.Rectangle) - the shape of the block
      * @param color (Color) - the color of the block
      */
     public Block(Rectangle rect, java.awt.Color color) {
@@ -81,6 +88,17 @@ public class Block implements Collidable, Sprite, HitNotifier {
         game.addCollidable(this);
         game.addSprite(this);
     }
+
+    @Override
+    public boolean isABall() {
+        return false;
+    }
+
+    /**
+     * The method removes this block from a given game.
+     *
+     * @param game (Game) - the given game
+     */
     public void removeFromGame(Game game) {
         game.removeCollidable(this);
         game.removeSprite(this);
@@ -101,6 +119,22 @@ public class Block implements Collidable, Sprite, HitNotifier {
         // Notify all listeners about a hit event:
         for (HitListener hl : listeners) {
             hl.hitEvent(this, hitter);
+        }
+    }
+    @Override
+    public int getColorIndex() {
+        if (this.color == Color.red) {
+            return RED;
+        } else if (this.color == Color.ORANGE) {
+            return ORANGE;
+        } else if (this.color == Color.yellow) {
+            return YELLOW;
+        } else if (this.color == Color.green) {
+            return GREEN;
+        } else if (this.color == Color.cyan) {
+            return CYAN;
+        } else {
+            return BLUE;
         }
     }
 }

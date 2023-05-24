@@ -31,6 +31,7 @@ public class Paddle implements Sprite, Collidable {
     static final int ANGLE_2 = -30;
     static final int ANGLE_4 = 30;
     static final int ANGLE_5 = 60;
+    static final int INDEX = 6;
     private final biuoop.KeyboardSensor keyboard;
     private final Rectangle shape;
 
@@ -115,5 +116,13 @@ public class Paddle implements Sprite, Collidable {
     public void addToGame(Game game) {
         game.addSprite(this);
         game.addCollidable(this);
+    }
+    @Override
+    public int getColorIndex() {
+        return INDEX;
+    }
+    @Override
+    public boolean isABall() {
+        return false;
     }
 }

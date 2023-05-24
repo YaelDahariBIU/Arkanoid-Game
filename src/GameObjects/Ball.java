@@ -225,6 +225,11 @@ public class Ball implements Sprite {
         game.addSprite(this);
     }
 
+    @Override
+    public boolean isABall() {
+        return true;
+    }
+
     /**
      * The method checks if said ball is within the game's paddle and if so,
      * it moves the ball to the border of the paddle.
@@ -250,6 +255,12 @@ public class Ball implements Sprite {
     public void setCenter(Point center) {
         this.center = center;
     }
+
+    /**
+     * The method removes this ball from the given game.
+     *
+     * @param g (Game) - the given game
+     */
     public void removeFromGame(Game g) {
         g.removeSprite(this);
     }

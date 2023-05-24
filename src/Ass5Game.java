@@ -5,7 +5,7 @@ import GameControl.Game;
  * Create a game object with a paddle (which is controlled by the left and
  * right arrows), two balls, and blocks.
  */
-public class Ass3Game {
+public class Ass5Game {
     /**
      * The method creates a game, initializes it and runs it.
      *
