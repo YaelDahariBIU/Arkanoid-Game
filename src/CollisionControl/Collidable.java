@@ -28,11 +28,4 @@ public interface Collidable {
      * @return (Movement.Velocity) - the new velocity
      */
     Velocity hit(Ball hitter, Point collisionPoint, Velocity currentVelocity);
-
-    /**
-     * The method returns the agreed-upon index of the collidable color.
-     *
-     * @return (int) - the index
-     */
-    int getColorIndex();
 }

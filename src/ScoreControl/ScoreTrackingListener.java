@@ -11,6 +11,7 @@ import GameObjects.Block;
  */
 public class ScoreTrackingListener implements HitListener {
     static final int SCORE = 5;
+    static final int BONUS = 100;
     private final Counter currentScore;
 
     /**
@@ -24,5 +25,12 @@ public class ScoreTrackingListener implements HitListener {
     @Override
     public void hitEvent(Block beingHit, Ball hitter) {
         this.currentScore.increase(SCORE);
+    }
+
+    /**
+     * The method increases the score by the regular value and adds a bonus.
+     */
+    public void bonusEvent() {
+        this.currentScore.increase(BONUS + SCORE);
     }
 }

@@ -44,7 +44,6 @@ public class Game {
     static final int POSITIVE = 0;
     static final int EXTRA = 30;
     static final int NONE = 0;
-    static final int BONUS = 100;
     static final int SINGLE = 1;
     static final Point[] DEFAULT_POINTS = {new Point(340, 480),
             new Point(350, 480), new Point(360, 480)};
@@ -57,7 +56,6 @@ public class Game {
     private final Counter remainingBlocks;
     private final Counter remainingBalls;
     private final Counter score;
-    private final Counter givenBonuses;
 
     /**
      * Instantiates a new GameControl.Game.
@@ -70,7 +68,6 @@ public class Game {
         this.remainingBlocks = new Counter();
         this.remainingBalls = new Counter();
         this.score = new Counter();
-        this.givenBonuses = new Counter();
     }
 
     /**
@@ -192,12 +189,23 @@ public class Game {
             if (milliSecondLeftToSleep > POSITIVE) {
                 sleeper.sleepFor(milliSecondLeftToSleep);
             }
-            checkForBonus();
             if (remainingBalls.getValue() == NONE
                     || remainingBlocks.getValue() == NONE) {
+                if (remainingBlocks.getValue() == NONE) {
+                    bonusEvent();
+                }
                 return;
             }
         }
+    }
+    private void bonusEvent() {
+        DrawSurface d = this.gui.getDrawSurface();
+        ScoreTrackingListener listener = new ScoreTrackingListener(score);
+        ScoreIndicator indicator = new ScoreIndicator(score);
+        listener.bonusEvent();
+        this.sprites.drawAllOn(d);
+        indicator.drawOn(d);
+        this.gui.show(d);
     }
 
     /**
@@ -220,23 +228,6 @@ public class Game {
             remainingBalls.decrease(SINGLE);
         } else {
             remainingBlocks.decrease(SINGLE);
-        }
-    }
-    private void checkForBonus() {
-        int[] numColors = new int[NUM_OF_ROWS];
-        for (Collidable collidable : this.environment.getObjects()) {
-            if (collidable.getCollisionRectangle().getWidth() == WIDTH_BLOCK) {
-                numColors[collidable.getColorIndex()] = SINGLE;
-            }
-        }
-        int emptyRows = NUM_OF_ROWS;
-        for (int numColor : numColors) {
-            emptyRows = emptyRows - numColor;
-        }
-        int bonuses = givenBonuses.getValue();
-        if (bonuses < emptyRows) {
-            score.increase(BONUS * (emptyRows - bonuses));
-            givenBonuses.increase(emptyRows - bonuses);
         }
     }
 }

@@ -17,6 +17,7 @@ import Movement.Velocity;
  */
 public class Paddle implements Sprite, Collidable {
     static final int DISTANCE = 15;
+    static final int EDGE = 10;
     static final int X = 300;
     static final int Y = 550;
     static final int WIDTH = 150;
@@ -31,7 +32,6 @@ public class Paddle implements Sprite, Collidable {
     static final int ANGLE_2 = -30;
     static final int ANGLE_4 = 30;
     static final int ANGLE_5 = 60;
-    static final int INDEX = 6;
     private final biuoop.KeyboardSensor keyboard;
     private final Rectangle shape;
 
@@ -51,7 +51,7 @@ public class Paddle implements Sprite, Collidable {
     public void moveLeft() {
         double x = this.shape.getUpperLeft().getX();
         if (x - DISTANCE <= DISTANCE) {
-            this.shape.getUpperLeft().setX(DISTANCE);
+            this.shape.getUpperLeft().setX(EDGE);
             return;
         }
         this.shape.getUpperLeft().setX(x - DISTANCE);
@@ -116,10 +116,6 @@ public class Paddle implements Sprite, Collidable {
     public void addToGame(Game game) {
         game.addSprite(this);
         game.addCollidable(this);
-    }
-    @Override
-    public int getColorIndex() {
-        return INDEX;
     }
     @Override
     public boolean isABall() {

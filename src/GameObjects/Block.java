@@ -17,12 +17,6 @@ import java.util.List;
  * Blocks are rectangles that have a color. We can collide into them.
  */
 public class Block implements Collidable, Sprite, HitNotifier {
-    static final int RED = 0;
-    static final int ORANGE = 1;
-    static final int YELLOW = 2;
-    static final int GREEN = 3;
-    static final int CYAN = 4;
-    static final int BLUE = 5;
     private final Rectangle rect;
     private final java.awt.Color color;
     private final List<HitListener> hitListeners;
@@ -119,22 +113,6 @@ public class Block implements Collidable, Sprite, HitNotifier {
         // Notify all listeners about a hit event:
         for (HitListener hl : listeners) {
             hl.hitEvent(this, hitter);
-        }
-    }
-    @Override
-    public int getColorIndex() {
-        if (this.color == Color.red) {
-            return RED;
-        } else if (this.color == Color.ORANGE) {
-            return ORANGE;
-        } else if (this.color == Color.yellow) {
-            return YELLOW;
-        } else if (this.color == Color.green) {
-            return GREEN;
-        } else if (this.color == Color.cyan) {
-            return CYAN;
-        } else {
-            return BLUE;
         }
     }
 }
