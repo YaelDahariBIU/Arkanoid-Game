@@ -1,13 +1,19 @@
 // 325166510 Yael Dahari
 package GeometryPrimitives;
+import GameControl.GameLevel;
+import GameControl.SpriteControl.Sprite;
+import biuoop.DrawSurface;
+
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Rectangles have an upper-left point that indicates their location, a width
  * and a height so that we'd know their size.
  */
-public class Rectangle {
+public class Rectangle implements Sprite {
     static final int FIRST = 0;
     static final int SECOND = 1;
     static final int THIRD = 2;
@@ -16,6 +22,7 @@ public class Rectangle {
     private final Point upperLeft;
     private final double width;
     private final double height;
+    private Color color;
 
     /**
      * Instantiates a new GeometryPrimitives.Rectangle with location and
@@ -130,5 +137,31 @@ public class Rectangle {
         Point upperRight = new Point(getUpperLeft().getX() + getWidth(),
                 getUpperLeft().getY());
        return new Line(upperRight, downRight);
+    }
+    public void setColor(Color color) {
+        this.color = color;
+    }
+    @Override
+    public void drawOn(DrawSurface d) {
+        d.setColor(Color.BLACK);
+        d.drawRectangle((int) upperLeft.getX(), (int) upperLeft.getY(),
+                (int) width, (int) height);
+        d.setColor(color);
+        d.fillRectangle((int) upperLeft.getX(), (int) upperLeft.getY(),
+                (int) width, (int) height);
+    }
+
+    @Override
+    public void timePassed() {
+    }
+
+    @Override
+    public void addToGame(GameLevel game) {
+        game.addSprite(this);
+    }
+
+    @Override
+    public boolean isABall() {
+        return false;
     }
 }

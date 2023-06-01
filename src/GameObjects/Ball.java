@@ -1,7 +1,7 @@
 // 325166510 Yael Dahari
 package GameObjects;
 import CollisionControl.CollisionInfo;
-import GameControl.Game;
+import GameControl.GameLevel;
 import GameControl.GameEnvironment;
 import GeometryPrimitives.Line;
 import GeometryPrimitives.Point;
@@ -221,7 +221,7 @@ public class Ball implements Sprite {
         this.environment = environment;
     }
     @Override
-    public void addToGame(Game game) {
+    public void addToGame(GameLevel game) {
         game.addSprite(this);
     }
 
@@ -234,7 +234,7 @@ public class Ball implements Sprite {
      * The method checks if said ball is within the game's paddle and if so,
      * it moves the ball to the border of the paddle.
      */
-    public void withinPaddle() {
+    private void withinPaddle() {
         Paddle paddle = this.environment.getPaddle();
         double left = paddle.getCollisionRectangle().getUpperLeft().getX();
         double right = left + paddle.getCollisionRectangle().getWidth(),
@@ -261,7 +261,7 @@ public class Ball implements Sprite {
      *
      * @param g (Game) - the given game
      */
-    public void removeFromGame(Game g) {
+    public void removeFromGame(GameLevel g) {
         g.removeSprite(this);
     }
 }

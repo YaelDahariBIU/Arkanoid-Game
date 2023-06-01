@@ -5,7 +5,7 @@ import GeometryPrimitives.Point;
 import GeometryPrimitives.Rectangle;
 import biuoop.DrawSurface;
 import java.awt.Color;
-import GameControl.Game;
+import GameControl.GameLevel;
 import GameControl.SpriteControl.Sprite;
 import Movement.Velocity;
 /**
@@ -16,7 +16,6 @@ import Movement.Velocity;
  * know how to move to the left and to the right.
  */
 public class Paddle implements Sprite, Collidable {
-    static final int DISTANCE = 15;
     static final int EDGE = 10;
     static final int X = 300;
     static final int Y = 550;
@@ -34,6 +33,7 @@ public class Paddle implements Sprite, Collidable {
     static final int ANGLE_5 = 60;
     private final biuoop.KeyboardSensor keyboard;
     private final Rectangle shape;
+    private final int speed;
 
     /**
      * Instantiates a new GameObjects.Paddle.
@@ -43,6 +43,13 @@ public class Paddle implements Sprite, Collidable {
     public Paddle(biuoop.KeyboardSensor keyboard) {
         this.keyboard = keyboard;
         this.shape = new Rectangle(new Point(X, Y), WIDTH, HEIGHT);
+        this.speed = 15;
+    }
+    public Paddle(biuoop.KeyboardSensor keyboard, int width, int speed) {
+        this.keyboard = keyboard;
+        Point p = new Point((800 - width) / 2.0, Y);
+        this.shape = new Rectangle(p, width, HEIGHT);
+        this.speed = speed;
     }
 
     /**
@@ -50,11 +57,11 @@ public class Paddle implements Sprite, Collidable {
      */
     public void moveLeft() {
         double x = this.shape.getUpperLeft().getX();
-        if (x - DISTANCE <= DISTANCE) {
+        if (x - speed <= speed) {
             this.shape.getUpperLeft().setX(EDGE);
             return;
         }
-        this.shape.getUpperLeft().setX(x - DISTANCE);
+        this.shape.getUpperLeft().setX(x - speed);
     }
 
     /**
@@ -63,11 +70,11 @@ public class Paddle implements Sprite, Collidable {
     public void moveRight() {
         double x = this.shape.getUpperLeft().getX();
         double width = this.shape.getWidth();
-        if (x + DISTANCE + width >= BORDER_WIDTH) {
+        if (x + speed + width >= BORDER_WIDTH) {
             this.shape.getUpperLeft().setX(BORDER_WIDTH - width);
             return;
         }
-        this.shape.getUpperLeft().setX(x + DISTANCE);
+        this.shape.getUpperLeft().setX(x + speed);
     }
 
     @Override
@@ -113,7 +120,7 @@ public class Paddle implements Sprite, Collidable {
         return Velocity.fromAngleAndSpeed(ANGLE_5, SPEED);
     }
     @Override
-    public void addToGame(Game game) {
+    public void addToGame(GameLevel game) {
         game.addSprite(this);
         game.addCollidable(this);
     }

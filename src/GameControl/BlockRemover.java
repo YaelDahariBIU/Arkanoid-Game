@@ -10,7 +10,7 @@ import GameObjects.Block;
  */
 public class BlockRemover implements HitListener {
     static final int SINGLE = 1;
-    private final Game game;
+    private final GameLevel game;
     private final Counter remainingBlocks;
 
     /**
@@ -19,7 +19,7 @@ public class BlockRemover implements HitListener {
      * @param game (Game) - the game
      * @param remainingBlocks (Counter) - the remaining blocks
      */
-    public BlockRemover(Game game, Counter remainingBlocks) {
+    public BlockRemover(GameLevel game, Counter remainingBlocks) {
         this.game = game;
         this.remainingBlocks = remainingBlocks;
     }

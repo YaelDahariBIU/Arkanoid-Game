@@ -1,5 +1,10 @@
 // 325166510 Yael Dahari
 package GeometryPrimitives;
+import GameControl.GameLevel;
+import GameControl.SpriteControl.Sprite;
+import biuoop.DrawSurface;
+
+import java.awt.Color;
 import java.util.List;
 import java.util.Objects;
 /**
@@ -7,7 +12,7 @@ import java.util.Objects;
  * end point. Lines have lengths, and may intersect with other lines. It can
  * also tell if it is the same as another line segment.
  */
-public class Line {
+public class Line implements Sprite {
     static final double DOUBLE_THRESHOLD = 0.000001;
     static final double NO_SLOPE = 0.0;
     static final double ONE_POINT = 0.0;
@@ -21,6 +26,7 @@ public class Line {
     private final Point start;
     private final Point end;
     private final double length;
+    private Color color;
 
     /**
      * Instantiates a new GeometryPrimitives.Line.
@@ -370,5 +376,29 @@ public class Line {
             return null;
         }
         return closest;
+    }
+
+    @Override
+    public void drawOn(DrawSurface d) {
+        d.setColor(this.color);
+        d.drawLine((int) start().getX(), (int) start().getY(),
+                (int) end().getX(), (int) end().getY());
+    }
+
+    @Override
+    public void timePassed() {
+    }
+
+    @Override
+    public void addToGame(GameLevel game) {
+        game.addSprite(this);
+    }
+
+    @Override
+    public boolean isABall() {
+        return false;
+    }
+    public void setColor(Color color) {
+        this.color = color;
     }
 }

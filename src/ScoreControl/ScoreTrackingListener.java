@@ -28,9 +28,9 @@ public class ScoreTrackingListener implements HitListener {
     }
 
     /**
-     * The method increases the score by the regular value and adds a bonus.
+     * The method increases the score by a bonus.
      */
     public void bonusEvent() {
-        this.currentScore.increase(BONUS + SCORE);
+        this.currentScore.increase(BONUS);
     }
 }

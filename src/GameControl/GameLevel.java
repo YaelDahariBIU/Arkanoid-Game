@@ -1,6 +1,9 @@
 // 325166510 Yael Dahari
 package GameControl;
+import Animation.Animation;
+import Animation.AnimationRunner;
 import CollisionControl.Collidable;
+import GameControl.LevelControl.LevelInformation;
 import GameObjects.Ball;
 import GameObjects.Block;
 import GameObjects.Paddle;
@@ -11,16 +14,19 @@ import GameControl.SpriteControl.SpriteCollection;
 import ScoreControl.ScoreIndicator;
 import ScoreControl.ScoreTrackingListener;
 import biuoop.DrawSurface;
-import biuoop.GUI;
 import biuoop.KeyboardSensor;
 import biuoop.Sleeper;
 import java.awt.Color;
+import java.util.List;
+
+import Animation.PauseScreen;
+import Animation.CountdownAnimation;
 
 /**
  * GameControl.Game holds the sprites and the collidables, and is in charge of
  * the animation.
  */
-public class Game {
+public class GameLevel implements Animation {
     static final int FIRST = 0;
     static final int SECOND = 1;
     static final int THIRD = 2;
@@ -29,7 +35,7 @@ public class Game {
     static final int WIDTH = 800;
     static final int HEIGHT = 600;
     static final int DEPTH = 10;
-    static final int DEFAULT_VALUE = 7;
+    static final int RADIUS = 7;
     static final int NUM_BALLS = 3;
     static final int EDGE = 0;
     static final int MAX_BLOCKS = 12;
@@ -39,35 +45,38 @@ public class Game {
     static final int HEIGHT_BLOCK = 20;
     static final int Y = 170;
     static final int X = 740;
-    static final int FPS = 60;
-    static final int MSPF = 1000;
-    static final int POSITIVE = 0;
     static final int EXTRA = 30;
     static final int NONE = 0;
     static final int SINGLE = 1;
-    static final Point[] DEFAULT_POINTS = {new Point(340, 480),
-            new Point(350, 480), new Point(360, 480)};
+//    static final Point[] DEFAULT_POINTS = {new Point(340, 480),
+//            new Point(350, 480), new Point(360, 480)};
     static final Color[] COLORS = {Color.red, Color.ORANGE, Color.YELLOW,
             Color.green, Color.cyan, Color.BLUE};
     private final SpriteCollection sprites;
     private final GameEnvironment environment;
     private final KeyboardSensor keyboardSensor;
-    private final GUI gui;
+//    private final GUI gui;
     private final Counter remainingBlocks;
     private final Counter remainingBalls;
     private final Counter score;
+    private final AnimationRunner runner;
+    private boolean running;
+    private final LevelInformation levelInformation;
 
     /**
      * Instantiates a new GameControl.Game.
      */
-    public Game() {
+    public GameLevel(LevelInformation levelInformation) {
         this.sprites = new SpriteCollection();
         this.environment = new GameEnvironment();
-        this.gui = new GUI("game :)", WIDTH, HEIGHT);
-        this.keyboardSensor = this.gui.getKeyboardSensor();
+//        this.gui = new GUI("game :)", WIDTH, HEIGHT);
         this.remainingBlocks = new Counter();
         this.remainingBalls = new Counter();
         this.score = new Counter();
+        this.running = true;
+        this.runner = new AnimationRunner();
+        this.keyboardSensor = this.runner.getGui().getKeyboardSensor();
+        this.levelInformation = levelInformation;
     }
 
     /**
@@ -94,9 +103,10 @@ public class Game {
      * Blocks, two Balls and adds them to this game.
      */
     public void initialize() {
-        initializePaddle();
-        initializeBalls();
-        this.remainingBalls.increase(NUM_BALLS);
+        levelInformation.getBackground().addToGame(this);
+        //initializePaddle();
+        initializeBallsOnPaddle();
+        this.remainingBalls.increase(levelInformation.numberOfBalls());
         initializeBorders();
         initializeRows();
         initializeScore();
@@ -110,17 +120,23 @@ public class Game {
      * The method creates the paddle and adds it to this game.
      */
     private void initializePaddle() {
-        Paddle paddle = new Paddle(this.keyboardSensor);
+        Paddle paddle = new Paddle(this.keyboardSensor,
+                levelInformation.paddleWidth(), levelInformation.paddleSpeed());
         paddle.addToGame(this);
     }
     /**
-     * The method creates the balls and adds them to this game.
+     * The method creates the paddle and balls and adds them to this game.
      */
-    private void initializeBalls() {
-        Ball[] balls = new Ball[NUM_BALLS];
+    private void initializeBallsOnPaddle() {
+        Paddle paddle = new Paddle(this.keyboardSensor,
+                levelInformation.paddleWidth(), levelInformation.paddleSpeed());
+        paddle.addToGame(this);
+        Point p = paddle.getCollisionRectangle().getUpperLeft();
+        Ball[] balls = new Ball[levelInformation.numberOfBalls()];
         for (int i = 0; i < balls.length; i++) {
-            balls[i] = new Ball(DEFAULT_POINTS[i], DEFAULT_VALUE, Color.BLACK);
-            balls[i].setVelocity(DEFAULT_VALUE, DEFAULT_VALUE);
+            Point point = new Point(p.getX() + 2 * i, p.getY() - RADIUS - 1);
+            balls[i] = new Ball(point, RADIUS, Color.BLACK);
+            balls[i].setVelocity(levelInformation.initialBallVelocities().get(i));
             balls[i].setEnvironment(this.environment);
             balls[i].addToGame(this);
             this.remainingBalls.increase(1);
@@ -154,58 +170,49 @@ public class Game {
         BlockRemover blockRemover = new BlockRemover(this, remainingBlocks);
         ScoreTrackingListener scoreListener =
                 new ScoreTrackingListener(this.score);
-        Block[] blocks = new Block[MAX_BLOCKS];
-        for (int j = 0; j < NUM_OF_ROWS; j++) {
-            for (int i = 0; i < j + MIN_BLOCKS; i++) {
-                Rectangle rect = new Rectangle(new Point(X - i * WIDTH_BLOCK,
-                        Y - j * HEIGHT_BLOCK), WIDTH_BLOCK, HEIGHT_BLOCK);
-                blocks[i] = new Block(rect, COLORS[j]);
-                blocks[i].addHitListener(blockRemover);
-                blocks[i].addHitListener(scoreListener);
-                blocks[i].addToGame(this);
-                blockRemover.addBlock();
-                this.remainingBlocks.increase(SINGLE);
-            }
+        List<Block> blocks = levelInformation.blocks();
+        for (Block block : blocks) {
+            block.addHitListener(blockRemover);
+            block.addHitListener(scoreListener);
+            block.addToGame(this);
+            blockRemover.addBlock();
         }
+        this.remainingBlocks.increase(levelInformation.numberOfBlocksToRemove());
+//        Block[] blocks = new Block[MAX_BLOCKS];
+//        for (int j = 0; j < NUM_OF_ROWS; j++) {
+//            for (int i = 0; i < j + MIN_BLOCKS; i++) {
+//                Rectangle rect = new Rectangle(new Point(X - i * WIDTH_BLOCK,
+//                        Y - j * HEIGHT_BLOCK), WIDTH_BLOCK, HEIGHT_BLOCK);
+//                blocks[i] = new Block(rect, COLORS[j]);
+//                blocks[i].addHitListener(blockRemover);
+//                blocks[i].addHitListener(scoreListener);
+//                blocks[i].addToGame(this);
+//                blockRemover.addBlock();
+//                this.remainingBlocks.increase(SINGLE);
+//            }
+//        }
     }
 
     /**
      * The method runs this game by starting the animation loop.
      */
     public void run() {
-        Sleeper sleeper = new Sleeper();
-        int millisecondsPerFrame = MSPF / FPS;
-        while (true) {
-            long startTime = System.currentTimeMillis(); // timing
-
-            DrawSurface d = this.gui.getDrawSurface();
-            this.sprites.drawAllOn(d);
-            this.gui.show(d);
-            this.sprites.notifyAllTimePassed();
-
-            // timing
-            long usedTime = System.currentTimeMillis() - startTime;
-            long milliSecondLeftToSleep = millisecondsPerFrame - usedTime;
-            if (milliSecondLeftToSleep > POSITIVE) {
-                sleeper.sleepFor(milliSecondLeftToSleep);
-            }
-            if (remainingBalls.getValue() == NONE
-                    || remainingBlocks.getValue() == NONE) {
-                if (remainingBlocks.getValue() == NONE) {
-                    bonusEvent();
-                }
-                return;
-            }
-        }
+        this.runner.run(new CountdownAnimation(2, 3, sprites));
+        this.running = true;
+        // use our runner to run the current animation -- which is one turn of
+        // the game.
+        this.runner.run(this);
     }
     private void bonusEvent() {
-        DrawSurface d = this.gui.getDrawSurface();
+        DrawSurface d = this.runner.getGui().getDrawSurface();
         ScoreTrackingListener listener = new ScoreTrackingListener(score);
         ScoreIndicator indicator = new ScoreIndicator(score);
         listener.bonusEvent();
         this.sprites.drawAllOn(d);
         indicator.drawOn(d);
-        this.gui.show(d);
+        this.runner.getGui().show(d);
+        Sleeper sleeper = new Sleeper();
+        sleeper.sleepFor(10000);
     }
 
     /**
@@ -229,5 +236,35 @@ public class Game {
         } else {
             remainingBlocks.decrease(SINGLE);
         }
+    }
+
+    @Override
+    public void doOneFrame(DrawSurface d) {
+        // the logic from the previous run method goes here.
+        // the `return` or `break` statements should be replaced with
+        // this.running = false;
+        if (this.keyboardSensor.isPressed("p")) {
+            this.runner.run(new PauseScreen(this.keyboardSensor));
+        }
+        this.sprites.drawAllOn(d);
+//        this.gui.show(d);
+        this.sprites.notifyAllTimePassed();
+        if (remainingBalls.getValue() == NONE
+                || remainingBlocks.getValue() == NONE) {
+            if (remainingBlocks.getValue() == NONE) {
+                bonusEvent();
+            }
+            this.running = false;
+        }
+    }
+
+    @Override
+    public boolean shouldStop() {
+        return !this.running;
+    }
+
+    @Override
+    public long sleepTime() {
+        return 0;
     }
 }

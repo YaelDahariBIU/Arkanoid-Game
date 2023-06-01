@@ -3,7 +3,7 @@ package GameObjects;
 import CollisionControl.Collidable;
 import CollisionControl.HitListener;
 import CollisionControl.HitNotifier;
-import GameControl.Game;
+import GameControl.GameLevel;
 import GeometryPrimitives.Point;
 import GeometryPrimitives.Rectangle;
 import Movement.Velocity;
@@ -78,7 +78,7 @@ public class Block implements Collidable, Sprite, HitNotifier {
     }
 
     @Override
-    public void addToGame(Game game) {
+    public void addToGame(GameLevel game) {
         game.addCollidable(this);
         game.addSprite(this);
     }
@@ -93,7 +93,7 @@ public class Block implements Collidable, Sprite, HitNotifier {
      *
      * @param game (Game) - the given game
      */
-    public void removeFromGame(Game game) {
+    public void removeFromGame(GameLevel game) {
         game.removeCollidable(this);
         game.removeSprite(this);
     }

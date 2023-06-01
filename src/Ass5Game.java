@@ -1,5 +1,6 @@
 // 325166510 Yael Dahari
-import GameControl.Game;
+import GameControl.GameLevel;
+import GameControl.LevelControl.LevelOne;
 
 /**
  * Create a game object with a paddle (which is controlled by the left and
@@ -12,7 +13,8 @@ public class Ass5Game {
      * @param args (String[]) - the input arguments
      */
     public static void main(String[] args) {
-        Game game = new Game();
+        LevelOne level = new LevelOne();
+        GameLevel game = new GameLevel(level);
         game.initialize();
         game.run();
     }

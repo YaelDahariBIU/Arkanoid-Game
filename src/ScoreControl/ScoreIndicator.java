@@ -1,7 +1,7 @@
 // 325166510 Yael Dahari
 package ScoreControl;
 import GameControl.Counter;
-import GameControl.Game;
+import GameControl.GameLevel;
 import GameControl.SpriteControl.Sprite;
 import biuoop.DrawSurface;
 import java.awt.Color;
@@ -34,7 +34,7 @@ public class ScoreIndicator implements Sprite {
     }
 
     @Override
-    public void addToGame(Game game) {
+    public void addToGame(GameLevel game) {
         game.addSprite(this);
     }
 

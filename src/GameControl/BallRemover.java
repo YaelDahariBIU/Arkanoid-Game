@@ -12,7 +12,7 @@ import GeometryPrimitives.Point;
 public class BallRemover implements HitListener {
     static final int SINGLE = 1;
     static final Point P = new Point(0, 590);
-    private final Game game;
+    private final GameLevel game;
     private final Counter remainingBalls;
 
     /**
@@ -21,7 +21,7 @@ public class BallRemover implements HitListener {
      * @param game (Game) - the game
      * @param remainingBalls (Counter) - the remaining balls
      */
-    public BallRemover(Game game, Counter remainingBalls) {
+    public BallRemover(GameLevel game, Counter remainingBalls) {
         this.game = game;
         this.remainingBalls = remainingBalls;
     }

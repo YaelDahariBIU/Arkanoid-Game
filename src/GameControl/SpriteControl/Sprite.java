@@ -1,6 +1,6 @@
 // 325166510 Yael Dahari
 package GameControl.SpriteControl;
-import GameControl.Game;
+import GameControl.GameLevel;
 import biuoop.DrawSurface;
 
 /**
@@ -25,7 +25,7 @@ public interface Sprite {
      *
      * @param game (GameControl.Game) - the specified game
      */
-    void addToGame(Game game);
+    void addToGame(GameLevel game);
 
     /**
      * The method checks if this sprite is a ball and returns true or false.
