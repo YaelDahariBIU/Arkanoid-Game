@@ -4,6 +4,7 @@ import GameControl.SpriteControl.Sprite;
 import GameObjects.Block;
 import Movement.Velocity;
 
+import java.awt.*;
 import java.util.List;
 
 public interface LevelInformation {
@@ -24,4 +25,5 @@ public interface LevelInformation {
     // before the level is considered to be "cleared".
     // This number should be <= blocks.size();
     int numberOfBlocksToRemove();
+    Color paddleColor();
 }

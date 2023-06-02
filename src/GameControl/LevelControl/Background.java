@@ -36,7 +36,4 @@ public class Background implements Sprite {
     public boolean isABall() {
         return false;
     }
-    public void addObject(Sprite object) {
-        this.objects.add(object);
-    }
 }

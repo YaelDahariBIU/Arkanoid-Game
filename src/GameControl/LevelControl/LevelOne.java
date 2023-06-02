@@ -79,4 +79,9 @@ public class LevelOne implements LevelInformation {
     public int numberOfBlocksToRemove() {
         return 1;
     }
+
+    @Override
+    public Color paddleColor() {
+        return Color.red;
+    }
 }

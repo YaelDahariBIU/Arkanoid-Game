@@ -25,7 +25,7 @@ public class LevelTwo implements LevelInformation {
             objects.add(new Circle(randomPoint(), randomRadius(),
                     randomColor(), randomBool()));
         }
-        this.background = new Background(Color.white, objects);
+        this.background = new Background(new Color(246, 150, 227), objects);
     }
     private boolean randomBool() {
         Random rand = new Random();
@@ -34,7 +34,7 @@ public class LevelTwo implements LevelInformation {
     private Point randomPoint() {
         Random rand = new Random();
         double x = rand.nextDouble(10, 790);
-        double y = rand.nextDouble(10, 590);
+        double y = rand.nextDouble(40, 590);
         return new Point(x, y);
     }
     private int randomRadius() {
@@ -94,5 +94,10 @@ public class LevelTwo implements LevelInformation {
     @Override
     public int numberOfBlocksToRemove() {
         return 13;
+    }
+
+    @Override
+    public Color paddleColor() {
+        return new Color(199, 23, 143);
     }
 }

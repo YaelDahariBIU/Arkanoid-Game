@@ -37,6 +37,16 @@ public class CountdownAnimation implements Animation {
         return (long) (numOfSeconds * 1000);
     }
 
+    @Override
+    public boolean isBonus() {
+        return false;
+    }
+
+
+    @Override
+    public void activateBonusEvent(DrawSurface d) {
+    }
+
     private void reduceCount() {
         this.countFrom = this.countFrom - 1;
         this.num = String.valueOf(countFrom);

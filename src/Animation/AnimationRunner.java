@@ -18,9 +18,10 @@ public class AnimationRunner {
     }
     public void run(Animation animation) {
         int millisecondsPerFrame = MSPF / this.framesPerSecond;
+        DrawSurface d;
         while (!animation.shouldStop()) {
             long startTime = System.currentTimeMillis(); // timing
-            DrawSurface d = gui.getDrawSurface();
+            d = gui.getDrawSurface();
 
             animation.doOneFrame(d);
             gui.show(d);
@@ -30,6 +31,11 @@ public class AnimationRunner {
             if (milliSecondLeftToSleep > POSITIVE) {
                 this.sleeper.sleepFor(milliSecondLeftToSleep);
             }
+        }
+        if (animation.isBonus()) {
+            d = gui.getDrawSurface();
+            animation.activateBonusEvent(d);
+            gui.show(d);
         }
     }
     public GUI getGui() {

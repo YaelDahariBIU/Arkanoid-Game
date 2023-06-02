@@ -34,22 +34,20 @@ public class Paddle implements Sprite, Collidable {
     private final biuoop.KeyboardSensor keyboard;
     private final Rectangle shape;
     private final int speed;
+    private final Color color;
 
     /**
      * Instantiates a new GameObjects.Paddle.
      *
      * @param keyboard (KeyboardSensor) - the keyboard sensor
      */
-    public Paddle(biuoop.KeyboardSensor keyboard) {
-        this.keyboard = keyboard;
-        this.shape = new Rectangle(new Point(X, Y), WIDTH, HEIGHT);
-        this.speed = 15;
-    }
-    public Paddle(biuoop.KeyboardSensor keyboard, int width, int speed) {
+    public Paddle(biuoop.KeyboardSensor keyboard, int width, int speed,
+                  Color color) {
         this.keyboard = keyboard;
         Point p = new Point((800 - width) / 2.0, Y);
         this.shape = new Rectangle(p, width, HEIGHT);
         this.speed = speed;
+        this.color = color;
     }
 
     /**
@@ -89,7 +87,7 @@ public class Paddle implements Sprite, Collidable {
     }
     @Override
     public void drawOn(DrawSurface d) {
-        d.setColor(Color.MAGENTA);
+        d.setColor(color);
         d.fillRectangle((int) this.shape.getUpperLeft().getX(),
                 (int) this.shape.getUpperLeft().getY(),
                 (int) this.shape.getWidth(), (int) this.shape.getHeight());

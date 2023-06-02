@@ -62,6 +62,8 @@ public class GameLevel implements Animation {
     private final AnimationRunner runner;
     private boolean running;
     private final LevelInformation levelInformation;
+    private ScoreIndicator scoreIndicator;
+    private ScoreTrackingListener scoreListener;
 
     /**
      * Instantiates a new GameControl.Game.
@@ -77,6 +79,8 @@ public class GameLevel implements Animation {
         this.runner = new AnimationRunner();
         this.keyboardSensor = this.runner.getGui().getKeyboardSensor();
         this.levelInformation = levelInformation;
+        this.scoreIndicator = new ScoreIndicator(this.score);
+        this.scoreListener = new ScoreTrackingListener(this.score);
     }
 
     /**
@@ -109,32 +113,20 @@ public class GameLevel implements Animation {
         this.remainingBalls.increase(levelInformation.numberOfBalls());
         initializeBorders();
         initializeRows();
-        initializeScore();
-    }
-    private void initializeScore() {
-        ScoreIndicator scoreIndicator = new ScoreIndicator(this.score);
-        scoreIndicator.addToGame(this);
-    }
-
-    /**
-     * The method creates the paddle and adds it to this game.
-     */
-    private void initializePaddle() {
-        Paddle paddle = new Paddle(this.keyboardSensor,
-                levelInformation.paddleWidth(), levelInformation.paddleSpeed());
-        paddle.addToGame(this);
+        this.scoreIndicator.addToGame(this);
     }
     /**
      * The method creates the paddle and balls and adds them to this game.
      */
     private void initializeBallsOnPaddle() {
         Paddle paddle = new Paddle(this.keyboardSensor,
-                levelInformation.paddleWidth(), levelInformation.paddleSpeed());
+                levelInformation.paddleWidth(),
+                levelInformation.paddleSpeed(), levelInformation.paddleColor());
         paddle.addToGame(this);
         Point p = paddle.getCollisionRectangle().getUpperLeft();
         Ball[] balls = new Ball[levelInformation.numberOfBalls()];
         for (int i = 0; i < balls.length; i++) {
-            Point point = new Point(p.getX() + 2 * i, p.getY() - RADIUS - 1);
+            Point point = new Point(p.getX() + 30 * i, p.getY() - RADIUS - 1);
             balls[i] = new Ball(point, RADIUS, Color.BLACK);
             balls[i].setVelocity(levelInformation.initialBallVelocities().get(i));
             balls[i].setEnvironment(this.environment);
@@ -161,6 +153,9 @@ public class GameLevel implements Animation {
         for (Block border : borders) {
             border.addToGame(this);
         }
+        Rectangle r = new Rectangle(new Point(0, 0), 800, 30);
+        r.setColor(Color.WHITE);
+        r.addToGame(this);
     }
 
     /**
@@ -168,8 +163,6 @@ public class GameLevel implements Animation {
      */
     public void initializeRows() {
         BlockRemover blockRemover = new BlockRemover(this, remainingBlocks);
-        ScoreTrackingListener scoreListener =
-                new ScoreTrackingListener(this.score);
         List<Block> blocks = levelInformation.blocks();
         for (Block block : blocks) {
             block.addHitListener(blockRemover);
@@ -205,14 +198,12 @@ public class GameLevel implements Animation {
     }
     private void bonusEvent() {
         DrawSurface d = this.runner.getGui().getDrawSurface();
-        ScoreTrackingListener listener = new ScoreTrackingListener(score);
-        ScoreIndicator indicator = new ScoreIndicator(score);
-        listener.bonusEvent();
+        scoreListener.bonusEvent();
         this.sprites.drawAllOn(d);
-        indicator.drawOn(d);
+        scoreIndicator.drawOn(d);
         this.runner.getGui().show(d);
-        Sleeper sleeper = new Sleeper();
-        sleeper.sleepFor(10000);
+//        Sleeper sleeper = new Sleeper();
+//        sleeper.sleepFor(10000);
     }
 
     /**
@@ -247,14 +238,13 @@ public class GameLevel implements Animation {
             this.runner.run(new PauseScreen(this.keyboardSensor));
         }
         this.sprites.drawAllOn(d);
-//        this.gui.show(d);
         this.sprites.notifyAllTimePassed();
-        if (remainingBalls.getValue() == NONE
-                || remainingBlocks.getValue() == NONE) {
-            if (remainingBlocks.getValue() == NONE) {
-                bonusEvent();
-            }
+        if (remainingBalls.getValue() == NONE) {
             this.running = false;
+        }
+        if (remainingBlocks.getValue() == NONE) {
+            this.running = false;
+            //bonusEvent();
         }
     }
 
@@ -266,5 +256,15 @@ public class GameLevel implements Animation {
     @Override
     public long sleepTime() {
         return 0;
+    }
+    @Override
+    public boolean isBonus() {
+        return remainingBlocks.getValue() == NONE;
+    }
+    @Override
+    public void activateBonusEvent(DrawSurface d) {
+        scoreListener.bonusEvent();
+        this.sprites.drawAllOn(d);
+        scoreIndicator.drawOn(d);
     }
 }

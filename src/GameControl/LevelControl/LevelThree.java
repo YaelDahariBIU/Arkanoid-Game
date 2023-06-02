@@ -24,7 +24,7 @@ public class LevelThree implements LevelInformation {
     private final Background background;
     public LevelThree() {
         List<Sprite> objects = new ArrayList<>();
-        objects.add(new Circle(new Point(95, 475), 75, randomColor(), true));
+        objects.add(new Circle(new Point(95, 450), 75, randomColor(), true));
         Rectangle[] recs = new Rectangle[18];
         recs[0] = new Rectangle(new Point(20, 450), 150, 140);
         recs[0].setColor(randomColor());
@@ -32,11 +32,11 @@ public class LevelThree implements LevelInformation {
         recs[1].setColor(Color.WHITE);
         recs[2] = new Rectangle(new Point(110, 470), 30, 30);
         recs[2].setColor(Color.WHITE);
-        recs[3] = new Rectangle(new Point(85, 530), 20, 60);
+        recs[3] = new Rectangle(new Point(75, 530), 40, 60);
         recs[3].setColor(randomColor());
         recs[4] = new Rectangle(new Point(330, 290), 150, 300);
         recs[4].setColor(randomColor());
-        recs[5] = new Rectangle(new Point(390, 520), 30, 70);
+        recs[5] = new Rectangle(new Point(380, 520), 50, 70);
         recs[5].setColor(randomColor());
         int k = 6;
         for (int i = 0; i < 4; i++) {
@@ -77,8 +77,8 @@ public class LevelThree implements LevelInformation {
     @Override
     public List<Velocity> initialBallVelocities() {
         List<Velocity> list = new ArrayList<>();
-        list.add(Velocity.fromAngleAndSpeed(-30, 10));
-        list.add(Velocity.fromAngleAndSpeed(30, 10));
+        list.add(Velocity.fromAngleAndSpeed(-30, 7));
+        list.add(Velocity.fromAngleAndSpeed(30, 7));
         return list;
     }
 
@@ -89,7 +89,7 @@ public class LevelThree implements LevelInformation {
 
     @Override
     public int paddleWidth() {
-        return 100;
+        return 150;
     }
 
     @Override
@@ -104,20 +104,25 @@ public class LevelThree implements LevelInformation {
 
     @Override
     public List<Block> blocks() {
-        Block[] blocks = new Block[40];
+        List<Block> blocks = new ArrayList<>();
         for (int j = 0; j < 5; j++) {
             Color color = randomColor();
             for (int i = 0; i < j + 6; i++) {
                 Rectangle rect = new Rectangle(new Point(X - i * WIDTH_BLOCK,
                         Y - j * HEIGHT_BLOCK), WIDTH_BLOCK, HEIGHT_BLOCK);
-                blocks[i] = new Block(rect, color);
+                blocks.add(new Block(rect, color));
             }
         }
-        return new ArrayList<>(List.of(blocks));
+        return blocks;
     }
 
     @Override
     public int numberOfBlocksToRemove() {
-        return 0;
+        return 40;
+    }
+
+    @Override
+    public Color paddleColor() {
+        return new Color(14, 96, 5);
     }
 }
