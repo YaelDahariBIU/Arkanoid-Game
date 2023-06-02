@@ -3,7 +3,7 @@ package Animation;
 import biuoop.DrawSurface;
 import biuoop.KeyboardSensor;
 
-import java.awt.*;
+import java.awt.Color;
 
 public class PauseScreen implements Animation {
     private final KeyboardSensor keyboard;

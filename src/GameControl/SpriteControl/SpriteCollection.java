@@ -8,6 +8,9 @@ import java.util.List;
  * A collection of many sprites.
  */
 public class SpriteCollection {
+    static final int X = 600;
+    static final int Y = 25;
+    static final int FONT = 20;
     private final List<Sprite> sprites;
 
     /**
@@ -42,10 +45,11 @@ public class SpriteCollection {
      *
      * @param d (DrawSurface) - the surface we're drawing on
      */
-    public void drawAllOn(DrawSurface d) {
+    public void drawAllOn(DrawSurface d, String levelName) {
         for (Sprite sprite : this.sprites) {
             sprite.drawOn(d);
         }
+        d.drawText(X, Y, levelName, FONT);
     }
 
     /**

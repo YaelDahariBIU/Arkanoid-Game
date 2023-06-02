@@ -68,19 +68,22 @@ public class GameLevel implements Animation {
     /**
      * Instantiates a new GameControl.Game.
      */
-    public GameLevel(LevelInformation levelInformation) {
+    public GameLevel(LevelInformation levelInformation,
+                     KeyboardSensor keyboard, AnimationRunner runner,
+                     Counter score, ScoreIndicator indicator,
+                     ScoreTrackingListener listener) {
         this.sprites = new SpriteCollection();
         this.environment = new GameEnvironment();
 //        this.gui = new GUI("game :)", WIDTH, HEIGHT);
         this.remainingBlocks = new Counter();
         this.remainingBalls = new Counter();
-        this.score = new Counter();
+        this.score = score;
         this.running = true;
-        this.runner = new AnimationRunner();
-        this.keyboardSensor = this.runner.getGui().getKeyboardSensor();
+        this.runner = runner;
+        this.keyboardSensor = keyboard;
         this.levelInformation = levelInformation;
-        this.scoreIndicator = new ScoreIndicator(this.score);
-        this.scoreListener = new ScoreTrackingListener(this.score);
+        this.scoreIndicator = indicator;
+        this.scoreListener = listener;
     }
 
     /**
@@ -106,14 +109,14 @@ public class GameLevel implements Animation {
      * The method initializes a new game: creates a GameObjects.Paddle, the
      * Blocks, two Balls and adds them to this game.
      */
-    public void initialize() {
+    public Counter initialize() {
         levelInformation.getBackground().addToGame(this);
-        //initializePaddle();
         initializeBallsOnPaddle();
         this.remainingBalls.increase(levelInformation.numberOfBalls());
         initializeBorders();
         initializeRows();
         this.scoreIndicator.addToGame(this);
+        return this.remainingBalls;
     }
     /**
      * The method creates the paddle and balls and adds them to this game.
@@ -196,15 +199,6 @@ public class GameLevel implements Animation {
         // the game.
         this.runner.run(this);
     }
-    private void bonusEvent() {
-        DrawSurface d = this.runner.getGui().getDrawSurface();
-        scoreListener.bonusEvent();
-        this.sprites.drawAllOn(d);
-        scoreIndicator.drawOn(d);
-        this.runner.getGui().show(d);
-//        Sleeper sleeper = new Sleeper();
-//        sleeper.sleepFor(10000);
-    }
 
     /**
      * The method removes a given collidable from this game.
@@ -237,7 +231,7 @@ public class GameLevel implements Animation {
         if (this.keyboardSensor.isPressed("p")) {
             this.runner.run(new PauseScreen(this.keyboardSensor));
         }
-        this.sprites.drawAllOn(d);
+        this.sprites.drawAllOn(d, levelInformation.levelName());
         this.sprites.notifyAllTimePassed();
         if (remainingBalls.getValue() == NONE) {
             this.running = false;
@@ -264,7 +258,7 @@ public class GameLevel implements Animation {
     @Override
     public void activateBonusEvent(DrawSurface d) {
         scoreListener.bonusEvent();
-        this.sprites.drawAllOn(d);
+        this.sprites.drawAllOn(d, levelInformation.levelName());
         scoreIndicator.drawOn(d);
     }
 }

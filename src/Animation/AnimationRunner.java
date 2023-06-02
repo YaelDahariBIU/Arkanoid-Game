@@ -38,7 +38,4 @@ public class AnimationRunner {
             gui.show(d);
         }
     }
-    public GUI getGui() {
-        return this.gui;
-    }
 }
