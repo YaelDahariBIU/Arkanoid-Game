@@ -60,7 +60,7 @@ public class LevelThree implements LevelInformation {
             objects.add(new Circle(new Point(280, 400), RADIUS[i],
                     COLORS[i], true));
         }
-        this.background = new Background(Color.green, objects);
+        this.background = new Background(new Color(44, 220, 110), objects);
     }
     private Color randomColor() {
         Random rand = new Random();

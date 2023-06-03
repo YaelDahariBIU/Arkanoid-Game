@@ -16,6 +16,11 @@ public class AnimationRunner {
         this.sleeper = new Sleeper();
         this.gui = new GUI("game :)", 800, 600);
     }
+
+    public GUI getGui() {
+        return gui;
+    }
+
     public void run(Animation animation) {
         int millisecondsPerFrame = MSPF / this.framesPerSecond;
         DrawSurface d;
