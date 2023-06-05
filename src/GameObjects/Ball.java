@@ -135,46 +135,46 @@ public class Ball implements Sprite {
         return this.velocity;
     }
 
-    /**
-     * The method gets the measurements of a frame and coordinates for its
-     * left-down point. It calls moveOneStep() and checks if this ball
-     collided or went through the frame and if so, it returns it back to
-     * the wall and changes the velocity direction accordingly.
-     *
-     * @param width (int) - the frame's width
-     * @param height (int) - the frame's height
-     * @param leftEdge (double) - the frame's left edge
-     * @param downEdge (double) - the frame's down edge
-     */
-    public void moveInFrame(int width, int height, double leftEdge,
-                            double downEdge) {
-        this.moveOneStep();
-        boolean collidedVertical = false, collidedHorizontal = false;
-        double x = this.center.getX(), y = this.center.getY();
-        double radius = this.getSize();
-        if ((x - radius) <= leftEdge) {
-            this.center.setX(leftEdge + radius);
-            collidedVertical = true;
-        } else if ((x + radius) >= (width + leftEdge)) {
-            this.center.setX(width + leftEdge - radius);
-            collidedVertical = true;
-        }
-        if (y - radius <= downEdge) {
-            this.center.setY(downEdge + radius);
-            collidedHorizontal = true;
-        } else if ((y + radius) >= (height + downEdge)) {
-            this.center.setY(height + downEdge - radius);
-            collidedHorizontal = true;
-        }
-        if (collidedVertical) {
-            this.setVelocity(-this.getVelocity().getDx(),
-                    this.getVelocity().getDy());
-        }
-        if (collidedHorizontal) {
-            this.setVelocity(this.getVelocity().getDx(),
-                    -this.getVelocity().getDy());
-        }
-    }
+//    /**
+//     * The method gets the measurements of a frame and coordinates for its
+//     * left-down point. It calls moveOneStep() and checks if this ball
+//     collided or went through the frame and if so, it returns it back to
+//     * the wall and changes the velocity direction accordingly.
+//     *
+//     * @param width (int) - the frame's width
+//     * @param height (int) - the frame's height
+//     * @param leftEdge (double) - the frame's left edge
+//     * @param downEdge (double) - the frame's down edge
+//     */
+//    public void moveInFrame(int width, int height, double leftEdge,
+//                            double downEdge) {
+//        this.moveOneStep();
+//        boolean collidedVertical = false, collidedHorizontal = false;
+//        double x = this.center.getX(), y = this.center.getY();
+//        double radius = this.getSize();
+//        if ((x - radius) <= leftEdge) {
+//            this.center.setX(leftEdge + radius);
+//            collidedVertical = true;
+//        } else if ((x + radius) >= (width + leftEdge)) {
+//            this.center.setX(width + leftEdge - radius);
+//            collidedVertical = true;
+//        }
+//        if (y - radius <= downEdge) {
+//            this.center.setY(downEdge + radius);
+//            collidedHorizontal = true;
+//        } else if ((y + radius) >= (height + downEdge)) {
+//            this.center.setY(height + downEdge - radius);
+//            collidedHorizontal = true;
+//        }
+//        if (collidedVertical) {
+//            this.setVelocity(-this.getVelocity().getDx(),
+//                    this.getVelocity().getDy());
+//        }
+//        if (collidedHorizontal) {
+//            this.setVelocity(this.getVelocity().getDx(),
+//                    -this.getVelocity().getDy());
+//        }
+//    }
 
     /**
      * The method applies the velocity to this ball's coordinates and
@@ -223,11 +223,6 @@ public class Ball implements Sprite {
     @Override
     public void addToGame(GameLevel game) {
         game.addSprite(this);
-    }
-
-    @Override
-    public boolean isABall() {
-        return true;
     }
 
     /**

@@ -1,5 +1,5 @@
+// 325166510 Yael Dahari
 package GameControl.LevelControl;
-
 import GameControl.SpriteControl.Sprite;
 import GameObjects.Block;
 import GeometryPrimitives.Circle;
@@ -7,14 +7,20 @@ import GeometryPrimitives.Line;
 import GeometryPrimitives.Point;
 import GeometryPrimitives.Rectangle;
 import Movement.Velocity;
-
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The type Level one.
+ */
 public class LevelOne implements LevelInformation {
     static final Point CENTER = new Point(400, 160);
     private final Background background;
+
+    /**
+     * Instantiates a new Level one.
+     */
     public LevelOne() {
         Color burgundy = new Color(86, 6, 9);
         List<Sprite> objects = new ArrayList<>();

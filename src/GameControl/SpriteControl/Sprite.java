@@ -26,11 +26,4 @@ public interface Sprite {
      * @param game (GameControl.Game) - the specified game
      */
     void addToGame(GameLevel game);
-
-    /**
-     * The method checks if this sprite is a ball and returns true or false.
-     *
-     * @return (boolean) - true if it's a ball, otherwise false
-     */
-    boolean isABall();
 }

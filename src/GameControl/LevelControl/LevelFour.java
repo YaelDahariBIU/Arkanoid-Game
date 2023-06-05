@@ -1,17 +1,19 @@
+// 325166510 Yael Dahari
 package GameControl.LevelControl;
-
 import GameControl.SpriteControl.Sprite;
 import GameObjects.Block;
 import GeometryPrimitives.Circle;
 import GeometryPrimitives.Line;
 import GeometryPrimitives.Point;
 import Movement.Velocity;
-
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+/**
+ * The type Level four.
+ */
 public class LevelFour implements LevelInformation {
     static final int WIDTH_BLOCK = 60;
     static final int HEIGHT_BLOCK = 20;
@@ -22,6 +24,10 @@ public class LevelFour implements LevelInformation {
     static final Color GRAY3 = new Color(100, 97, 97);
     static final Color GRAY4 = new Color(80, 80, 80);
     private final Background background;
+
+    /**
+     * Instantiates a new Level four.
+     */
     public LevelFour() {
         List<Sprite> objects = new ArrayList<>();
         objects.add(new Circle(new Point(150, 150), 80, Color.YELLOW, true));
@@ -118,7 +124,8 @@ public class LevelFour implements LevelInformation {
         for (int j = 0; j < 7; j++) {
             Color color = randomColor();
             for (int i = 0; i < 13; i++) {
-                GeometryPrimitives.Rectangle rect = new GeometryPrimitives.Rectangle(new Point(X - i * WIDTH_BLOCK,
+                GeometryPrimitives.Rectangle rect = new GeometryPrimitives.Rectangle(
+                        new Point(X - i * WIDTH_BLOCK,
                         Y - j * HEIGHT_BLOCK), WIDTH_BLOCK, HEIGHT_BLOCK);
                 blocks.add(new Block(rect, color));
             }

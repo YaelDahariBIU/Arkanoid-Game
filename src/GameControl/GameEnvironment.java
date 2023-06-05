@@ -85,15 +85,6 @@ public class GameEnvironment {
     }
 
     /**
-     * The method returns the list of objects in this game.
-     *
-     * @return (List-Collidable-) - the list of collidables.
-     */
-    public List<Collidable> getObjects() {
-        return this.objects;
-    }
-
-    /**
      * The method removes a given collidable from the list of objects.
      *
      * @param c (Collidable) - the given object

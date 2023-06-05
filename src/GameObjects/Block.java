@@ -83,11 +83,6 @@ public class Block implements Collidable, Sprite, HitNotifier {
         game.addSprite(this);
     }
 
-    @Override
-    public boolean isABall() {
-        return false;
-    }
-
     /**
      * The method removes this block from a given game.
      *

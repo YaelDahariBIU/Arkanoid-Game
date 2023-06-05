@@ -36,11 +36,4 @@ public class BlockRemover implements HitListener {
         beingHit.removeFromGame(this.game);
         this.remainingBlocks.decrease(SINGLE);
     }
-
-    /**
-     * The method updates the counter if a new block was added.
-     */
-    public void addBlock() {
-        this.remainingBlocks.increase(SINGLE);
-    }
 }

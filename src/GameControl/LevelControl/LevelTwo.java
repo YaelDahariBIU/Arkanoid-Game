@@ -1,17 +1,19 @@
+// 325166510 Yael Dahari
 package GameControl.LevelControl;
-
 import GameControl.SpriteControl.Sprite;
 import GameObjects.Block;
 import GeometryPrimitives.Circle;
 import GeometryPrimitives.Point;
 import GeometryPrimitives.Rectangle;
 import Movement.Velocity;
-
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+/**
+ * The type Level two.
+ */
 public class LevelTwo implements LevelInformation {
     static final int WIDTH = 60;
     static final int HEIGHT = 20;
@@ -19,9 +21,13 @@ public class LevelTwo implements LevelInformation {
     static final int ANGLE = -100;
     static final int CHANGE = 20;
     private final Background background;
+
+    /**
+     * Instantiates a new Level two.
+     */
     public LevelTwo() {
         List<Sprite> objects = new ArrayList<>();
-        for (int i = 0; i < 30; i++) {
+        for (int i = 0; i < 40; i++) {
             objects.add(new Circle(randomPoint(), randomRadius(),
                     randomColor(), randomBool()));
         }

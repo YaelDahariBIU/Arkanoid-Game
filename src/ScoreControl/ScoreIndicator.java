@@ -38,8 +38,4 @@ public class ScoreIndicator implements Sprite {
         game.addSprite(this);
     }
 
-    @Override
-    public boolean isABall() {
-        return false;
-    }
 }

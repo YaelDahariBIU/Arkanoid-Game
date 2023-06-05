@@ -4,10 +4,9 @@ import GameControl.GameLevel;
 import GameControl.SpriteControl.Sprite;
 import biuoop.DrawSurface;
 
-import java.awt.*;
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 /**
  * Rectangles have an upper-left point that indicates their location, a width
@@ -138,6 +137,11 @@ public class Rectangle implements Sprite {
                 getUpperLeft().getY());
        return new Line(upperRight, downRight);
     }
+    /**
+     * The method sets a color to the rectangle.
+     *
+     * @param color (Color)
+     */
     public void setColor(Color color) {
         this.color = color;
     }
@@ -160,8 +164,4 @@ public class Rectangle implements Sprite {
         game.addSprite(this);
     }
 
-    @Override
-    public boolean isABall() {
-        return false;
-    }
 }

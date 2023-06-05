@@ -1,17 +1,12 @@
+// 325166510 Yael Dahari
 package Animation;
-
 import biuoop.DrawSurface;
-import biuoop.KeyboardSensor;
-
 import java.awt.Color;
 
+/**
+ * Pausing the game when pressing the "p" key.
+ */
 public class PauseScreen implements Animation {
-    private final KeyboardSensor keyboard;
-    private boolean stop;
-    public PauseScreen(KeyboardSensor k) {
-        this.keyboard = k;
-        this.stop = false;
-    }
     @Override
     public void doOneFrame(DrawSurface d) {
         d.setColor(new Color(198, 85, 243, 255));
@@ -19,13 +14,10 @@ public class PauseScreen implements Animation {
         d.setColor(new Color(66, 27, 89));
         d.drawText(150, d.getHeight() / 2, "paused -- press space to "
                 + "continue", 32);
-        if (this.keyboard.isPressed(KeyboardSensor.SPACE_KEY)) {
-            this.stop = true;
-        }
     }
     @Override
     public boolean shouldStop() {
-        return this.stop;
+        return false;
     }
 
     @Override

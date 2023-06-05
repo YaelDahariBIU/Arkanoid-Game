@@ -17,9 +17,7 @@ import Movement.Velocity;
  */
 public class Paddle implements Sprite, Collidable {
     static final int EDGE = 10;
-    static final int X = 300;
     static final int Y = 550;
-    static final int WIDTH = 150;
     static final int HEIGHT = 50;
     static final int BORDER_WIDTH = 790;
     static final int SPEED = 7;
@@ -40,7 +38,10 @@ public class Paddle implements Sprite, Collidable {
      * Instantiates a new GameObjects.Paddle.
      *
      * @param keyboard (KeyboardSensor) - the keyboard sensor
-     */
+     * @param width (int) - the paddle's width.
+     * @param speed (int) - the paddle's speed
+     * @param color (Color) - the paddle's color
+     * */
     public Paddle(biuoop.KeyboardSensor keyboard, int width, int speed,
                   Color color) {
         this.keyboard = keyboard;
@@ -121,9 +122,5 @@ public class Paddle implements Sprite, Collidable {
     public void addToGame(GameLevel game) {
         game.addSprite(this);
         game.addCollidable(this);
-    }
-    @Override
-    public boolean isABall() {
-        return false;
     }
 }

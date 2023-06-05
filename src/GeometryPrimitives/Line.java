@@ -394,10 +394,11 @@ public class Line implements Sprite {
         game.addSprite(this);
     }
 
-    @Override
-    public boolean isABall() {
-        return false;
-    }
+    /**
+     * The method sets a color to the line.
+     *
+     * @param color (Color)
+     */
     public void setColor(Color color) {
         this.color = color;
     }

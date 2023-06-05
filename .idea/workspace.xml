@@ -4,13 +4,37 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bf7bdc99-be1a-4520-9b4c-6fd571f0cfe1" name="Changes" comment="levels work">
+    <list default="true" id="bf7bdc99-be1a-4520-9b4c-6fd571f0cfe1" name="Changes" comment="part 2 finished">
       <change afterPath="$PROJECT_DIR$/ass3.zip" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/ass5.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Animation/GameOverScreen.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Animation/KeyPressStoppableAnimation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Animation/YouWinScreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ass2.zip" beforeDir="false" afterPath="$PROJECT_DIR$/ass2.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.xml" beforeDir="false" afterPath="$PROJECT_DIR$/build.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Animation/Animation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Animation/Animation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Animation/AnimationRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Animation/AnimationRunner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Animation/CountdownAnimation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Animation/CountdownAnimation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Animation/PauseScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Animation/PauseScreen.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Ass6Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Ass6Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GameControl/BlockRemover.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameControl/BlockRemover.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GameControl/GameEnvironment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameControl/GameEnvironment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GameControl/GameFlow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameControl/GameFlow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GameControl/GameLevel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameControl/GameLevel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GameControl/LevelControl/Background.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameControl/LevelControl/Background.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GameControl/LevelControl/LevelFour.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameControl/LevelControl/LevelFour.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GameControl/LevelControl/LevelInformation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameControl/LevelControl/LevelInformation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GameControl/LevelControl/LevelThree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameControl/LevelControl/LevelThree.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GameControl/LevelControl/LevelTwo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameControl/LevelControl/LevelTwo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GameControl/SpriteControl/Sprite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameControl/SpriteControl/Sprite.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GameObjects/Ball.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameObjects/Ball.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GameObjects/Block.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameObjects/Block.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GameObjects/Paddle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameObjects/Paddle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GeometryPrimitives/Circle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GeometryPrimitives/Circle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GeometryPrimitives/Line.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GeometryPrimitives/Line.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GeometryPrimitives/Rectangle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GeometryPrimitives/Rectangle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ScoreControl/ScoreIndicator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ScoreControl/ScoreIndicator.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -104,7 +128,11 @@
       <workItem from="1685357693606" duration="4235000" />
       <workItem from="1685531855409" duration="9366000" />
       <workItem from="1685618451528" duration="22918000" />
-      <workItem from="1685820856149" duration="377000" />
+      <workItem from="1685820856149" duration="1364000" />
+      <workItem from="1685887386144" duration="10964000" />
+      <workItem from="1685899294610" duration="1372000" />
+      <workItem from="1685907991543" duration="2192000" />
+      <workItem from="1685950210845" duration="3671000" />
     </task>
     <task id="LOCAL‎-00001" summary="phase1">
       <created>1680211675458</created>
@@ -274,7 +302,14 @@
       <option name="project" value="LOCAL‎" />
       <updated>1685709687315</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL‎-00025" summary="part 2 finished">
+      <created>1685826825019</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL‎-00025" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1685826825019</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -304,7 +339,8 @@
     <MESSAGE value="final edit with comments" />
     <MESSAGE value="level one works" />
     <MESSAGE value="levels work" />
-    <option name="LAST_COMMIT_MESSAGE" value="levels work" />
+    <MESSAGE value="part 2 finished" />
+    <option name="LAST_COMMIT_MESSAGE" value="part 2 finished" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
