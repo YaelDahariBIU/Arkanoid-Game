@@ -4,13 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bf7bdc99-be1a-4520-9b4c-6fd571f0cfe1" name="Changes" comment="done with comments">
+    <list default="true" id="bf7bdc99-be1a-4520-9b4c-6fd571f0cfe1" name="Changes" comment="final with comments">
       <change afterPath="$PROJECT_DIR$/ass3.zip" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/ass5.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/LivesControl/LivesIndicator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ass2.zip" beforeDir="false" afterPath="$PROJECT_DIR$/ass2.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GameControl/BallRemover.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LivesControl/BallRemover.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GameControl/GameLevel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameControl/GameLevel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -111,6 +108,7 @@
       <workItem from="1685907991543" duration="2192000" />
       <workItem from="1685950210845" duration="4066000" />
       <workItem from="1685966623652" duration="2148000" />
+      <workItem from="1685989141671" duration="503000" />
     </task>
     <task id="LOCAL‎-00001" summary="phase1">
       <created>1680211675458</created>
@@ -294,7 +292,14 @@
       <option name="project" value="LOCAL‎" />
       <updated>1685958308394</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL‎-00027" summary="final with comments">
+      <created>1685989413069</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL‎-00027" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1685989413069</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -320,13 +325,13 @@
     <MESSAGE value="final" />
     <MESSAGE value="final edit" />
     <MESSAGE value="after part 2" />
-    <MESSAGE value="final with comments" />
     <MESSAGE value="final edit with comments" />
     <MESSAGE value="level one works" />
     <MESSAGE value="levels work" />
     <MESSAGE value="part 2 finished" />
     <MESSAGE value="done with comments" />
-    <option name="LAST_COMMIT_MESSAGE" value="done with comments" />
+    <MESSAGE value="final with comments" />
+    <option name="LAST_COMMIT_MESSAGE" value="final with comments" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

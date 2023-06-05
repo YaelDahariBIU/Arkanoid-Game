@@ -144,7 +144,7 @@ public class GameLevel implements Animation {
         Block[] borders = new Block[SIZE];
         // the death-region block
         borders[FIRST] = new Block(new Rectangle(new Point(EDGE,
-                HEIGHT - DEPTH), WIDTH, DEPTH), Color.gray);
+                HEIGHT - DEPTH), WIDTH, DEPTH), Color.black);
         borders[FIRST].addHitListener(this.ballRemover);
         borders[SECOND] = new Block(new Rectangle(new Point(EDGE, EXTRA),
                 DEPTH, HEIGHT - DEPTH - EXTRA), Color.gray);
