@@ -1,6 +1,8 @@
 // 325166510 Yael Dahari
-package GameControl;
+package LivesControl;
 import CollisionControl.HitListener;
+import GameControl.Counter;
+import GameControl.GameLevel;
 import GameObjects.Ball;
 import GameObjects.Block;
 import GeometryPrimitives.Point;

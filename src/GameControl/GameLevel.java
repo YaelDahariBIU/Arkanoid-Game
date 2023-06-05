@@ -11,6 +11,8 @@ import GeometryPrimitives.Point;
 import GeometryPrimitives.Rectangle;
 import GameControl.SpriteControl.Sprite;
 import GameControl.SpriteControl.SpriteCollection;
+import LivesControl.BallRemover;
+import LivesControl.LivesIndicator;
 import ScoreControl.ScoreIndicator;
 import ScoreControl.ScoreTrackingListener;
 import biuoop.DrawSurface;
@@ -41,16 +43,16 @@ public class GameLevel implements Animation {
     private final SpriteCollection sprites;
     private final GameEnvironment environment;
     private final KeyboardSensor keyboardSensor;
-//    private final GUI gui;
     private final Counter remainingBlocks;
-    private Counter remainingBalls;
+    private final Counter remainingBalls;
     private final AnimationRunner runner;
     private boolean running;
     private final LevelInformation levelInformation;
     private final ScoreIndicator scoreIndicator;
     private final ScoreTrackingListener scoreListener;
     private final BlockRemover blockRemover;
-
+    private final LivesIndicator livesIndicator;
+    private BallRemover ballRemover;
     /**
      * Instantiates a new GameControl.Game.
      *
@@ -74,6 +76,9 @@ public class GameLevel implements Animation {
         this.scoreIndicator = indicator;
         this.scoreListener = listener;
         this.blockRemover = new BlockRemover(this, remainingBlocks);
+        this.remainingBalls = new Counter();
+        this.remainingBalls.increase(levelInformation.numberOfBalls());
+        this.livesIndicator = new LivesIndicator(remainingBalls);
     }
 
     /**
@@ -102,13 +107,13 @@ public class GameLevel implements Animation {
      * @return (Counter) - the remainingBalls Counter
      */
     public Counter initialize() {
-        this.remainingBalls = new Counter();
         levelInformation.getBackground().addToGame(this);
         initializeBallsOnPaddle();
-        this.remainingBalls.increase(levelInformation.numberOfBalls());
+        this.ballRemover = new BallRemover(this, remainingBalls);
         initializeBorders();
         initializeRows();
         this.scoreIndicator.addToGame(this);
+        this.livesIndicator.addToGame(this);
         return this.remainingBalls;
     }
     /**
@@ -140,8 +145,7 @@ public class GameLevel implements Animation {
         // the death-region block
         borders[FIRST] = new Block(new Rectangle(new Point(EDGE,
                 HEIGHT - DEPTH), WIDTH, DEPTH), Color.gray);
-        BallRemover ballRemover = new BallRemover(this, remainingBalls);
-        borders[FIRST].addHitListener(ballRemover);
+        borders[FIRST].addHitListener(this.ballRemover);
         borders[SECOND] = new Block(new Rectangle(new Point(EDGE, EXTRA),
                 DEPTH, HEIGHT - DEPTH - EXTRA), Color.gray);
         borders[THIRD] = new Block(new Rectangle(new Point(WIDTH - DEPTH,

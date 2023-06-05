@@ -44,6 +44,7 @@ public class SpriteCollection {
      * The method calls drawOn(d) on all sprites.
      *
      * @param d (DrawSurface) - the surface we're drawing on
+     * @param levelName (String) - the level's name
      */
     public void drawAllOn(DrawSurface d, String levelName) {
         for (Sprite sprite : this.sprites) {
