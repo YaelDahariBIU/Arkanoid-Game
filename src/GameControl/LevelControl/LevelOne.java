@@ -24,18 +24,18 @@ public class LevelOne implements LevelInformation {
     public LevelOne() {
         Color burgundy = new Color(86, 6, 9);
         List<Sprite> objects = new ArrayList<>();
-        Line l1 = new Line(new Point(400, 50), new Point(400, 130));
-        l1.setColor(burgundy);
-        objects.add(l1);
-        Line l2 = new Line(new Point(400, 190), new Point(400, 270));
-        l2.setColor(burgundy);
-        objects.add(l2);
-        Line l3 = new Line(new Point(290, 160), new Point(370, 160));
-        l3.setColor(burgundy);
-        objects.add(l3);
-        Line l4 = new Line(new Point(430, 160), new Point(510, 160));
-        l4.setColor(burgundy);
-        objects.add(l4);
+        List<Line> lines = new ArrayList<>();
+        lines.add(new Line(new Point(400, 50), new Point(400, 130)));
+        lines.add(new Line(new Point(400, 190), new Point(400, 270)));
+        lines.add(new Line(new Point(290, 160), new Point(370, 160)));
+        lines.add(new Line(new Point(430, 160), new Point(510, 160)));
+        lines.add(new Line(new Point(400, 280), new Point(400, 590)));
+        lines.add(new Line(new Point(400, 280), new Point(370, 310)));
+        lines.add(new Line(new Point(400, 280), new Point(430, 310)));
+        for (Line line : lines) {
+            line.setColor(burgundy);
+            objects.add(line);
+        }
         objects.add(new Circle(CENTER, 60, burgundy, false));
         objects.add(new Circle(CENTER, 75, burgundy, false));
         objects.add(new Circle(CENTER, 90, burgundy, false));
@@ -49,7 +49,7 @@ public class LevelOne implements LevelInformation {
     @Override
     public List<Velocity> initialBallVelocities() {
         List<Velocity> list = new ArrayList<>();
-        list.add(new Velocity(0, 10));
+        list.add(new Velocity(0, 7));
         return list;
     }
 

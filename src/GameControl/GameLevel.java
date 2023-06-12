@@ -126,11 +126,10 @@ public class GameLevel implements Animation {
         paddle.addToGame(this);
         Point p = paddle.getCollisionRectangle().getUpperLeft();
         Ball[] balls = new Ball[levelInformation.numberOfBalls()];
-        double x = paddle.getCollisionRectangle().getWidth()
-                / (levelInformation.numberOfBalls() + 1);
+        Rectangle rect = paddle.getCollisionRectangle();
+        Point point = new Point(rect.getUpperLeft().getX() + rect.getWidth() / 2,
+                p.getY() - RADIUS - 1);
         for (int i = 0; i < balls.length; i++) {
-            Point point = new Point(p.getX() + x * (i + 1),
-                    p.getY() - RADIUS - 1);
             balls[i] = new Ball(point, RADIUS, Color.BLACK);
             balls[i].setVelocity(levelInformation.initialBallVelocities().get(i));
             balls[i].setEnvironment(this.environment);
@@ -178,8 +177,6 @@ public class GameLevel implements Animation {
     public void run() {
         this.runner.run(new CountdownAnimation(2, 3, sprites));
         this.running = true;
-        // use our runner to run the current animation -- which is one turn of
-        // the game.
         this.runner.run(this);
     }
 
@@ -202,21 +199,15 @@ public class GameLevel implements Animation {
 
     @Override
     public void doOneFrame(DrawSurface d) {
-        // the logic from the previous run method goes here.
-        // the `return` or `break` statements should be replaced with
-        // this.running = false;
         if (this.keyboardSensor.isPressed("p")) {
             this.runner.run(new KeyPressStoppableAnimation(this.keyboardSensor,
                     "space", new PauseScreen()));
         }
         this.sprites.drawAllOn(d, levelInformation.levelName());
         this.sprites.notifyAllTimePassed();
-        if (remainingBalls.getValue() == NONE) {
+        if (remainingBalls.getValue() == NONE
+                || remainingBlocks.getValue() == NONE) {
             this.running = false;
-        }
-        if (remainingBlocks.getValue() == NONE) {
-            this.running = false;
-            //bonusEvent();
         }
     }
 

@@ -56,7 +56,7 @@ public class LevelTwo implements LevelInformation {
     public List<Velocity> initialBallVelocities() {
         List<Velocity> list = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
-            list.add(Velocity.fromAngleAndSpeed(ANGLE + (i * CHANGE), 10));
+            list.add(Velocity.fromAngleAndSpeed(ANGLE + (i * CHANGE), 7));
         }
         return list;
     }

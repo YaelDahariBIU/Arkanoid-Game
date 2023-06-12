@@ -7,8 +7,14 @@
     <list default="true" id="bf7bdc99-be1a-4520-9b4c-6fd571f0cfe1" name="Changes" comment="final with comments">
       <change afterPath="$PROJECT_DIR$/ass3.zip" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/ass5.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ass2.zip" beforeDir="false" afterPath="$PROJECT_DIR$/ass2.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Animation/CountdownAnimation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Animation/CountdownAnimation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Animation/GameOverScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Animation/GameOverScreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Animation/YouWinScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Animation/YouWinScreen.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GameControl/GameLevel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameControl/GameLevel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GameControl/LevelControl/LevelOne.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameControl/LevelControl/LevelOne.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GameControl/LevelControl/LevelTwo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameControl/LevelControl/LevelTwo.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,7 +49,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Yael Dahari/IdeaProjects/Project1/biuoop-1.4.jar&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Yael Dahari/IdeaProjects/Project1&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -108,7 +114,11 @@
       <workItem from="1685907991543" duration="2192000" />
       <workItem from="1685950210845" duration="4066000" />
       <workItem from="1685966623652" duration="2148000" />
-      <workItem from="1685989141671" duration="503000" />
+      <workItem from="1685989141671" duration="893000" />
+      <workItem from="1686141274329" duration="1626000" />
+      <workItem from="1686216105958" duration="1219000" />
+      <workItem from="1686516304306" duration="1277000" />
+      <workItem from="1686546236906" duration="198000" />
     </task>
     <task id="LOCAL‎-00001" summary="phase1">
       <created>1680211675458</created>
@@ -299,7 +309,14 @@
       <option name="project" value="LOCAL‎" />
       <updated>1685989413069</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL‎-00028" summary="final with comments">
+      <created>1685989847245</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL‎-00028" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1685989847245</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

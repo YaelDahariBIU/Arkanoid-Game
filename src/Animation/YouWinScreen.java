@@ -24,7 +24,7 @@ public class YouWinScreen implements Animation {
         d.setColor(new Color(36, 225, 15));
         d.fillRectangle(0, 0, d.getWidth(), d.getHeight());
         d.setColor(Color.BLACK);
-        d.drawText(200, d.getHeight() / 2,
+        d.drawText(170, d.getHeight() / 2,
                 "You won! Your score is " + score, 32);
     }
 

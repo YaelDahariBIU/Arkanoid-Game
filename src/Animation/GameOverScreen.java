@@ -25,7 +25,7 @@ public class GameOverScreen implements Animation {
         d.setColor(new Color(225, 15, 40));
         d.fillRectangle(0, 0, d.getWidth(), d.getHeight());
         d.setColor(Color.BLACK);
-        d.drawText(200, d.getHeight() / 2,
+        d.drawText(170, d.getHeight() / 2,
                 "Game Over. Your score is " + score, 32);
     }
 

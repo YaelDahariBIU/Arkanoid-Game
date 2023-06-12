@@ -34,7 +34,7 @@ public class CountdownAnimation implements Animation {
     @Override
     public void doOneFrame(DrawSurface d) {
         this.gameScreen.drawAllOn(d, "----");
-        d.drawText(400, 350, num, 40);
+        d.drawText(d.getWidth() / 2, 350, num, 60);
         reduceCount();
     }
     @Override
