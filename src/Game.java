@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * Creates a list of the desired levels and runs the game accordingly.
  */
-public class Ass6Game {
+public class Game {
     static final int NONE = 0;
     private static void addToList(List<LevelInformation> levels, String[] arr) {
         int num = NONE;
